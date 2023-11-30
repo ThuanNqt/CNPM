@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e4e4e4;" stylesheets="@../source/login.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="800.0" style="-fx-background-color: #8A3BD9;">
+         <children>
+            <AnchorPane layoutX="129.0" layoutY="87.0" prefHeight="414.0" prefWidth="547.0" styleClass="pane" stylesheets="@../source/login.css">
+               <children>
+                  <Label layoutX="198.0" layoutY="61.0" text="Đăng nhập" textFill="#262559">
+                     <font>
+                        <Font name="System Bold" size="30.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="btnLogin" alignment="CENTER" layoutX="216.0" layoutY="334.0" mnemonicParsing="false" onAction="#Login" prefHeight="35.0" prefWidth="120.0" styleClass="button2" stylesheets="@../source/login.css" text="Đăng nhập" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Button>
+                  <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="101.0" layoutY="176.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/icon-username.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="tfUsername" layoutX="150.0" layoutY="176.0" prefHeight="39.0" prefWidth="300.0" promptText="Tài khoản">
+                     <font>
+                        <Font size="20.0" />
+                     </font></TextField>
+                  <ImageView fitHeight="39.0" fitWidth="39.0" layoutX="105.0" layoutY="230.0" opacity="0.35" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../source/icon-password.png" />
+                     </image>
+                  </ImageView>
+                  <PasswordField fx:id="tfPassword" layoutX="150.0" layoutY="228.0" prefHeight="39.0" prefWidth="300.0" promptText="Mật khẩu" style="-fx-border-style: none;">
+                     <font>
+                        <Font size="20.0" />
+                     </font></PasswordField>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

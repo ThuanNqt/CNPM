@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="680.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HoKhauController">
+   <children>
+      <Button layoutX="180.0" layoutY="10.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Main.css" text="Thêm hộ" textFill="WHITE" AnchorPane.leftAnchor="180.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="290.0" layoutY="10.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #6F4BF2;" styleClass="button1" stylesheets="@../source/Main.css" text="Sửa hộ" textFill="WHITE" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button layoutX="400.0" layoutY="10.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #F26B5E;" styleClass="button1" stylesheets="@../source/Main.css" text="Xóa hộ" textFill="WHITE" AnchorPane.rightAnchor="180.0" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TextField fx:id="tfSearch" layoutX="14.0" layoutY="55.0" prefHeight="30.0" prefWidth="330.0" promptText="Tìm kiếm" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="50.0" />
+      <Button layoutX="547.0" layoutY="56.0" mnemonicParsing="false" onAction="#searchHoKhau" prefHeight="30.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Main.css" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <ComboBox fx:id="cbChooseSearch" layoutX="345.0" layoutY="55.0" prefHeight="30.0" prefWidth="200.0" promptText="Chọn" style="-fx-background-color: eaeaea;" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="50.0" />
+      <TableView fx:id="tvHoKhau" layoutX="18.0" layoutY="86.0" prefHeight="500.0" prefWidth="501.0" style="-fx-background-radius: 5;" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="90.0">
+        <columns>
+          <TableColumn fx:id="colMaHoKhau" prefWidth="81.0" text="Mã hộ" />
+            <TableColumn fx:id="colMaChuHo" prefWidth="193.0" text="Tên chủ hộ" />
+            <TableColumn fx:id="colSoThanhVien" prefWidth="96.0" text="Số thành viên" />
+            <TableColumn fx:id="colDiaChi" prefWidth="289.0" text="Địa chỉ" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

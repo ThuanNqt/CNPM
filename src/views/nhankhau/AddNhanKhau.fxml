@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.AddNhanKhau">
+   <children>
+      <Label layoutX="302.0" layoutY="49.0" text="Thêm nhân khẩu" textAlignment="CENTER" textFill="#262559" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font></Label>
+      <Label layoutX="100.0" layoutY="135.0" text="Mã nhân khẩu" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfId" layoutX="250.0" layoutY="100.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="130.0" />
+      <Label layoutX="92.0" layoutY="185.0" text="Tên nhân khẩu" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfTen" layoutX="250.0" layoutY="150.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="180.0" />
+      <Label layoutX="100.0" layoutY="235.0" text="Tuổi" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfTuoi" layoutX="250.0" layoutY="200.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="230.0" />
+      <Label layoutX="98.0" layoutY="285.0" text="Số CMND" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfCmnd" layoutX="250.0" layoutY="250.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="280.0" />
+      <Label layoutX="95.0" layoutY="335.0" text="Số điện thoại" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfSdt" layoutX="250.0" layoutY="300.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="330.0" />
+      <Label layoutX="105.0" layoutY="385.0" text="Mã hộ khẩu" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfMaHoKhau" layoutX="250.0" layoutY="350.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="380.0" />
+      <Label layoutX="101.0" layoutY="435.0" text="Quan hệ với chủ hộ" AnchorPane.leftAnchor="100.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Label>
+      <TextField fx:id="tfQuanHe" layoutX="250.0" layoutY="400.0" prefHeight="30.0" prefWidth="435.0" style="-fx-background-color: #eaeaea;" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="430.0" />
+      <Button layoutX="365.0" layoutY="531.0" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="30.0" prefWidth="70.0" style="-fx-background-color: #8A3BD9; -fx-background-radius: 5;" text="Thêm" textFill="WHITE" AnchorPane.bottomAnchor="40.0">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
