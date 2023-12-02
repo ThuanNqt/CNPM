@@ -1,26 +1,26 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
+
 .pane {
-	-fx-background-color : #ffffff;
-	-fx-border-width : 0 1 0 0;
+	-fx-background-color:linear-gradient(to bottom right, #2d658c, #2ca772);
 	-fx-border-color : #EAEAEA;
 }
 
   
 .button1
 {
--fx-background-color : #393351;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : transperent;
+-fx-background-radius :  5px;
 }
 .button1:hover
 {
--fx-background-color : #524A7B ;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : #847d7d ;
+-fx-background-radius : 5px;
 }
 .button1:pressed
 {
--fx-background-color : #2F2B43 ;
--fx-background-radius :  30 0 0 30;
+-fx-background-color : #847d7d ;
+-fx-background-radius :  5px;
 }
 
 .button2

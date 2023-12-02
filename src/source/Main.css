@@ -1,8 +1,17 @@
 /* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
 
 .pane {
-	-fx-background-color : #8A3BD9;
-	-fx-background-radius : 5px;
+	-fx-background-color:linear-gradient(to right, #344250, #3c6382);
+	-fx-background-radius : 8px;
+}
+
+.shadow{
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.4), 6,0,0,0);
+}
+
+.white-bg{
+    -fx-background-color:#fff;
+    -fx-background-radius:8px;
 }
 
   

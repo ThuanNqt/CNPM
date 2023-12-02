@@ -24,17 +24,18 @@
 
 .button2
 {
--fx-background-color :  #362C76;
+-fx-background-color :  #5c998b;
 -fx-background-radius :  5px;
 }
 .button2:hover
 {
--fx-background-color : #8A3BD9;
+-fx-background-color : #847d7d;
 -fx-background-radius :  5px;
+-fx-cursor: HAND; 
 }
 .button2:pressed
 {
--fx-background-color : #362C76;
+-fx-background-color : #847d7d;
 -fx-background-radius :  5px;
 }
 
@@ -78,3 +79,6 @@
     -fx-background-insets: 1 1 1 1, 1 1 1 1, 1 1 1 1;
 }
 
+.leftForm{
+	-fx-background-color:linear-gradient(to bottom right, #2d658c, #2ca772);
+}

@@ -14,12 +14,14 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import javafx.scene.control.Button;
 
 public class LoginController {
 	@FXML
 	private TextField tfUsername;
 	@FXML
 	private PasswordField tfPassword;
+	@FXML Button btnLogin;
 	
 	public void Login(ActionEvent event) throws IOException {
 		String username = tfUsername.getText();
@@ -27,7 +29,7 @@ public class LoginController {
 		
 		// check username and password
 		if(!username.equals("admin") || !pass.equals("admin")) {
-			Alert alert = new Alert(AlertType.WARNING, "Tài khoản hoặc mật khẩu không đúng!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.ERROR, "Tài khoản hoặc mật khẩu không đúng!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
