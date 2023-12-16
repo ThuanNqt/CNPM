@@ -15,60 +15,70 @@ import models.KhoanThuModel;
 import services.KhoanThuService;
 
 public class UpdateKhoanThu {
-	@FXML
-	private TextField tfMaKhoanThu;
-	@FXML
-	private TextField tfTenKhoanThu;
-	@FXML
-	private TextField tfLoaiKhoanThu;
-	@FXML
-	private TextField tfSoTien;
+    @FXML
+    private TextField tfMaKhoanThu;
+    @FXML
+    private TextField tfTenKhoanThu;
+    @FXML
+    private TextField tfLoaiKhoanThu;
+    @FXML
+    private TextField tfSoTien;
 
-	private KhoanThuModel khoanThuModel;
+    private KhoanThuModel khoanThuModel;
 
-	public void setKhoanThuModel(KhoanThuModel khoanThuModel) {
-		this.khoanThuModel = khoanThuModel;
+    public void setKhoanThuModel(KhoanThuModel khoanThuModel) {
+        this.khoanThuModel = khoanThuModel;
 
-		tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
-		tfMaKhoanThu.setText(Integer.toString(khoanThuModel.getMaKhoanThu()));
-		if (khoanThuModel.getLoaiKhoanThu() == 1) {
-			tfLoaiKhoanThu.setText("Bắt buộc");
-		} else {
-			tfLoaiKhoanThu.setText("Tự nguyện");
-		}
-		tfSoTien.setText(Double.toString(khoanThuModel.getSoTien()));
-	}
+        // Set data from KhoanThuModel to respective fields
+        tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
+        tfMaKhoanThu.setText(String.valueOf(khoanThuModel.getMaKhoanThu()));
+        tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc" : "Tự nguyện");
+        tfSoTien.setText(String.valueOf(khoanThuModel.getSoTien()));
+    }
 
-	public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
-		Pattern pattern;
-		
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTenKhoanThu.getText().length() >= 50 || tfTenKhoanThu.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên khoản thu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+    public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
+        if (!isValidInput()) {
+            return;
+        }
 
-		// kiem tra soTien nhap vao
-		// so tien nhap vao phai la so va nho hon 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfSoTien.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số tiền hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		
-		// ghi nhan cac gia tri sau khi da kiem tra hop le
-		int maKhoanThuInt = khoanThuModel.getMaKhoanThu();
-		String tenKhoanThuString = tfTenKhoanThu.getText();
-		int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
-		double soTienDouble = Double.parseDouble(tfSoTien.getText());
-		
-		new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt);
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        // Extract information after validation
+        int maKhoanThuInt = khoanThuModel.getMaKhoanThu();
+        String tenKhoanThuString = tfTenKhoanThu.getText();
+        int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
+        double soTienDouble = Double.parseDouble(tfSoTien.getText());
+
+        // Update data
+        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt);
+
+        // Close the window after successful update
+        closeWindow(event);
+    }
+
+    private boolean isValidInput() {
+        // Validate the name input
+        if (tfTenKhoanThu.getText().length() < 1 || tfTenKhoanThu.getText().length() > 50) {
+            showAlert("Hãy nhập vào tên khoản thu hợp lệ!");
+            return false;
+        }
+
+        // Validate the amount input
+        Pattern amountPattern = Pattern.compile("\\d{1,11}");
+        if (!amountPattern.matcher(tfSoTien.getText()).matches()) {
+            showAlert("Hãy nhập vào số tiền hợp lệ!");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+
+    private void closeWindow(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-	}
+    }
 }

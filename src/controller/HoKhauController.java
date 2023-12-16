@@ -147,7 +147,7 @@ public class HoKhauController implements Initializable {
 						});
 
 				// xoa ho khau
-				new HoKhauService().del(idHoKhauDel);
+				new HoKhauService().delete(idHoKhauDel);
 			}
 		}
 

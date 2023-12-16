@@ -22,72 +22,96 @@ import services.HoKhauService;
 import services.NhanKhauService;
 
 public class UpdateHoKhau {
-	@FXML
-	private TextField tfSoThanhVien;
-	@FXML
-	private TextField tfSDT;
-	@FXML
-	private TextField tfTenChuHo;
-	@FXML
-	private TextField tfDiaChi;
-	@FXML
-	private TextField tfMaHo;
 
-	private HoKhauModel hoKhauModel;
+    @FXML
+    private TextField tfSoThanhVien;
+    @FXML
+    private TextField tfSDT;
+    @FXML
+    private TextField tfTenChuHo;
+    @FXML
+    private TextField tfDiaChi;
+    @FXML
+    private TextField tfMaHo;
 
-	public void setHoKhauModel(HoKhauModel hoKhauModel) throws ClassNotFoundException, SQLException {
-		this.hoKhauModel = hoKhauModel;
+    private HoKhauModel hoKhauModel;
+    private Map<Integer, String> mapIDToTenNhanKhau = new TreeMap<>();
+    private Map<Integer, String> mapIDToSDT = new TreeMap<>();
 
-		Map<Integer, Integer> mapMahoToID = new TreeMap<Integer, Integer>();
-		List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
-		listChuHo.stream().forEach(chuho -> {
-			mapMahoToID.put(chuho.getMaHo(), chuho.getIdChuHo());
-		});
+    public void setHoKhauModel(HoKhauModel hoKhauModel) throws ClassNotFoundException, SQLException {
+        this.hoKhauModel = hoKhauModel;
+        initializeDropdownData();
+        populateFields();
+    }
 
-		Map<Integer, String> mapIDToTenNhanKhau = new TreeMap<>();
-		Map<Integer, String> mapIDToSDT = new TreeMap<>();
-		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
-		listNhanKhau.stream().forEach(nhankhau -> {
-			mapIDToTenNhanKhau.put(nhankhau.getId(), nhankhau.getTen());
-			mapIDToSDT.put(nhankhau.getId(), nhankhau.getSdt());
-		});
+    private void initializeDropdownData() throws ClassNotFoundException, SQLException {
+        Map<Integer, Integer> mapMahoToID = new TreeMap<>();
+        List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
+        listChuHo.forEach(chuho -> mapMahoToID.put(chuho.getMaHo(), chuho.getIdChuHo()));
 
-		tfDiaChi.setText(hoKhauModel.getDiaChi());
-		tfMaHo.setText(Integer.toString(hoKhauModel.getMaHo()));
-		tfSoThanhVien.setText(Integer.toString(hoKhauModel.getSoThanhvien()));
-		tfTenChuHo.setText(mapIDToTenNhanKhau.get(mapMahoToID.get(hoKhauModel.getMaHo())));
-		tfSDT.setText(mapIDToSDT.get(mapMahoToID.get(hoKhauModel.getMaHo())));
-	}
+        List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+        listNhanKhau.forEach(nhankhau -> {
+            mapIDToTenNhanKhau.put(nhankhau.getId(), nhankhau.getTen());
+            mapIDToSDT.put(nhankhau.getId(), nhankhau.getSdt());
+        });
+    }
 
-	public void updateHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
-		
-		Pattern pattern;
-		
-		// kiem tra dia chi nhap vao
-		// dia chi nhap vao la 1 chuoi t 1 toi 30 ki tu
-		if (tfDiaChi.getText().length() >= 200 || tfDiaChi.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào địa chỉ hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		
-		pattern = Pattern.compile("^\\d{10}$");
-		if (!pattern.matcher(tfSDT.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số điện thoại hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		
-		String diaChiString = tfDiaChi.getText();
-		String sdtString = tfSDT.getText();
-		
-		new HoKhauService().update(hoKhauModel.getMaHo(), diaChiString, sdtString);
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+    private void populateFields() {
+        tfDiaChi.setText(hoKhauModel.getDiaChi());
+        tfMaHo.setText(String.valueOf(hoKhauModel.getMaHo()));
+        tfSoThanhVien.setText(String.valueOf(hoKhauModel.getSoThanhvien()));
+        int idChuHo = getIdChuHoByMaHo(hoKhauModel.getMaHo());
+        tfTenChuHo.setText(mapIDToTenNhanKhau.get(idChuHo));
+        tfSDT.setText(mapIDToSDT.get(idChuHo));
+    }
+
+    private int getIdChuHoByMaHo(int maHo) {
+        for (ChuHoModel chuHo : new ChuHoService().getListChuHo()) {
+            if (chuHo.getMaHo() == maHo) {
+                return chuHo.getIdChuHo();
+            }
+        }
+        return -1; // Handle not found case
+    }
+
+    @FXML
+    public void updateHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
+        if (!isAddressValid() || !isPhoneNumberValid()) {
+            return;
+        }
+
+        String diaChiString = tfDiaChi.getText();
+        String sdtString = tfSDT.getText();
+
+        new HoKhauService().update(hoKhauModel.getMaHo(), diaChiString, sdtString);
+        closeCurrentStage(event);
+    }
+
+    private boolean isAddressValid() {
+        if (tfDiaChi.getText().length() < 2 || tfDiaChi.getText().length() >= 200) {
+            showAlert("Hãy nhập vào địa chỉ hợp lệ!");
+            return false;
+        }
+        return true;
+    }
+
+    private boolean isPhoneNumberValid() {
+        Pattern pattern = Pattern.compile("^\\d{10}$");
+        if (!pattern.matcher(tfSDT.getText()).matches()) {
+            showAlert("Hãy nhập vào số điện thoại hợp lệ!");
+            return false;
+        }
+        return true;
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+
+    private void closeCurrentStage(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-        
-        
-	}
-
+    }
 }
