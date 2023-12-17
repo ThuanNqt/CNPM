@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.AddNhanKhau">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.AddNhanKhau">
    <children>
       <Label layoutX="149.0" layoutY="43.0" text="Nhập thông tin nhân khẩu bạn muốn thêm" textAlignment="CENTER" textFill="#5c998b" AnchorPane.topAnchor="43.0">
          <font>
@@ -24,7 +24,7 @@
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
-      <DatePicker fx:id="dpNgaySinh" layoutX="79.0" layoutY="236.0" prefHeight="25.0" prefWidth="591.0" promptText="Ngày Sinh" />
+      <DatePicker fx:id="dpNgaySinh" layoutX="79.0" layoutY="236.0" prefHeight="26.0" prefWidth="640.0" promptText="Ngày Sinh" />
    </children>
    <styleClass>
       <String fx:value="shadow" />
