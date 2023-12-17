@@ -39,86 +39,87 @@
                      </font>
                   </Label>
                   <Line endX="36.692901611328125" endY="-71.77798461914062" startX="193.67868041992188" startY="-71.77778625488281" stroke="#301a1a" strokeWidth="2.0" />
-                  <Button mnemonicParsing="false" onAction="#setTrangChu" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Trang chủ">
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="HOME" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnNhanKhau" alignment="CENTER" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Nhân khẩu">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="USER" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnHoKhau" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Hộ khẩu">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="USERS" size="15" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnKhoanPhi" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Khoản thu" wrapText="true">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="USD" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnDongPhi" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Đóng phí">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="USD" size="20" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="btnThongKe" mnemonicParsing="false" onAction="#setThongKe" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Thống kê">
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                     <graphic>
-                        <FontAwesomeIcon glyphName="CALCULATOR" size="18" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="logout" mnemonicParsing="false" onAction="#setDangXuat" prefHeight="40.0" prefWidth="100.0" styleClass="button1" stylesheets="@../source/Home.css" text="Đăng xuất">
-                     <graphic>
-                        <FontAwesomeIcon glyphName="SIGN_OUT" size="20" />
-                     </graphic>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="System Bold" size="12.0" />
-                     </font>
-                  </Button>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setTrangChu" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Trang chủ">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="HOME" size="20" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" top="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#setNhanKhau" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Nhân khẩu">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="USER" size="20" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnHoKhau1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setHoKhau" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Hộ khẩu">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="USERS" size="15" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnKhoanPhi1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setKhoanPhi" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Khoản thu" wrapText="true">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="USD" size="20" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnDongPhi1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setDongPhi" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Đóng phí">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="USD" size="20" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="btnThongKe1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setThongKe" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Thống kê">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <graphic>
+                              <FontAwesomeIcon glyphName="CALCULATOR" size="18" />
+                           </graphic>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                        <Button fx:id="logout1" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setDangXuat" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Đăng xuất">
+                           <graphic>
+                              <FontAwesomeIcon glyphName="SIGN_OUT" size="20" />
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
                </children>
             </VBox>
             <BorderPane fx:id="borderPane" prefHeight="700.0" prefWidth="1020.0" />
