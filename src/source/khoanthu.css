@@ -1,28 +1,7 @@
-.search{
-    -fx-background-color:transparent;
-    -fx-border-color:linear-gradient(to bottom right, #2d658c, #2ca772);
-    -fx-border-width:.8px;
-    -fx-border-radius:8px;
-    -fx-font-size:14px;
-    -fx-padding:0px 0px 0px 28px;
-}
-
-.search:focused{
-    -fx-border-width:1.8px;
-}
-
-.choose{
-	 -fx-background-color:transparent;
-    -fx-border-color:linear-gradient(to bottom right, #2d658c, #2ca772);
-    -fx-border-radius:8px;
-    -fx-font-size:14px;
-    -fx-padding:0px 0px 0px 28px;
-}
-
 .table-view{
-    -fx-background-color:transparent;
+    -fx-background-color:#00FFFF;
     -fx-padding:0px;
-    -fx-border-color:linear-gradient(to bottom right, #2d658c, #2ca772);
+    -fx-border-color:#A9A9A9;
     -fx-border-width:2px;
     -fx-border-radius:8px;
 }
@@ -31,55 +10,24 @@
 }
 .table-view .column-header-background{
     -fx-background-color:linear-gradient(to bottom right, #2d658c, #2ca772);
-    -fx-background-radius:8px 8px 0px 0px;
     -fx-background-inset: 0 0 0 0;
+    -fx-border-color:#A9A9A9;
 }
 .table-view .column-header, .filter{
-    -fx-background-color:transparent;
+    -fx-background-color:#FFFFFF;
     -fx-size:40px;
+    
 }
 .table-view .column-header .label{
-    -fx-text-fill:#fff;
+    -fx-text-fill:#000000;
     -fx-font-family:"Arial";
 }
 
 .textfield{
-    -fx-background-color:linear-gradient(to bottom, #efefef, #eee);
+    -fx-background-color:transparent;
     -fx-background-radius:4px;
     -fx-border-color:linear-gradient(to bottom right, #2d658c, #2ca772);
     -fx-border-width:.8px;
     -fx-font-family:"Tahoma";
     -fx-border-radius:4px;
 }
-.textfield:focused{
-    -fx-background-color:#fff;
-    -fx-border-width:1px;
-}
-
-.btnSearch
-{
--fx-background-color :  #5c998b;
--fx-background-radius :  8px;
-}
-.btnSearch:hover
-{
--fx-background-color : #847d7d;
--fx-background-radius :  8px;
--fx-cursor: HAND; 
-}
-.btnSearch:pressed
-{
--fx-background-color : #847d7d;
--fx-background-radius :  8px;
-}
-
-.shadow{
-    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.4), 6,0,0,0);
-}
-
-.white-bg{
-    -fx-background-color:#fff;
-    -fx-background-radius:8px;
-}
-
-

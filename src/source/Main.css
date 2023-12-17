@@ -4,6 +4,9 @@
 	-fx-background-color:linear-gradient(to right, #344250, #3c6382);
 	-fx-background-radius : 8px;
 }
+.a{
+	-fx-border-color:#FFFFFF;
+}
 
 .shadow{
     -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.4), 6,0,0,0);

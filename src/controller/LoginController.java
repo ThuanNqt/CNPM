@@ -1,7 +1,11 @@
 package controller;
 
+import java.awt.Label;
+
+
 import java.io.IOException;
 
+import application.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +16,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 public class LoginController {
+	/*
 	@FXML
 	private TextField tfUsername;
 	@FXML
@@ -34,12 +40,37 @@ public class LoginController {
 			alert.showAndWait();
 			return;
 		}
-		
+		x
 		Parent home = FXMLLoader.load(getClass().getResource("/views/Home3.fxml"));
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setScene(new Scene(home,800,600));
         stage.setResizable(false);
         stage.show();
-	}
+	}*/
+	 
+
+    @FXML
+    private Button loginBTN;
+
+    @FXML
+    private PasswordField passWord;
+
+    @FXML
+    private TextField userName;
+
+    @FXML
+    void login(ActionEvent event) throws IOException {
+    	Stage stage = (Stage) loginBTN.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/Home3.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        stage.setTitle("app");
+        stage.setScene(scene);
+    }
+
+	  
+
+	 
+	    
+	    
 
 }
