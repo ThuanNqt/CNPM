@@ -2,6 +2,7 @@ package models;
 
 public class HoKhauModel {
 	int maHo;
+	String tenChuHo;
 	int soThanhvien;
 	String diaChi;
 	
@@ -16,6 +17,12 @@ public class HoKhauModel {
 
 	public HoKhauModel(int maHo ,int soThanhVien, String diaChi) {
 		this.maHo=maHo;
+		this.soThanhvien = soThanhVien;
+		this.diaChi = diaChi;
+	}
+	public HoKhauModel(int maHo ,String tenChuHo,int soThanhVien, String diaChi) {
+		this.maHo=maHo;
+		this.tenChuHo = tenChuHo;
 		this.soThanhvien = soThanhVien;
 		this.diaChi = diaChi;
 	}
@@ -44,6 +51,12 @@ public class HoKhauModel {
 
 	public void setDiaChi(String diaChi) {
 		this.diaChi = diaChi;
+	}
+	public String getTenChuHo() {
+		return tenChuHo;
+	}
+	public void setTenChuHo(String tenChuHo) {
+		this.tenChuHo = tenChuHo;
 	}
 	
 	

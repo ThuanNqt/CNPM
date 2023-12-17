@@ -1,8 +1,14 @@
 package controller;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+
+
+import java.io.IOException;
 
 import java.awt.Button;
-import java.io.IOException;
-//import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,7 +21,6 @@ import application.Main;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -28,10 +33,14 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+
+import models.HoKhauModel;
 import models.KhoanThuModel;
+import models.NhanKhauModel;
 import models.NopTienModel;
 import services.KhoanThuService;
 import services.NopTienService;
+import services.ThongKeService;
 
 public class ThongKeController implements Initializable {
 	@FXML
@@ -108,6 +117,11 @@ public class ThongKeController implements Initializable {
 			break;
 		}
 	}
+	public KhoanThuModel thongkeKhoanThu() throws IOException, ClassNotFoundException, SQLException {
+	    KhoanThuModel khoanThuModel = tvThongKe.getSelectionModel().getSelectedItem();
+	    return khoanThuModel;
+	}
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -131,4 +145,3 @@ public class ThongKeController implements Initializable {
 	        
 		}
   }
-
