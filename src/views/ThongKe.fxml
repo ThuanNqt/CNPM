@@ -10,8 +10,8 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: transsparemt;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
    <children>
-      <ComboBox fx:id="cbChooseSearch" layoutX="120.0" layoutY="498.0" prefHeight="31.0" prefWidth="200.0" promptText="Chọn" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.topAnchor="498.0" />
-      <Button layoutX="361.0" layoutY="498.0" mnemonicParsing="false" onAction="#loc" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../source/khoanthu.css" text="Thống kê" textFill="WHITE" AnchorPane.topAnchor="498.0">
+      <ComboBox fx:id="cbChooseSearch" layoutX="55.0" layoutY="147.0" prefHeight="31.0" prefWidth="186.0" promptText="Chọn" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.topAnchor="147.0" />
+      <Button layoutX="263.0" layoutY="147.0" mnemonicParsing="false" onAction="#loc" prefHeight="30.0" prefWidth="148.0" styleClass="btnSearch" stylesheets="@../source/khoanthu.css" text="Thống kê" textFill="WHITE" AnchorPane.topAnchor="147.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>

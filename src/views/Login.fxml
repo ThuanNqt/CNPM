@@ -26,9 +26,10 @@
             </ImageView>
             <Label layoutX="55.0" layoutY="215.0" text="User name" />
             <Label layoutX="58.0" layoutY="302.0" text="Password" />
-            <TextField fx:id="userName" layoutX="162.0" layoutY="211.0" />
-            <PasswordField fx:id="passWord" layoutX="163.0" layoutY="307.0" />
-            <Button fx:id="loginBTN" layoutX="163.0" layoutY="426.0" mnemonicParsing="false" onAction="#login" text="Login" />
+            <TextField fx:id="userName" layoutX="160.0" layoutY="211.0" prefHeight="26.0" prefWidth="182.0" />
+            <PasswordField fx:id="passWord" layoutX="160.0" layoutY="298.0" prefHeight="26.0" prefWidth="182.0" />
+            <Button fx:id="loginBTN" layoutX="160.0" layoutY="395.0" mnemonicParsing="false" onAction="#login" text="Login" />
+            <Button layoutX="235.0" layoutY="394.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="110.0" text="Fogot Password ?" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="23.0" prefHeight="602.0" prefWidth="547.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="0.0">
