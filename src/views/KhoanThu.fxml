@@ -32,9 +32,9 @@
             <Font name="System Bold" size="12.0" />
          </font>
          <graphic>
-            <ImageView fitHeight="40.0" fitWidth="40.0">
+            <ImageView fitHeight="34.0" fitWidth="34.0">
                <image>
-                  <Image url="@../ImageView/211817_search_strong_icon.png" />
+                  <Image url="@../Image/211817_search_strong_icon.png" />
                </image>
             </ImageView>
          </graphic></Button>

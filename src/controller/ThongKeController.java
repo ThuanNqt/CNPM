@@ -1,5 +1,8 @@
 package controller;
 
+import java.awt.Button;
+import java.io.IOException;
+//import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,17 +11,23 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
+import application.Main;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import models.KhoanThuModel;
 import models.NopTienModel;
 import services.KhoanThuService;
@@ -110,4 +119,16 @@ public class ThongKeController implements Initializable {
 		}
 
 	}
-}
+	 
+	    //private Button thongKe2Btn;
+	 @FXML
+	    void thongKe2(ActionEvent event) throws IOException {
+		 	Parent windown = FXMLLoader.load(getClass().getResource("/views/thongke2.fxml"));
+	        Stage stage = new Stage();
+	        stage.setScene(new Scene(windown,900,700));
+	        stage.setResizable(false);
+	        stage.showAndWait();
+	        
+		}
+  }
+
