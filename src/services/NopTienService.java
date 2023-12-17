@@ -12,47 +12,53 @@ import models.NopTienModel;
 
 public class NopTienService {
 
-	// checked
-	public boolean add(NopTienModel nopTienModel) throws ClassNotFoundException, SQLException {
-		Connection connection = MysqlConnection.getMysqlConnection();
-        String query = "INSERT INTO nop_tien(IDNopTien, MaKhoanThu, NgayThu)" 
-                    + " values (?, ?, NOW())";
-        
-        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setInt(1,nopTienModel.getIdNopTien());
-        preparedStatement.setInt(2, nopTienModel.getMaKhoanThu());
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
-        connection.close();
-		return true;
-	}
-	
-	// checked
-	public boolean del(int idNopTien, int maKhoanThu) throws ClassNotFoundException, SQLException {
-		String sql = "DELETE FROM nop_tien WHERE IDNopTien = '" +idNopTien + "' AND MaKhoanThu = '" +maKhoanThu +"';";
-		Connection connection = MysqlConnection.getMysqlConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.executeUpdate();
+    // Add a money collection transaction
+    public boolean add(NopTienModel nopTienModel) throws ClassNotFoundException, SQLException {
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "INSERT INTO nop_tien(IDNopTien, MaKhoanThu, NgayThu) VALUES (?, ?, NOW())",
+                     Statement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatement.setInt(1, nopTienModel.getIdNopTien());
+            preparedStatement.setInt(2, nopTienModel.getMaKhoanThu());
+            preparedStatement.executeUpdate();
+
+        } // Auto-closes connection and preparedStatement
+
         return true;
-	}
-	
-	// checked
-	public List<NopTienModel> getListNopTien() throws ClassNotFoundException, SQLException{
-		List<NopTienModel> list = new ArrayList<>();
-		Connection connection = MysqlConnection.getMysqlConnection();
-    	String query = "SELECT * FROM nop_tien";
-        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-        ResultSet rs = preparedStatement.executeQuery();
-        while (rs.next()){
-        	NopTienModel nopTienModel = new NopTienModel();
-        	nopTienModel.setIdNopTien(rs.getInt("IDNopTien"));
-        	nopTienModel.setMaKhoanThu(rs.getInt("MaKhoanThu"));
-        	nopTienModel.setNgayThu(rs.getDate("NgayThu"));
-        	list.add(nopTienModel);
+    }
+
+    // Delete a money collection transaction
+    public boolean delete(int idNopTien, int maKhoanThu) throws ClassNotFoundException, SQLException {
+        String sql = "DELETE FROM nop_tien WHERE IDNopTien = ? AND MaKhoanThu = ?";
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, idNopTien);
+            preparedStatement.setInt(2, maKhoanThu);
+            preparedStatement.executeUpdate();
         }
-        preparedStatement.close();
-        connection.close();
-		return list;
-	}
-	
+
+        return true;
+    }
+
+    // Get a list of all money collection transactions
+    public List<NopTienModel> getListNopTien() throws ClassNotFoundException, SQLException {
+        List<NopTienModel> list = new ArrayList<>();
+
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                NopTienModel nopTienModel = new NopTienModel();
+                nopTienModel.setIdNopTien(rs.getInt("IDNopTien"));
+                nopTienModel.setMaKhoanThu(rs.getInt("MaKhoanThu"));
+                nopTienModel.setNgayThu(rs.getDate("NgayThu"));
+                list.add(nopTienModel);
+            }
+        } // Auto-closes connection, preparedStatement, and resultSet
+
+        return list;
+    }
 }

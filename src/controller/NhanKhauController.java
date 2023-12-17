@@ -86,7 +86,7 @@ public class NhanKhauController implements Initializable {
 		// thiet lap cac cot cho tableviews
 		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("id"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ten"));
-		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("tuoi"));
+		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ngaySinh"));
 		colCMND.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cmnd"));
 		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("sdt"));
 		try {

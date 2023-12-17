@@ -198,7 +198,7 @@ public class NopTienController implements Initializable {
 		if (result.get() == ButtonType.NO) {
 			return;
 		} else {
-			new NopTienService().del(nopTienModel.getIdNopTien(), nopTienModel.getMaKhoanThu());
+			new NopTienService().delete(nopTienModel.getIdNopTien(), nopTienModel.getMaKhoanThu());
 		}
 		
 		showNopTien();

@@ -1,6 +1,9 @@
 package controller.nhankhau;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
@@ -8,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -15,91 +19,111 @@ import models.NhanKhauModel;
 import services.NhanKhauService;
 
 public class UpdateNhanKhau {
-	private int maNhanKhau;
-	
-	@FXML
-	private TextField tfMaNhanKhau;
-	@FXML
-	private TextField tfTuoi;
-	@FXML
-	private TextField tfTenNhanKhau;
-	@FXML
-	private TextField tfSoDienThoai;
-	@FXML
-	private TextField tfSoCMND;
+    private int maNhanKhau;
 
-	private NhanKhauModel nhanKhauModel;
+    @FXML
+    private TextField tfMaNhanKhau;
+    @FXML
+    private DatePicker dpNgaySinh;
+    @FXML
+    private TextField tfTenNhanKhau;
+    @FXML
+    private TextField tfSoDienThoai;
+    @FXML
+    private TextField tfSoCMND;
 
-	public NhanKhauModel getNhanKhauModel() {
-		return nhanKhauModel;
-	}
+    private NhanKhauModel nhanKhauModel;
 
-	public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
-		this.nhanKhauModel = nhanKhauModel;
+    public NhanKhauModel getNhanKhauModel() {
+        return nhanKhauModel;
+    }
 
-		maNhanKhau = nhanKhauModel.getId();
-		tfMaNhanKhau.setText(Integer.toString(maNhanKhau));
-		tfTuoi.setText(Integer.toString(nhanKhauModel.getTuoi()));
-		tfTenNhanKhau.setText(nhanKhauModel.getTen());
-		tfSoDienThoai.setText(nhanKhauModel.getSdt());
-		tfSoCMND.setText(nhanKhauModel.getCmnd());
+    public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
+        // Set the NhanKhauModel and populate the form fields
+        this.nhanKhauModel = nhanKhauModel;
 
-	}
+        // Set the ID field as non-editable
+        maNhanKhau = nhanKhauModel.getId();
+        tfMaNhanKhau.setText(Integer.toString(maNhanKhau));
+        tfMaNhanKhau.setEditable(false);
 
-	public void updateNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
-		// khai bao mot mau de so sanh
-		Pattern pattern;
+        java.util.Date ngaySinhUtilDate = new java.util.Date(nhanKhauModel.getNgaySinh().getTime());
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTenNhanKhau.getText().length() >= 50 || tfTenNhanKhau.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Convert java.util.Date to LocalDate
+        LocalDate localDate = ngaySinhUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dpNgaySinh.setValue(localDate);
+        tfTenNhanKhau.setText(nhanKhauModel.getTen());
+        tfSoDienThoai.setText(nhanKhauModel.getSdt());
+        tfSoCMND.setText(nhanKhauModel.getCmnd());
+    }
 
-		// kiem tra tuoi nhap vao
-		// tuoi nhap vao nhieu nhat la 1 so co 3 chu so
-		pattern = Pattern.compile("\\d{1,3}");
-		if (!pattern.matcher(tfTuoi.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tuổi hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+    @FXML
+    public void updateNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
+        // Validate form fields
+        if (!validateFields()) {
+            return; // Validation failed
+        }
 
-		// kiem tra cmnd nhap vao
-		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
-		pattern = Pattern.compile("\\d{1,20}");
-		if (!pattern.matcher(tfSoCMND.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào CMND hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Convert LocalDate to java.sql.Date directly
+        Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
 
-		// kiem tra sdt nhap vao
-		// SDT nhap vao phai khong chua chu cai va nho hon 15 chu so
-		pattern = Pattern.compile("\\d{1,15}");
-		if (!pattern.matcher(tfSoDienThoai.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số điện thoại hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		
-		// ghi nhan gia tri ghi tat ca deu da hop le
-		String tenString = tfTenNhanKhau.getText();
-		int tuoiInt = Integer.parseInt(tfTuoi.getText());
-		String cmndString = tfSoCMND.getText();
-		String sdtString = tfSoDienThoai.getText();
-		
-		// xoa di nhan khau hien tai va them vao nhan khau vua cap nhat
-		new NhanKhauService().update(maNhanKhau, cmndString, tenString, tuoiInt, sdtString);
-		
-		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        // Get values from form fields
+        String tenString = tfTenNhanKhau.getText();
+        String cmndString = tfSoCMND.getText();
+        String sdtString = tfSoDienThoai.getText();
+
+        // Update the existing NhanKhau
+        new NhanKhauService().update(maNhanKhau, cmndString, tenString, ngaySinhDate, sdtString);
+
+        // Display success message
+        showAlert("Cập nhật thông tin nhân khẩu thành công!");
+
+        // Close the stage after update
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
-		
-	}
+    }
+
+    private boolean validateFields() {
+        // Validate form fields here
+        // Return true if all fields are valid, false otherwise
+
+        // Example validation for ID
+        Pattern idPattern = Pattern.compile("\\d{1,11}");
+        if (!idPattern.matcher(tfMaNhanKhau.getText()).matches()) {
+            showAlert("Hãy nhập vào mã nhân khẩu hợp lệ!");
+            return false;
+        }
+
+        // Example validation for name
+        if (tfTenNhanKhau.getText().length() >= 50 || tfTenNhanKhau.getText().length() <= 1) {
+            showAlert("Hãy nhập vào tên hợp lệ!");
+            return false;
+        }
+
+        // Example validation for CMND
+        Pattern cmndPattern = Pattern.compile("\\d{1,20}");
+        if (!cmndPattern.matcher(tfSoCMND.getText()).matches()) {
+            showAlert("Hãy nhập vào CMND hợp lệ!");
+            return false;
+        }
+
+        // Example validation for phone number
+        Pattern phonePattern = Pattern.compile("\\d{1,15}");
+        if (!phonePattern.matcher(tfSoDienThoai.getText()).matches()) {
+            showAlert("Hãy nhập vào số điện thoại hợp lệ!");
+            return false;
+        }
+
+        // Other validations...
+
+        return true;
+    }
+
+
+    private void showAlert(String message) {
+        // Display alert messages
+        Alert alert = new Alert(AlertType.INFORMATION, message, ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
 }

@@ -1,29 +1,38 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package services;
 
 import java.text.Normalizer;
 import java.util.regex.Pattern;
 
-/**
- *
- * @Thanh
- */
 public class StringService {
-    
-    public static String covertToString(String value) {
+
+    public static String convertToString(String value) {
         try {
-              String temp = Normalizer.normalize(value, Normalizer.Form.NFD);
-              Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
-              return pattern.matcher(temp).replaceAll("");
+            // Normalize the input string to decomposed form
+            String normalizedString = normalizeString(value);
+
+            // Remove diacritical marks from the normalized string
+            String stringWithoutDiacritics = removeDiacriticalMarks(normalizedString);
+
+            return stringWithoutDiacritics;
         } catch (Exception ex) {
-            System.out.println("services.StringService.covertToString()");
-            System.out.println(ex.getMessage());
+            handleException(ex);
         }
-          return null;
+
+        // Return null if an exception occurs
+        return null;
     }
 
+    private static String normalizeString(String value) {
+        return Normalizer.normalize(value, Normalizer.Form.NFD);
+    }
+
+    private static String removeDiacriticalMarks(String input) {
+        Pattern diacriticalMarksPattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
+        return diacriticalMarksPattern.matcher(input).replaceAll("");
+    }
+
+    private static void handleException(Exception ex) {
+        System.out.println("An exception occurred in StringService.convertToString()");
+        System.out.println(ex.getMessage());
+    }
 }

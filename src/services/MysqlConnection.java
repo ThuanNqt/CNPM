@@ -5,9 +5,12 @@ import java.sql.*;
 public class MysqlConnection {
     public static Connection getMysqlConnection() throws SQLException, ClassNotFoundException {
         String hostName = "localhost";
-        String dbName = "quanlynhankhau";
+        String dbName = "quan_ly_khoan_thu";
         String userName = "root";
-        String password = "";
+
+
+        String password = "root";
+
         return getMysqlConnection(hostName, dbName, userName, password);
     }
     

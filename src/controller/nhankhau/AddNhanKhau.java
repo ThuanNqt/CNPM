@@ -1,151 +1,118 @@
 package controller.nhankhau;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
-import javafx.scene.Node;
-import models.HoKhauModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
-import services.HoKhauService;
 import services.NhanKhauService;
 import services.QuanHeService;
 
 public class AddNhanKhau {
-	@FXML
-	private TextField tfId;
-	@FXML
-	private TextField tfTen;
-	@FXML
-	private TextField tfTuoi;
-	@FXML
-	private TextField tfCmnd;
-	@FXML
-	private TextField tfSdt;
-	@FXML
-	private TextField tfMaHoKhau;
-	@FXML
-	private TextField tfQuanHe;
 
-	public void addNhanKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
-		// khai bao mot mau de so sanh
-		Pattern pattern;
+    @FXML
+    private TextField tfId;
+    @FXML
+    private TextField tfTen;
+    @FXML
+    private DatePicker dpNgaySinh;
+    @FXML
+    private TextField tfCmnd;
+    @FXML
+    private TextField tfSdt;
+    @FXML
+    private TextField tfMaHoKhau;
+    @FXML
+    private TextField tfQuanHe;
 
-		// kiem tra id nhap vao
-		// id la day so tu 1 toi 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfId.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã nhân khẩu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
-		// kiem tra ID them moi co bi trung voi nhung ID da ton tai hay khong
-		List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
-		for (NhanKhauModel nhankhau : listNhanKhauModels) {
-			if (nhankhau.getId() == Integer.parseInt(tfId.getText())) {
-				Alert alert = new Alert(AlertType.WARNING, "Mã nhân khẩu bị trùng!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				return;
-			}
-		}
+    public void addNhanKhau(ActionEvent event) {
+        try {
+            validateInput();
+            performDatabaseOperations();
+            closeStage(event);
+        } catch (Exception e) {
+            showAlert("Error", "An error occurred during the operation.", AlertType.ERROR);
+            e.printStackTrace(); // Handle or log the exception appropriately
+        }
+    }
 
-		// kiem tra ten nhap vao
-		// ten nhap vao la chuoi tu 1 toi 50 ki tu
-		if (tfTen.getText().length() >= 50 || tfTen.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+    private void validateInput() throws Exception {
+        Pattern pattern;
 
-		// kiem tra tuoi nhap vao
-		// tuoi nhap vao nhieu nhat la 1 so co 3 chu so
-		pattern = Pattern.compile("\\d{1,3}");
-		if (!pattern.matcher(tfTuoi.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tuổi hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate ID
+        pattern = Pattern.compile("\\d{1,11}");
+        if (!pattern.matcher(tfId.getText()).matches()) {
+            throw new Exception("Invalid ID. Please enter a valid ID (up to 11 digits).");
+        }
 
-		// kiem tra cmnd nhap vao
-		// cmnd nhap vao phai la mot day so tu 1 toi 20 so
-		pattern = Pattern.compile("\\d{1,20}");
-		if (!pattern.matcher(tfCmnd.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào CMND hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate Name
+        if (tfTen.getText().length() >= 50 || tfTen.getText().length() <= 1) {
+            throw new Exception("Invalid name. Please enter a name with 1 to 50 characters.");
+        }
 
-		// kiem tra sdt nhap vao
-		// SDT nhap vao phai khong chua chu cai va nho hon 15 chu so
-		pattern = Pattern.compile("\\d{1,15}");
-		if (!pattern.matcher(tfSdt.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào số điện thoại hợp lệ", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate CMND
+        pattern = Pattern.compile("\\d{1,20}");
+        if (!pattern.matcher(tfCmnd.getText()).matches()) {
+            throw new Exception("Invalid CMND. Please enter a valid CMND (up to 20 digits).");
+        }
 
-		// kiem tra maHo nhap vao
-		// ma ho nhap vao phai khong chua chu cai va nho hon 11 chu so
-		pattern = Pattern.compile("\\d{1,11}");
-		if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào mã hộ khẩu hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate SDT
+        pattern = Pattern.compile("\\d{1,15}");
+        if (!pattern.matcher(tfSdt.getText()).matches()) {
+            throw new Exception("Invalid phone number. Please enter a valid phone number (up to 15 digits).");
+        }
 
-		// kiem tra ma ho nhap vao da ton tai hay chua
-		List<HoKhauModel> listHoKhauModels = new HoKhauService().getListHoKhau();
-		long check = listHoKhauModels.stream()
-				.filter(hokhau -> hokhau.getMaHo() == Integer.parseInt(tfMaHoKhau.getText())).count();
-		if (check <= 0) {
-			Alert alert = new Alert(AlertType.WARNING, "Hộ khẩu không tồn tại!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate MaHoKhau
+        pattern = Pattern.compile("\\d{1,11}");
+        if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
+            throw new Exception("Invalid MaHoKhau. Please enter a valid MaHoKhau (up to 11 digits).");
+        }
 
-		// Kiem tra Quan he nhap vao
-		if (tfQuanHe.getText().length() >= 30 || tfQuanHe.getText().length() <= 1) {
-			Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào một quan hệ hợp lệ!", ButtonType.OK);
-			alert.setHeaderText(null);
-			alert.showAndWait();
-			return;
-		}
+        // Validate QuanHe
+        if (tfQuanHe.getText().length() >= 30 || tfQuanHe.getText().length() <= 1) {
+            throw new Exception("Invalid relationship. Please enter a valid relationship with 1 to 30 characters.");
+        }
+    }
 
-		// ghi nhan gia tri ghi tat ca deu da hop le
-		int idInt = Integer.parseInt(tfId.getText());
-		String tenString = tfTen.getText();
-		int tuoiInt = Integer.parseInt(tfTuoi.getText());
-		String cmndString = tfCmnd.getText();
-		String sdtString = tfSdt.getText();
-		int mahokhauInt = Integer.parseInt(tfMaHoKhau.getText());
-		String quanheString = tfQuanHe.getText();
+    private void performDatabaseOperations() throws ClassNotFoundException, SQLException {
+        int idInt = Integer.parseInt(tfId.getText());
+        String tenString = tfTen.getText();
+        String cmndString = tfCmnd.getText();
+        Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
+        String sdtString = tfSdt.getText();
+        int mahokhauInt = Integer.parseInt(tfMaHoKhau.getText());
+        String quanheString = tfQuanHe.getText();
 
-		NhanKhauService nhanKhauService = new NhanKhauService();
-		QuanHeService quanHeService = new QuanHeService();
+        NhanKhauService nhanKhauService = new NhanKhauService();
+        QuanHeService quanHeService = new QuanHeService();
 
-		NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cmndString, tenString, tuoiInt, sdtString);
-		QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
+        NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cmndString, tenString, ngaySinhDate, sdtString);
+        QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
 
-		nhanKhauService.add(nhanKhauModel);
-		quanHeService.add(quanHeModel);
+        nhanKhauService.add(nhanKhauModel);
+        quanHeService.add(quanHeModel);
+    }
 
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.close();
-	}
+    private void closeStage(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.close();
+    }
+
+    private void showAlert(String title, String content, AlertType alertType) {
+        Alert alert = new Alert(alertType, content, ButtonType.OK);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
 }

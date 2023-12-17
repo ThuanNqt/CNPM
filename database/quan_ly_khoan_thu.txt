@@ -1,0 +1,584 @@
+USE quan_ly_khoan_thu;
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Cơ sở dữ liệu: `quan_ly_khoan_thu`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `nop_tien`
+--
+DROP TABLE IF EXISTS `nop_tien`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `khoan_thu`
+--
+DROP TABLE IF EXISTS `khoan_thu`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `quan_he`
+--
+DROP TABLE IF EXISTS `quan_he`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `chu_ho`
+--
+DROP TABLE IF EXISTS `chu_ho`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `ho_khau`
+--
+DROP TABLE IF EXISTS `ho_khau`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `nhan_khau`
+--
+DROP TABLE IF EXISTS `nhan_khau`;
+
+-- --------------------------------------------------------
+
+--
+-- Các lệnh DROP TABLE IF EXISTS cho bảng `users`
+--
+DROP TABLE IF EXISTS `users`;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nhan_khau`
+--
+
+CREATE TABLE `nhan_khau` (
+  `ID` int(11) NOT NULL,
+  `CMND` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `NgaySinh` date NOT NULL,
+  `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `ho_khau`
+--
+
+CREATE TABLE `ho_khau` (
+  `MaHo` int(11) NOT NULL,
+  `SoThanhVien` int(11) NOT NULL,
+  `DiaChi` varchar(200) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `chu_ho`
+--
+
+CREATE TABLE `chu_ho` (
+  `MaHo` int(11) NOT NULL,
+  `IDChuHo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `quan_he`
+--
+
+CREATE TABLE `quan_he` (
+  `MaHo` int(11) NOT NULL,
+  `IDThanhVien` int(11) NOT NULL,
+  `QuanHe` varchar(30) CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `ID` int(11) NOT NULL,
+  `username` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `passwd` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `khoan_thu`
+--
+
+CREATE TABLE `khoan_thu` (
+  `MaKhoanThu` int(11) NOT NULL,
+  `TenKhoanThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `SoTien` double NOT NULL,
+  `LoaiKhoanThu` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `nop_tien`
+--
+
+CREATE TABLE `nop_tien` (
+  `IDNopTien` int(11) NOT NULL,
+  `MaKhoanThu` int(11) NOT NULL,
+  `NgayThu` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Chỉ mục cho các bảng đã đổ
+--
+
+--
+-- Chỉ mục cho bảng `nhan_khau`
+--
+ALTER TABLE `nhan_khau`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Chỉ mục cho bảng `ho_khau`
+--
+ALTER TABLE `ho_khau`
+  ADD PRIMARY KEY (`MaHo`);
+
+--
+-- Chỉ mục cho bảng `chu_ho`
+--
+ALTER TABLE `chu_ho`
+  ADD PRIMARY KEY (`MaHo`,`IDChuHo`),
+  ADD KEY `chu_ho_2` (`IDChuHo`);
+
+--
+-- Chỉ mục cho bảng `quan_he`
+--
+ALTER TABLE `quan_he`
+  ADD PRIMARY KEY (`MaHo`,`IDThanhVien`),
+  ADD KEY `quan_he_2` (`IDThanhVien`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Chỉ mục cho bảng `khoan_thu`
+--
+ALTER TABLE `khoan_thu`
+  ADD PRIMARY KEY (`MaKhoanThu`);
+
+--
+-- Chỉ mục cho bảng `nop_tien`
+--
+ALTER TABLE `nop_tien`
+  ADD PRIMARY KEY (`IDNopTien`,`MaKhoanThu`),
+  ADD KEY `nop_tien_2` (`MaKhoanThu`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `nhan_khau`
+--
+ALTER TABLE `nhan_khau`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT cho bảng `ho_khau`
+--
+ALTER TABLE `ho_khau`
+  MODIFY `MaHo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `chu_ho`
+--
+ALTER TABLE `chu_ho`
+  MODIFY `MaHo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `khoan_thu`
+--
+ALTER TABLE `khoan_thu`
+  MODIFY `MaKhoanThu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Các ràng buộc cho các bảng đã đổ
+--
+
+--
+-- Các ràng buộc cho bảng `quan_he`
+--
+ALTER TABLE `quan_he`
+  ADD CONSTRAINT `quan_he_1` FOREIGN KEY (`MaHo`) REFERENCES `ho_khau` (`MaHo`),
+  ADD CONSTRAINT `quan_he_2` FOREIGN KEY (`IDThanhVien`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `chu_ho`
+--
+ALTER TABLE `chu_ho`
+  ADD CONSTRAINT `chu_ho_1` FOREIGN KEY (`MaHo`) REFERENCES `ho_khau` (`MaHo`),
+  ADD CONSTRAINT `chu_ho_2` FOREIGN KEY (`IDChuHo`) REFERENCES `nhan_khau` (`ID`);
+
+--
+-- Các ràng buộc cho bảng `nop_tien`
+--
+ALTER TABLE `nop_tien`
+  ADD CONSTRAINT `nop_tien_1` FOREIGN KEY (`IDNopTien`) REFERENCES `nhan_khau` (`ID`),
+  ADD CONSTRAINT `nop_tien_2` FOREIGN KEY (`MaKhoanThu`) REFERENCES `khoan_thu` (`MaKhoanThu`);
+
+--
+-- Các ràng buộc cho bảng `khoan_thu`
+--
+
+
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+INSERT INTO `nhan_khau` (`ID`, `CMND`, `Ten`, `NgaySinh`, `SDT`)
+VALUES
+  -- Nhân khẩu của hộ khẩu số 1
+  (1, '032545783459', 'Nguyễn Thị Lan Anh', '2003-01-01', '0987654321'),
+  (2, '033906453010', 'Trần Văn Minh Bảo', '2005-01-01', '0234567890'),
+  (3, '037132958064', 'Lê Thị Thanh Cường', '1983-01-01', '0789012345'),
+  (4, '033202618356', 'Phạm Văn Hải Dương', '1988-01-01', '0456789012'),
+  
+  -- Nhân khẩu của hộ khẩu số 2
+  (5, '034714027813', 'Hoàng Thị Mai', '1995-01-01', '0567890123'),
+  (6, '039087019412', 'Trịnh Văn Anh Dũng', '1963-01-01', '0678901234'),
+  (7, '032679418573', 'Nguyễn Văn Tuấn', '1989-01-01', '0123456789'),
+  
+  -- Nhân khẩu của hộ khẩu số 3
+  (8, '037363920149', 'Trần Thị Hồng Hạnh', '1977-01-01', '0345678901'),
+  (9, '035437692058', 'Lê Văn Hiếu', '1972-01-01', '0890123456'),
+  (10, '034509128756', 'Phạm Thị Ngọc Anh', '1995-01-01', '0567849032'),
+
+  -- Nhân khẩu của hộ khẩu số 4
+  (11, '038914692432', 'Hoàng Văn Khoa', '1989-01-01', '0345678923'),
+  (12, '032137829405', 'Trịnh Thị Lan', '1953-01-01', '0912345678'),
+
+  -- Nhân khẩu của hộ khẩu số 5
+  (13, '031587049860', 'Nguyễn Văn Mạnh', '1981-01-01', '0789034567'),
+  (14, '033458609123', 'Trần Thị Ngọc', '1968-01-01', '0980123456'),
+
+  -- Nhân khẩu của hộ khẩu số 6
+  (15, '039521874619', 'Lê Văn Thanh', '1984-01-01', '0890123456'),
+  (16, '031219603705', 'Phạm Thị Quỳnh', '1993-01-01', '0456789012'),
+
+  -- Nhân khẩu của hộ khẩu số 7
+  (17, '034650782349', 'Hoàng Văn Đông', '1975-01-01', '0567890123'),
+  (18, '038283478913', 'Trịnh Thị Ngọc', '1987-01-01', '0678901234'),
+
+  -- Nhân khẩu của hộ khẩu số 8
+  (19, '038867214905', 'Nguyễn Văn Nam', '1990-01-01', '0923456780'),
+  (20, '039143526849', 'Trần Thị Mai', '1992-01-01', '0123456789'),
+
+  -- Nhân khẩu của hộ khẩu số 9
+  (21, '037420183705', 'Lê Thị Hương', '1979-01-01', '0789012345'),
+  (22, '036012359281', 'Trần Văn Phú', '1992-01-01', '0345678901'),
+  (23, '036358921045', 'Nguyễn Thị Thảo', '1967-01-01', '0345678901'),
+
+  -- Nhân khẩu của hộ khẩu số 10
+  (24, '038325906783', 'Lê Văn Duy', '1986-01-01', '0234567890'),
+  (25, '033758419273', 'Phạm Thị Hiền', '1994-01-01', '0765432109'),
+  (26, '031978563290', 'Trần Văn Tùng', '1973-01-01', '0890123456'),
+
+  -- Nhân khẩu của hộ khẩu số 11
+  (27, '038743915270', 'Nguyễn Thị Bình', '1991-01-01', '0456789012'),
+  (28, '033765192304', 'Trần Văn Thắng', '1996-01-01', '0567890123'),
+  (29, '031345092738', 'Phạm Thị Lan', '1982-01-01', '0923456780'),
+
+  -- Nhân khẩu của hộ khẩu số 12
+  (30, '038590324618', 'Lê Văn Tuấn', '1994-01-01', '0980123456'),
+  (31, '036785093274', 'Hoàng Thị Ngọc', '1963-01-01', '0678901234'),
+
+  -- Nhân khẩu của hộ khẩu số 13
+  (32, '032198745609', 'Trần Văn Hòa', '1978-01-01', '0789012345'),
+  (33, '037091526378', 'Nguyễn Thị Hằng', '1971-01-01', '0123456789'),
+  (34, '031478693542', 'Lê Văn Khôi', '1994-01-01', '0456789012'),
+
+  -- Nhân khẩu của hộ khẩu số 14
+  (35, '038259041703', 'Phạm Thị Trang', '1989-01-01', '0765432109'),
+  (36, '035726940283', 'Trần Văn Tiến', '1953-01-01', '0234567890'),
+
+  -- Nhân khẩu của hộ khẩu số 15
+  (37, '034920857631', 'Nguyễn Thị Hương', '1979-01-01', '0345678901'),
+  (38, '035761924038', 'Lê Văn Quân', '1966-01-01', '0980123456'),
+
+  -- Nhân khẩu của hộ khẩu số 16
+  (39, '038650279314', 'Hoàng Thị Mai', '1984-01-01', '0912345678'),
+  (40, '031782469051', 'Phạm Thị Nga', '1993-01-01', '0678901234'),
+
+  -- Nhân khẩu của hộ khẩu số 17
+  (41, '039078563921', 'Trần Văn Hưng', '1973-01-01', '0123456789'),
+  (42, '036239817456', 'Nguyễn Thị Phương', '1985-01-01', '0789012345'),
+
+  -- Nhân khẩu của hộ khẩu số 18
+  (43, '034509287134', 'Lê Văn Quang', '1988-01-01', '0456789012'),
+  (44, '036594281093', 'Phạm Thị Ngọc', '1990-01-01', '0890123456'),
+
+  -- Nhân khẩu của hộ khẩu số 19
+  (45, '033645982017', 'Trần Văn Hoàng', '1971-01-01', '0765432109'),
+  (46, '033176528490', 'Nguyễn Thị Thu', '1996-01-01', '0923456780'),
+  (47, '037590812643', 'Lê Văn Tâm', '1984-01-01', '0345678901'),
+
+  -- Nhân khẩu của hộ khẩu số 20
+  (48, '031839405672', 'Phạm Thị Phương', '1978-01-01', '0567890123'),
+  (49, '036259418730', 'Trần Văn Dũng', '1987-01-01', '0980123456'),
+  (50, '037902861534', 'Nguyễn Thị Mai', '1981-01-01', '0234567890'),
+  (51, '038517462309', 'Nguyễn Văn Đức', '2004-01-01', '0789012345'),
+  (52, '035497612480', 'Nguyễn Văn Tú', '1998-01-01', '0456789012');
+
+  
+  
+  INSERT INTO `ho_khau` (`MaHo`, `SoThanhVien`, `DiaChi`)
+VALUES
+  (1, 4, 'Ngõ 123, Đường Lạc Long Quân, Quận Hồng Bàng, Hải Phòng'),
+  (2, 3, 'Số 10, Đường Lê Lợi, Phường Đông Cương, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
+  (3, 3, 'Tầng 8, Tòa nhà Dolphin Plaza, Số 6 Nguyễn Hoàng, Quận Ngô Quyền, Hải Phòng'),
+  (4, 2, 'Nhà số 15, Khu phố 5, Phường Ba Đình, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
+  (5, 2, 'Số 12A, Đường Trần Phú, Quận Lê Chân, Hải Phòng'),
+  (6, 2, 'Số 20, Đường Trường Thi, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
+  (7, 2, 'Nhà số 15, Khu phố 5, Phường Đằng Lâm, Quận Hải An, Hải Phòng'),
+  (8, 2, 'Tầng 3, Tòa nhà Vinaconex 3, Số 100, Đường Quang Trung, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
+  (9, 3, 'Số 10, Đường Lê Hồng Phong, Quận Kiến An, Hải Phòng'),
+  (10, 3, 'Ngõ 8, Đường Hàm Rồng, Phường Đông Vệ, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
+  (11, 3, 'Số 10, Phố Tràng Tiền, Quận Hoàn Kiếm, Hà Nội'),
+  (12, 2, 'Số 10, Đường Hồ Chí Minh, Phường Hưng Bình, Thành phố Vinh, Tỉnh Nghệ An'),
+  (13, 3, 'Tòa nhà Keangnam Landmark 72, Phạm Hùng, Quận Nam Từ Liêm, Hà Nội'),
+  (14, 2, 'Tòa nhà Vincom Plaza Nghệ An, Số 191, Đường Lê Lợi, Phường Hưng Dũng, Thành phố Vinh, Tỉnh Nghệ An'),
+  (15, 2, 'Số 20, Ngõ 123, Đường Nguyễn Chí Thanh, Quận Đống Đa, Hà Nội'),
+  (16, 2, 'Số 20, Ngõ 123, Đường Quang Trung, Phường Quang Trung, Thành phố Vinh, Tỉnh Nghệ An'),
+  (17, 2, 'Tầng 5, Tòa nhà Vincom Center Ba Trieu, Số 191, Bà Triệu, Quận Hai Bà Trưng, Hà Nội'),
+  (18, 2, 'Tầng 3, Tòa nhà 789, Số 456, Đường Trần Phú, Phường Hà Huy Tập, Thành phố Vinh, Tỉnh Nghệ An'),
+  (19, 3, 'Số 30, Đường Lê Văn Lương, Quận Thanh Xuân, Hà Nội'),
+  (20, 5, 'Nhà số 30, Khu phố 5, Xã Nghi Phú, Huyện Nghi Lộc, Tỉnh Nghệ An');
+
+
+
+INSERT INTO `chu_ho` (`MaHo`, `IDChuHo`)
+VALUES
+  (1, 3),  -- Chủ hộ của hộ khẩu số 1 có ID là 3
+  (2, 6),  -- Chủ hộ của hộ khẩu số 2 có ID là 6
+  (3, 9),  -- Chủ hộ của hộ khẩu số 3 có ID là 9
+  (4, 12), -- Chủ hộ của hộ khẩu số 4 có ID là 12
+  (5, 14), -- Chủ hộ của hộ khẩu số 5 có ID là 14
+  (6, 15), -- Chủ hộ của hộ khẩu số 6 có ID là 15
+  (7, 17), -- Chủ hộ của hộ khẩu số 7 có ID là 17
+  (8, 19), -- Chủ hộ của hộ khẩu số 8 có ID là 19
+  (9, 23), -- Chủ hộ của hộ khẩu số 9 có ID là 23
+  (10, 26),-- Chủ hộ của hộ khẩu số 10 có ID là 26
+  (11, 29),-- Chủ hộ của hộ khẩu số 11 có ID là 29
+  (12, 31),-- Chủ hộ của hộ khẩu số 12 có ID là 31
+  (13, 33),-- Chủ hộ của hộ khẩu số 13 có ID là 33
+  (14, 36),-- Chủ hộ của hộ khẩu số 14 có ID là 36
+  (15, 38),-- Chủ hộ của hộ khẩu số 15 có ID là 38
+  (16, 39),-- Chủ hộ của hộ khẩu số 16 có ID là 39
+  (17, 41),-- Chủ hộ của hộ khẩu số 17 có ID là 41
+  (18, 43),-- Chủ hộ của hộ khẩu số 18 có ID là 43
+  (19, 45),-- Chủ hộ của hộ khẩu số 19 có ID là 45
+  (20, 48);-- Chủ hộ của hộ khẩu số 20 có ID là 48
+
+
+
+INSERT INTO `quan_he` (`MaHo`, `IDThanhVien`, `QuanHe`)
+VALUES
+  (1, 1, 'Con'),      -- Thành viên có ID là 1 trong hộ khẩu số 1 có quan hệ là "Con"
+  (1, 2, 'Con'),      -- Thành viên có ID là 2 trong hộ khẩu số 1 có quan hệ là "Con"
+  (1, 3, 'Chủ hộ'),   
+  (1, 4, 'Vợ'),       -- Thành viên có ID là 4 trong hộ khẩu số 1 có quan hệ là "Vợ" 
+
+  (2, 5, 'Con'),      -- Thành viên có ID là 5 trong hộ khẩu số 2 có quan hệ là "Con"
+  (2, 6, 'Chủ hộ'),       
+  (2, 7, 'Con'),      -- Thành viên có ID là 7 trong hộ khẩu số 2 có quan hệ là "Con"
+
+  (3, 8, 'Vợ'),       -- Thành viên có ID là 8 trong hộ khẩu số 3 có quan hệ là "Vợ"
+  (3, 9, 'Chủ hộ'),
+  (3, 10, 'Con'),     -- Thành viên có ID là 10 trong hộ khẩu số 3 có quan hệ là "Con"
+
+  (4, 11, 'Con'),     -- Thành viên có ID là 11 trong hộ khẩu số 4 có quan hệ là "Con"
+  (4, 12, 'Chủ hộ'),  
+
+  (5, 13, 'Chồng'),   -- Thành viên có ID là 13 trong hộ khẩu số 5 có quan hệ là "Chồng"
+  (5, 14, 'Chủ hộ'),
+  
+  (6, 15, 'Chủ hộ'), 
+  (6, 16, 'Vợ'),      -- Thành viên có ID là 16 trong hộ khẩu số 6 có quan hệ là "Vợ"
+
+  (7, 17, 'Chủ hộ'), 
+  (7, 18, 'Vợ'),      -- Thành viên có ID là 18 trong hộ khẩu số 7 có quan hệ là "Vợ"
+
+  (8, 19, 'Chủ hộ'),  
+  (8, 20, 'Vợ'),      -- Thành viên có ID là 20 trong hộ khẩu số 8 có quan hệ là "Vợ"
+
+  (9, 21, 'Em gái'), -- Thành viên có ID là 21 trong hộ khẩu số 9 có quan hệ là "Em gái"
+  (9, 22, 'Con'),     -- Thành viên có ID là 22 trong hộ khẩu số 9 có quan hệ là "Con"
+  (9, 23, 'Chủ hộ'),
+
+  (10, 24, 'Em trai'),-- Thành viên có ID là 24 trong hộ khẩu số 10 có quan hệ là "Em trai"
+  (10, 25, 'Con'),    -- Thành viên có ID là 25 trong hộ khẩu số 10 có quan hệ là "Con"
+  (10, 26, 'Chủ hộ'),
+     
+  (11, 27, 'Em gái'), -- Thành viên có ID là 27 trong hộ khẩu số 10 có quan hệ là "Em gái"
+  (11, 28, 'Em trai'),-- Thành viên có ID là 25 trong hộ khẩu số 10 có quan hệ là "Em trai"
+  (11, 29, 'Chủ hộ'),
+
+  (12, 30, 'Con'),    -- Thành viên có ID là 30 trong hộ khẩu số 12 có quan hệ là "Con"
+  (12, 31, 'Chủ hộ'), 
+
+  (13, 32, 'Chồng'),  -- Thành viên có ID là 32 trong hộ khẩu số 13 có quan hệ là "Chồng"
+  (13, 33, 'Chủ hộ'),
+  (13, 34, 'Con'),     -- Thành viên có ID là 34 trong hộ khẩu số 13 có quan hệ là "Con"
+
+  (14, 35, 'Con'),    -- Thành viên có ID là 35 trong hộ khẩu số 14 có quan hệ là "Con"
+  (14, 36, 'Chủ hộ'),
+
+  (15, 37, 'Vợ'),     -- Thành viên có ID là 37 trong hộ khẩu số 15 có quan hệ là "Vợ"
+  (15, 38, 'Chủ hộ'),
+
+  (16, 39, 'Chủ hộ'),
+  (16, 40, 'Em gái'),  -- Thành viên có ID là 40 trong hộ khẩu số 10 có quan hệ là "Em gái"
+
+  (17, 41, 'Chủ hộ'), 
+  (17, 42, 'Vợ'),     -- Thành viên có ID là 42 trong hộ khẩu số 17 có quan hệ là "Con"
+
+  (18, 43, 'Chủ hộ'), 
+  (18, 44, 'Vợ'),     -- Thành viên có ID là 44 trong hộ khẩu số 18 có quan hệ là "Vợ"
+
+  (19, 45, 'Chủ hộ'), 
+  (19, 46, 'Con'),    -- Thành viên có ID là 46 trong hộ khẩu số 19 có quan hệ là "Con"
+  (19, 47, 'Con'),    -- Thành viên có ID là 47 trong hộ khẩu số 19 có quan hệ là "Con"
+ 
+  (20, 48, 'Chủ hộ'), 
+  (20, 49, 'Chồng'),  -- Thành viên có ID là 49 trong hộ khẩu số 20 có quan hệ là "Chồng"
+  (20, 50, 'Em gái'), -- Thành viên có ID là 50 trong hộ khẩu số 20 có quan hệ là "Em gái"
+  (20, 51, 'Con'),    -- Thành viên có ID là 51 trong hộ khẩu số 10 có quan hệ là "Con"
+  (20, 52, 'Con');    -- Thành viên có ID là 52 trong hộ khẩu số 20 có quan hệ là "Con"
+  
+  
+  
+  INSERT INTO `khoan_thu` (`MaKhoanThu`, `TenKhoanThu`, `SoTien`, `LoaiKhoanThu`) VALUES
+(1, 'Phí sinh hoạt năm 2023', 66000, 1),
+(2, 'Phí sinh hoạt năm 2024', 66000, 1),
+(3, 'Ủng hộ quỹ vì người nghèo', 10000, 0),
+(4, 'Cứu trợ đồng bào bị ảnh hưởng bởi thiên tai, bão lụt', 10000, 0),
+(5, 'Ủng hộ nạn nhân chất độc da cam', 10000, 0),
+(6, 'Ủng hộ ngày Tết thiếu nhi', 10000, 0),
+(7, 'Ủng hộ ngày thương binh liệt sỹ 27/7', 10000, 0),
+(8, 'Ủng hộ phong trào Tết nhân ái', 10000, 0),
+(9, 'Ủng hộ quỹ Vì biển, đảo Việt Nam', 10000, 0),
+(10, 'Ủng hộ quỹ Trái tim cho em', 10000, 0),
+(11, 'Ủng hộ quỹ khuyến học', 10000, 0),
+(12, 'Ủng hộ quỹ vaccine', 10000, 0);
+
+INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`, `NgayThu`) VALUES
+(1, 1, '2023-01-16'),
+(1, 5, '2023-01-12'),
+(2, 1, '2023-01-19'),
+(3, 1, '2023-01-23'),
+(4, 1, '2023-02-16'),
+(5, 1, '2023-01-27'),
+(5, 9, '2023-01-30'),
+(5, 10, '2023-03-16'),
+(6, 1, '2023-06-16'),
+(7, 1, '2023-07-01'),
+(8, 1, '2023-03-11'),
+(10, 1, '2023-01-16'),
+(11, 7, '2023-02-17'),
+(12, 1, '2023-06-01'),
+(12, 3, '2023-06-13'),
+(12, 4, '2023-06-11'),
+(12, 5, '2023-05-25'),
+(12, 6, '2023-04-17'),
+(12, 7, '2023-02-01'),
+(12, 8, '2023-02-07'),
+(12, 9, '2023-01-29'),
+(12, 10, '2023-01-31'),
+(12, 11, '2023-02-28'),
+(12, 12, '2023-04-16'),
+(13, 1, '2023-01-16'),
+(14, 1, '2023-05-06'),
+(15, 1, '2023-05-16'),
+(16, 1, '2023-02-17'),
+(17, 1, '2023-01-18'),
+(19, 1, '2023-06-16'),
+(20, 1, '2023-06-16'),
+(22, 1, '2023-03-13'),
+(22, 5, '2023-01-10'),
+(22, 9, '2023-03-04'),
+(23, 1, '2023-03-08'),
+(24, 4, '2023-01-04'),
+(25, 12, '2023-01-02'),
+(26, 1, '2023-01-20'),
+(27, 1, '2023-04-16'),
+(27, 10, '2023-01-16'),
+(27, 5, '2023-03-11'),
+(28, 1, '2023-01-11'),
+(30, 1, '2023-04-13'),
+(31, 3, '2023-03-16'),
+(31, 1, '2023-05-05'),
+(31, 5, '2023-05-04'),
+(32, 1, '2023-04-13'),
+(33, 1, '2023-01-12'),
+(35, 1, '2023-02-05'),
+(35, 4, '2023-04-04'),
+(36, 1, '2023-01-11'),
+(36, 12, '2023-07-01'),
+(36, 11, '2023-05-23'),
+(36, 7, '2023-03-08'),
+(36, 6, '2023-03-09'),
+(37, 1, '2023-01-10'),
+(38, 1, '2023-05-10'),
+(38, 4, '2023-03-20'),
+(38, 6, '2023-04-30'),
+(39, 1, '2023-03-09'),
+(40, 1, '2023-05-31'),
+(41, 1, '2023-03-31'),
+(42, 1, '2023-02-16'),
+(43, 1, '2023-07-01'),
+(44, 1, '2023-06-05'),
+(45, 1, '2023-03-14'),
+(46, 1, '2023-02-18'),
+(47, 1, '2023-02-27'),
+(48, 1, '2023-01-26'),
+(49, 1, '2023-05-23'),
+(50, 1, '2023-04-24'),
+(51, 1, '2023-03-23');
+
+
+

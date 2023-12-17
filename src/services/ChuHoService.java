@@ -11,49 +11,60 @@ import java.util.List;
 import models.ChuHoModel;
 
 public class ChuHoService {
-	//checked
-		public boolean add(ChuHoModel chuHoModel) throws ClassNotFoundException, SQLException {
-			Connection connection = MysqlConnection.getMysqlConnection();
-	        String query = "INSERT INTO chu_ho(MaHo, IDChuHo)" 
-	                    + " values (?, ?)";
-	        
-	        PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-	        preparedStatement.setInt(1,chuHoModel.getMaHo());
-	        preparedStatement.setInt(2, chuHoModel.getIdChuHo());
-	        preparedStatement.executeUpdate();
-	        preparedStatement.close();
-	        connection.close();
-			return true;
-		}
-		
-		// cheked
-		public boolean del(int maHo, int idChuHo ) throws ClassNotFoundException, SQLException {
-			String sql = "DELETE FROM chu_ho WHERE  MaHo='" +maHo + "' AND IDChuHo = '" +idChuHo+"';" ;
-	            Connection connection = MysqlConnection.getMysqlConnection();
-	            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-	            preparedStatement.executeUpdate();
-	            preparedStatement.close();
-	            connection.close();
-	            return true;
-		}
-		
-		// checked
-		public List<ChuHoModel> getListChuHo() throws ClassNotFoundException, SQLException{
-			List<ChuHoModel> list = new ArrayList<>();
-			
-			Connection connection = MysqlConnection.getMysqlConnection();
-	        String query = "SELECT * FROM chu_ho";
-	        PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
-	        ResultSet rs = preparedStatement.executeQuery();
-	        while (rs.next()){
-	            ChuHoModel chuHoModel = new ChuHoModel();
-	            chuHoModel.setMaHo(rs.getInt("MaHo"));
-	            chuHoModel.setIdChuHo(rs.getInt("IDChuHo"));
-	            list.add(chuHoModel);
-	       }
-	       
-	        preparedStatement.close();
-	        connection.close();
-			return list;
-		}
+
+    public boolean add(ChuHoModel chuHoModel) {
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(
+                     "INSERT INTO chu_ho(MaHo, IDChuHo) VALUES (?, ?)",
+                     Statement.RETURN_GENERATED_KEYS)) {
+
+            preparedStatement.setInt(1, chuHoModel.getMaHo());
+            preparedStatement.setInt(2, chuHoModel.getIdChuHo());
+            preparedStatement.executeUpdate();
+
+            // Additional logic if needed
+
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Log or handle the exception appropriately
+            return false;
+        }
+    }
+
+    public boolean delete(int maHo, int idChuHo) {
+        String sql = "DELETE FROM chu_ho WHERE MaHo = ? AND IDChuHo = ?";
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, maHo);
+            preparedStatement.setInt(2, idChuHo);
+            preparedStatement.executeUpdate();
+
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Log or handle the exception appropriately
+            return false;
+        }
+    }
+
+    public List<ChuHoModel> getListChuHo() {
+        List<ChuHoModel> list = new ArrayList<>();
+        String query = "SELECT * FROM chu_ho";
+
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                ChuHoModel chuHoModel = new ChuHoModel();
+                chuHoModel.setMaHo(rs.getInt("MaHo"));
+                chuHoModel.setIdChuHo(rs.getInt("IDChuHo"));
+                list.add(chuHoModel);
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(); // Log or handle the exception appropriately
+        }
+
+        return list;
+    }
 }
