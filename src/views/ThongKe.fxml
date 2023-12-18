@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: transsparemt;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
+<AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: transsparemt;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
    <children>
       <ComboBox fx:id="cbChooseSearch" layoutX="55.0" layoutY="147.0" prefHeight="31.0" prefWidth="186.0" promptText="Chọn" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.topAnchor="147.0" />
       <Button layoutX="263.0" layoutY="147.0" mnemonicParsing="false" onAction="#loc" prefHeight="30.0" prefWidth="148.0" styleClass="btnSearch" stylesheets="@../source/khoanthu.css" text="Thống kê" textFill="WHITE" AnchorPane.topAnchor="147.0">
@@ -26,6 +26,6 @@
             <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="thongKe2Btn" layoutX="454.0" layoutY="146.0" mnemonicParsing="false" onAction="#thongKe2" prefHeight="32.0" prefWidth="117.0" text="Button" />
+      <Button layoutX="458.0" layoutY="150.0" mnemonicParsing="false" onAction="#goThongKe2" prefHeight="25.0" prefWidth="81.0" text="Button" />
    </children>
 </AnchorPane>

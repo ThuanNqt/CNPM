@@ -133,15 +133,33 @@ public class ThongKeController implements Initializable {
 		}
 
 	}
+	
+	  @FXML
 	 
-	    //private Button thongKe2Btn;
-	 @FXML
-	    void thongKe2(ActionEvent event) throws IOException {
-		 	Parent windown = FXMLLoader.load(getClass().getResource("/views/thongke2.fxml"));
-	        Stage stage = new Stage();
-	        stage.setScene(new Scene(windown,900,700));
-	        stage.setResizable(false);
-	        stage.showAndWait();
+	  private void goThongKe2() {
 	        
-		}
+	        KhoanThuModel selectedKhoanThuModel = tvThongKe.getSelectionModel().getSelectedItem();
+	        
+	        if (selectedKhoanThuModel != null) {
+	            try {
+	                
+	                ThongKe2Controller thongKe2Controller = new ThongKe2Controller();
+	                thongKe2Controller.setKhoanThuModel(selectedKhoanThuModel);
+
+	                // Load ThongKe2 FXML
+	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke2.fxml"));
+	                loader.setController(thongKe2Controller);
+	                Parent root = loader.load();
+
+	                // Show ThongKe2 stage
+	                Stage stage = new Stage();
+	                stage.setScene(new Scene(root));
+	                stage.show();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+
+	
   }

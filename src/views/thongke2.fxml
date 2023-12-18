@@ -4,15 +4,14 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView layoutX="55.2" layoutY="200.0" prefHeight="376.0" prefWidth="822.0" AnchorPane.leftAnchor="55.0">
+      <TableView fx:id="tvThongKe" layoutX="55.2" layoutY="200.0" prefHeight="376.0" prefWidth="822.0" AnchorPane.leftAnchor="55.0">
         <columns>
-          <TableColumn prefWidth="100.0" text="Mã hộ" />
-            <TableColumn prefWidth="200.0" text="Tên chủ hộ" />
-            <TableColumn prefWidth="100.0" text="Số thành viên" />
-            <TableColumn prefWidth="422.0" text="Địa chỉ" />
+          <TableColumn fx:id="colMaHo" prefWidth="100.0" text="Mã hộ" />
+            <TableColumn fx:id="colTenChuHo" prefWidth="200.0" text="Tên chủ hộ" />
+            <TableColumn fx:id="colSoThanhVien" prefWidth="100.0" text="Số thành viên" />
+            <TableColumn fx:id="colDiaChi" prefWidth="422.0" text="Địa chỉ" />
         </columns>
       </TableView>
    </children>
