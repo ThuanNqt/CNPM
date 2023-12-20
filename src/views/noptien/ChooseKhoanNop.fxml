@@ -13,28 +13,28 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.ChooseKhoanNop">
    <children>
-      <Label layoutX="306.0" layoutY="14.0" text="Chọn khoản thu" textFill="#5c998b" AnchorPane.topAnchor="20.0">
+      <Label layoutX="306.0" layoutY="14.0" text="Chọn khoản thu" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <TextField fx:id="tfSearch" layoutX="48.0" layoutY="71.2" prefHeight="30.0" prefWidth="418.0" promptText="Tìm kiếm" styleClass="search" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="71.0" />
-      <ComboBox fx:id="cbChooseSearch" layoutX="469.0" layoutY="70.0" prefHeight="30.0" prefWidth="170.0" promptText="Chọn" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="160.60000000000002" AnchorPane.topAnchor="70.0" />
-      <Button layoutX="628.0" layoutY="71.2" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="30.0" prefWidth="115.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="71.0">
+      <ComboBox fx:id="cbChooseSearch" layoutX="469.0" layoutY="70.0" prefHeight="30.0" prefWidth="170.0" promptText="Chọn" style="-fx-background-color: transperent;" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="160.60000000000002" AnchorPane.topAnchor="70.0" />
+      <Button layoutX="628.0" layoutY="71.2" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Tìm kiếm" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="71.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
       <TableView fx:id="tvKhoanPhi" layoutX="25.0" layoutY="124.8" prefHeight="391.0" prefWidth="750.0" stylesheets="@../../source/nhankhau.css" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="125.0">
          <columns>
-            <TableColumn fx:id="colMaKhoanPhi" prefWidth="106.0" text="Mã khoản thu" />
+            <TableColumn fx:id="colMaKhoanPhi" prefWidth="100.0" text="Mã khoản thu" />
             <TableColumn fx:id="colTenKhoanThu" prefWidth="374.0" text="Tên khoản thu" />
             <TableColumn fx:id="colSoTien" prefWidth="160.0" text="Số tiền" />
-            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="109.0" text="Loại khoản thu" />
+            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="110.0" text="Loại khoản thu" />
          </columns>
       </TableView>
-      <Button layoutX="300.0" layoutY="536.0" mnemonicParsing="false" onAction="#xacnhan" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Xác nhận" textFill="WHITE" AnchorPane.bottomAnchor="33.60000000000002">
+      <Button layoutX="300.0" layoutY="536.0" mnemonicParsing="false" onAction="#xacnhan" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Xác nhận" AnchorPane.bottomAnchor="33.60000000000002">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
       <FontAwesomeIcon fill="#bfb9b9" glyphName="SEARCH" layoutX="32.0" layoutY="92.0" size="1.5EM" />
    </children>

@@ -11,6 +11,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import javafx.scene.control.Label;
 import controller.hokhau.UpdateHoKhau;
 import controller.khoanthu.UpdateKhoanThu;
 import javafx.beans.property.ReadOnlyStringWrapper;
@@ -56,6 +57,17 @@ public class HoKhauController implements Initializable {
 	@FXML
 	TextField tfSearch;
 
+	//
+	@FXML
+	private Label lbSoHoKhau;
+	@FXML
+	private Label lbSoNhanKhau;
+	@FXML
+	private Label lbSoNhanKhauNam;
+	@FXML
+	private Label lbSoNhanKhauNu;
+	//
+	
 	@FXML
 	ComboBox<String> cbChooseSearch;
 
@@ -302,6 +314,22 @@ public class HoKhauController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
+			List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+			long soNhanKhau = listNhanKhau.stream().count();
+			lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+			
+			List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+			long soNhanKhauNam = listNhanKhauNam.stream().count();
+			lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+			
+			List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+			long soNhanKhauNu = listNhanKhauNu.stream().count();
+			lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+			
+			List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+			long soHoKhau = listHoKhau.stream().count();
+			lbSoHoKhau.setText(Long.toString(soHoKhau));
+			
 			showHoKhau();
 		} catch (ClassNotFoundException | SQLException e) {
 			// TODO Auto-generated catch block

@@ -10,18 +10,18 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.AddKhoanThu">
    <children>
-      <Label layoutX="149.0" layoutY="52.0" text="Nhập thông tin khoản thu bạn muốn thêm" textFill="#5c998b" AnchorPane.topAnchor="52.0">
+      <Label layoutX="149.0" layoutY="52.0" text="Nhập thông tin khoản thu bạn muốn thêm" AnchorPane.topAnchor="52.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
       <TextField fx:id="tfMaKhoanThu" layoutX="80.0" layoutY="146.0" prefHeight="30.0" prefWidth="200.0" promptText="Mã khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0" />
-      <TextField fx:id="tfTenKhoanThu" layoutX="254.0" layoutY="219.0" prefHeight="30.0" prefWidth="200.0" promptText="Tên khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="200.0" />
+      <TextField fx:id="tfTenKhoanThu" layoutX="254.0" layoutY="219.0" prefHeight="30.0" prefWidth="200.0" promptText="Tên khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="210.0" />
       <ComboBox fx:id="cbLoaiKhoanThu" layoutX="254.0" layoutY="295.0" prefHeight="30.0" prefWidth="200.0" promptText="Chọn" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="270.0" />
       <TextField fx:id="tfSoTien" layoutX="254.0" layoutY="366.0" prefHeight="30.0" prefWidth="200.0" promptText="Số tiền" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="330.0" />
-      <Button layoutX="300.0" layoutY="422.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm khoản thu" textFill="WHITE" AnchorPane.bottomAnchor="147.60000000000002">
+      <Button layoutX="300.0" layoutY="422.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm khoản thu" AnchorPane.bottomAnchor="147.60000000000002">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
    </children>
    <styleClass>

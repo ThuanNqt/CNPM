@@ -8,29 +8,30 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.AddHoKhau">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.AddHoKhau">
    <children>
-      <Label layoutX="113.0" layoutY="30.0" text="Thông tin hộ khẩu" textFill="#5c998b" AnchorPane.leftAnchor="113.0" AnchorPane.topAnchor="30.0">
+      <Label layoutX="80.0" layoutY="26.0" text="Thông tin hộ khẩu" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="546.4" AnchorPane.topAnchor="26.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="119.0" layoutY="197.0" text="Thông tin chủ hộ" textFill="#5c998b" AnchorPane.leftAnchor="119.0" AnchorPane.topAnchor="197.0">
+      <Label layoutX="80.0" layoutY="173.0" text="Thông tin chủ hộ" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="546.4" AnchorPane.topAnchor="173.0">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Button layoutX="280.0" layoutY="514.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0" prefWidth="240.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm hộ khẩu mới" textFill="WHITE" AnchorPane.bottomAnchor="55.60000000000002">
+      <Button layoutX="280.0" layoutY="522.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm hộ khẩu mới" AnchorPane.bottomAnchor="47.60000000000002">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextField fx:id="tfMaHoKhau" layoutX="80.0" layoutY="76.0" prefHeight="30.0" prefWidth="200.0" promptText="Mã hộ khẩu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="75.0" />
-      <TextField fx:id="tfDiaChi" layoutX="80.0" layoutY="128.0" prefHeight="30.0" prefWidth="200.0" promptText="Địa chỉ" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="125.0" />
-      <TextField fx:id="tfMaChuHo" layoutX="80.0" layoutY="240.0" prefHeight="30.0" prefWidth="200.0" promptText="Mã chủ hộ" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="240.0" />
-      <TextField fx:id="tfTenChuHo" layoutX="80.0" layoutY="285.0" prefHeight="30.0" prefWidth="200.0" promptText="Họ và tên" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="290.0" />
-      <TextField fx:id="tfCMND" layoutX="80.0" layoutY="382.0" prefHeight="30.0" prefWidth="200.0" promptText="Số CCCD" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="390.0" />
-      <TextField fx:id="tfSoDienThoai" layoutX="105.0" layoutY="447.0" prefHeight="30.0" prefWidth="200.0" promptText="Số điện thoại" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="440.0" />
-      <DatePicker fx:id="dpNgaySinh" layoutX="73.0" layoutY="347.0" prefHeight="25.0" prefWidth="610.0" promptText="Ngày Sinh" />
+      <TextField fx:id="tfMaHoKhau" layoutX="80.0" layoutY="76.0" prefHeight="30.0" prefWidth="200.0" promptText="Mã hộ khẩu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="70.0" />
+      <TextField fx:id="tfDiaChi" layoutX="80.0" layoutY="128.0" prefHeight="30.0" prefWidth="200.0" promptText="Địa chỉ" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="117.0" />
+      <TextField fx:id="tfMaChuHo" layoutX="80.0" layoutY="212.0" prefHeight="30.0" prefWidth="200.0" promptText="Mã chủ hộ" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="220.0" />
+      <TextField fx:id="tfTenChuHo" layoutX="80.0" layoutY="257.0" prefHeight="30.0" prefWidth="200.0" promptText="Họ và tên" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="270.0" />
+      <TextField fx:id="tfCMND" layoutX="80.0" layoutY="395.0" prefHeight="30.0" prefWidth="200.0" promptText="Số CCCD" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="370.0" />
+      <TextField fx:id="tfSoDienThoai" layoutX="105.0" layoutY="447.0" prefHeight="30.0" prefWidth="200.0" promptText="Số điện thoại" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="470.0" />
+      <DatePicker fx:id="dpNgaySinh" layoutX="80.0" layoutY="401.0" prefHeight="30.0" prefWidth="640.0" promptText="Ngày Sinh" AnchorPane.topAnchor="420.0" />
+      <TextField fx:id="tfGioiTinhChuHo" layoutX="80.0" layoutY="300.0" prefHeight="30.0" prefWidth="640.0" promptText="Giới tính" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="320.0" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

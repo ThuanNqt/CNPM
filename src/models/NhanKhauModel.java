@@ -7,33 +7,37 @@ import java.util.Date;
 
 public class NhanKhauModel {
     private int id;
-    private String cmnd;
+    private String cccd;
     private String ten;
+    private String gioiTinh;
     private Date ngaySinh;
     private String sdt;
 
     public NhanKhauModel() {
     }
 
-    public NhanKhauModel(String cmnd, String ten, Date ngaySinh, String sdt) {
-        this.cmnd = cmnd;
+    public NhanKhauModel(String cccd, String ten, String gioiTinh,Date ngaySinh, String sdt) {
+        this.cccd = cccd;
         this.ten = ten;
+        this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
     }
 
-    public NhanKhauModel(int id, String cmnd, String ten, Date ngaySinh, String sdt) {
+    public NhanKhauModel(int id, String cccd, String ten,String gioiTinh, Date ngaySinh, String sdt) {
         this.id = id;
-        this.cmnd = cmnd;
+        this.cccd = cccd;
         this.ten = ten;
+        this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
         this.sdt = sdt;
     }
 
-    public NhanKhauModel(int id, String cmnd, String ten, String sdt) {
+    public NhanKhauModel(int id, String cccd, String ten,String gioiTinh, String sdt) {
         this.id = id;
-        this.cmnd = cmnd;
+        this.cccd = cccd;
         this.ten = ten;
+        this.gioiTinh = gioiTinh;
         this.sdt = sdt;
     }
 
@@ -45,12 +49,12 @@ public class NhanKhauModel {
         this.id = id;
     }
 
-    public String getCmnd() {
-        return cmnd;
+    public String getCccd() {
+        return cccd;
     }
 
-    public void setCmnd(String cmnd) {
-        this.cmnd = cmnd;
+    public void setCccd(String cccd) {
+        this.cccd = cccd;
     }
 
     public String getTen() {
@@ -61,6 +65,14 @@ public class NhanKhauModel {
         this.ten = ten;
     }
 
+    public String getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(String gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+    
     public Date getNgaySinh() {
         return ngaySinh;
     }

@@ -9,14 +9,14 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.hokhau.UpdateHoKhau">
    <children>
-      <Label layoutX="246.0" layoutY="41.0" text="Sửa đổi thông tin hộ khẩu" textFill="#5c998b" AnchorPane.topAnchor="41.0">
+      <Label layoutX="246.0" layoutY="41.0" text="Sửa đổi thông tin hộ khẩu" AnchorPane.topAnchor="41.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="280.0" layoutY="393.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="240.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật thông tin hộ khẩu" textFill="WHITE" AnchorPane.bottomAnchor="176.60000000000002" AnchorPane.rightAnchor="280.0">
+      <Button layoutX="280.0" layoutY="393.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật thông tin hộ khẩu" AnchorPane.bottomAnchor="176.60000000000002" AnchorPane.rightAnchor="280.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
       <TextField fx:id="tfMaHo" editable="false" layoutX="133.0" layoutY="107.0" prefHeight="30.0" prefWidth="435.0" promptText="Mã hộ khẩu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="110.0" />
       <TextField fx:id="tfTenChuHo" editable="false" layoutX="188.0" layoutY="167.0" prefHeight="30.0" prefWidth="435.0" promptText="Tên chủ hộ" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="160.0" />

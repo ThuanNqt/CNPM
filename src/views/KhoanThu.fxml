@@ -13,20 +13,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
    <children>
-      <Button layoutX="54.0" layoutY="205.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" text="Thêm khoản thu" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="205.0">
+      <Button layoutX="54.0" layoutY="205.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Thêm" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="205.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="212.0" layoutY="204.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Update" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="212.0" AnchorPane.topAnchor="204.0">
+      <Button layoutX="163.0" layoutY="204.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Sửa" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="163.0" AnchorPane.topAnchor="204.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="326.0" layoutY="204.0" mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: transparent;" text="Delete" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="326.0" AnchorPane.topAnchor="204.0">
+      <Button layoutX="272.0" layoutY="204.0" mnemonicParsing="false" onAction="#delKhoanThu" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Xóa" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="272.0" AnchorPane.topAnchor="204.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
       <ComboBox fx:id="cbChooseSearch" layoutX="655.2" layoutY="15.2" prefHeight="31.0" prefWidth="114.0" promptText="Select By" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="655.0" AnchorPane.rightAnchor="251.0" AnchorPane.topAnchor="15.0" />
-      <TextField fx:id="tfSearch" layoutX="775.0" layoutY="14.0" prefHeight="30.0" prefWidth="171.0" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="775.0" AnchorPane.topAnchor="14.0" />
+      <TextField fx:id="tfSearch" layoutX="775.0" layoutY="14.0" prefHeight="30.0" prefWidth="171.0" promptText="Tìm kiếm" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="775.0" AnchorPane.topAnchor="14.0" />
       <Button layoutX="946.0" layoutY="7.0" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="30.0" prefWidth="52.0" style="-fx-background-color: transparent;" text=" " textFill="WHITE" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="7.0">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -43,10 +43,10 @@
           <TableColumn fx:id="colMaKhoanPhi" prefWidth="150.0" text="Mã khoản thu" />
           <TableColumn fx:id="colTenKhoanThu" prefWidth="300.0" text="Tên khoản thu" />
             <TableColumn fx:id="colSoTien" prefWidth="200.0" text="Số tiền" />
-            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="297.0" text="Loại khoản thu" />
+            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="300.0" text="Loại khoản thu" />
         </columns>
       </TableView>
-      <Label layoutX="84.0" layoutY="14.0" text="PAYMENTS" AnchorPane.leftAnchor="54.0">
+      <Label layoutX="84.0" layoutY="14.0" text="Khoản thu" AnchorPane.leftAnchor="54.0">
          <font>
             <Font name="Arial Bold" size="27.0" />
          </font>

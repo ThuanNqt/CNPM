@@ -71,7 +71,7 @@ public class HoKhauService {
                  ResultSet rs = preparedStatement.executeQuery()) {
                 while (rs.next()) {
                     HoKhauModel hoKhauModel = new HoKhauModel(rs.getInt("MaHo"), rs.getInt("SoThanhVien"),
-                            rs.getString("DiaChi"));
+                    rs.getString("DiaChi"));
                     list.add(hoKhauModel);
                 }
             }

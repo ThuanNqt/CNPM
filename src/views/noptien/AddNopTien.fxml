@@ -7,25 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.AddNopTien">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.AddNopTien">
    <children>
-      <Label layoutX="253.0" layoutY="50.0" text="Nhập thông tin đóng phí" textFill="#5c998b" AnchorPane.topAnchor="50.0">
+      <Label layoutX="214.0" layoutY="54.0" text="Nhập thông tin người đóng phí" AnchorPane.topAnchor="54.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font></Label>
-      <Button layoutX="125.0" layoutY="151.0" mnemonicParsing="false" onAction="#chooseKhoanThu" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn loại khoản thu" textFill="WHITE" AnchorPane.leftAnchor="125.0" AnchorPane.topAnchor="151.0">
+      <Button layoutX="530.0" layoutY="154.0" mnemonicParsing="false" onAction="#chooseKhoanThu" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn loại khoản thu" AnchorPane.leftAnchor="530.0" AnchorPane.topAnchor="154.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextField fx:id="tfTenKhoanThu" editable="false" layoutX="360.0" layoutY="151.0" prefHeight="30.0" prefWidth="395.0" promptText="Khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="90.39999999999998" AnchorPane.topAnchor="151.0" />
-      <Button layoutX="125.0" layoutY="221.0" mnemonicParsing="false" onAction="#chooseNguoiNop" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn người đóng phí" textFill="WHITE" AnchorPane.leftAnchor="125.0">
+      <TextField fx:id="tfTenKhoanThu" editable="false" layoutX="161.0" layoutY="154.0" prefHeight="30.0" prefWidth="395.0" style="-fx-background-color: transperent;" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="289.4" AnchorPane.topAnchor="154.0" />
+      <Button layoutX="530.0" layoutY="220.0" mnemonicParsing="false" onAction="#chooseNguoiNop" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn người đóng phí" AnchorPane.leftAnchor="530.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextField fx:id="tfTenNguoiNop" editable="false" layoutX="361.0" layoutY="221.0" prefHeight="30.0" prefWidth="395.0" promptText="Tên người đóng phí" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="361.0" AnchorPane.rightAnchor="89.39999999999998" AnchorPane.topAnchor="221.0" />
-      <Button layoutX="300.0" layoutY="382.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Xác nhận đóng phí" textFill="WHITE" AnchorPane.bottomAnchor="187.60000000000002">
+      <TextField fx:id="tfTenNguoiNop" editable="false" layoutX="161.0" layoutY="221.0" prefHeight="30.0" prefWidth="395.0" style="-fx-background-color: transperent;" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="289.4" AnchorPane.topAnchor="221.0" />
+      <Button layoutX="300.0" layoutY="367.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Xác nhận đóng phí" AnchorPane.bottomAnchor="201.8">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
    </children>
    <styleClass>

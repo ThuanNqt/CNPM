@@ -86,4 +86,23 @@ public class KhoanThuService {
 
         return list;
     }
+    
+    public double getSoTienThu() throws ClassNotFoundException, SQLException {
+        List<KhoanThuModel> list = new ArrayList<>();
+        double totalMoney = 0;
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM khoan_thu");
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),
+                        rs.getString("TenKhoanThu"), rs.getDouble("SoTien"), rs.getInt("LoaiKhoanThu"));
+         
+                list.add(khoanThuModel);    
+                totalMoney += khoanThuModel.getSoTien();
+            }
+        }
+        
+        return totalMoney;
+    }
 }

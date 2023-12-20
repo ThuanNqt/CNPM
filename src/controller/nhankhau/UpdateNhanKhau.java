@@ -28,9 +28,11 @@ public class UpdateNhanKhau {
     @FXML
     private TextField tfTenNhanKhau;
     @FXML
+    private TextField tfGioiTinh;
+    @FXML
     private TextField tfSoDienThoai;
     @FXML
-    private TextField tfSoCMND;
+    private TextField tfSoCCCD;
 
     private NhanKhauModel nhanKhauModel;
 
@@ -53,8 +55,9 @@ public class UpdateNhanKhau {
         LocalDate localDate = ngaySinhUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dpNgaySinh.setValue(localDate);
         tfTenNhanKhau.setText(nhanKhauModel.getTen());
+        tfGioiTinh.setText(nhanKhauModel.getGioiTinh());
         tfSoDienThoai.setText(nhanKhauModel.getSdt());
-        tfSoCMND.setText(nhanKhauModel.getCmnd());
+        tfSoCCCD.setText(nhanKhauModel.getCccd());
     }
 
     @FXML
@@ -69,11 +72,12 @@ public class UpdateNhanKhau {
 
         // Get values from form fields
         String tenString = tfTenNhanKhau.getText();
-        String cmndString = tfSoCMND.getText();
+        String cccdString = tfSoCCCD.getText();
+        String gioiTinhString = tfGioiTinh.getText();
         String sdtString = tfSoDienThoai.getText();
 
         // Update the existing NhanKhau
-        new NhanKhauService().update(maNhanKhau, cmndString, tenString, ngaySinhDate, sdtString);
+        new NhanKhauService().update(maNhanKhau, cccdString, tenString,gioiTinhString, ngaySinhDate, sdtString);
 
         // Display success message
         showAlert("Cập nhật thông tin nhân khẩu thành công!");
@@ -84,33 +88,36 @@ public class UpdateNhanKhau {
     }
 
     private boolean validateFields() {
-        // Validate form fields here
-        // Return true if all fields are valid, false otherwise
-
         // Example validation for ID
         Pattern idPattern = Pattern.compile("\\d{1,11}");
         if (!idPattern.matcher(tfMaNhanKhau.getText()).matches()) {
-            showAlert("Hãy nhập vào mã nhân khẩu hợp lệ!");
+            showAlert("Mã nhân khẩu không hợp lệ!");
             return false;
         }
 
         // Example validation for name
         if (tfTenNhanKhau.getText().length() >= 50 || tfTenNhanKhau.getText().length() <= 1) {
-            showAlert("Hãy nhập vào tên hợp lệ!");
+            showAlert("Tên không hợp lệ!");
             return false;
         }
 
-        // Example validation for CMND
-        Pattern cmndPattern = Pattern.compile("\\d{1,20}");
-        if (!cmndPattern.matcher(tfSoCMND.getText()).matches()) {
-            showAlert("Hãy nhập vào CMND hợp lệ!");
+        // Example validation for gioiTinh
+        if (tfGioiTinh.getText().length() >= 4 || tfGioiTinh.getText().length() <= 1) {
+            showAlert("Giới tính không hợp lệ!");
+            return false;
+        }
+        
+        // Example validation for CCCD
+        Pattern cccdPattern = Pattern.compile("\\d{1,20}");
+        if (!cccdPattern.matcher(tfSoCCCD.getText()).matches()) {
+            showAlert("CCCD không hợp lệ!");
             return false;
         }
 
         // Example validation for phone number
         Pattern phonePattern = Pattern.compile("\\d{1,15}");
         if (!phonePattern.matcher(tfSoDienThoai.getText()).matches()) {
-            showAlert("Hãy nhập vào số điện thoại hợp lệ!");
+            showAlert("Số điện thoại không hợp lệ!");
             return false;
         }
 

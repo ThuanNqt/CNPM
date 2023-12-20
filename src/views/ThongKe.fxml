@@ -8,24 +8,27 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: transsparemt;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
+<AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: transsparemt;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThongKeController">
    <children>
-      <ComboBox fx:id="cbChooseSearch" layoutX="55.0" layoutY="147.0" prefHeight="31.0" prefWidth="186.0" promptText="Chọn" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.topAnchor="147.0" />
-      <Button layoutX="263.0" layoutY="147.0" mnemonicParsing="false" onAction="#loc" prefHeight="30.0" prefWidth="148.0" styleClass="btnSearch" stylesheets="@../source/khoanthu.css" text="Thống kê" textFill="WHITE" AnchorPane.topAnchor="147.0">
+      <ComboBox fx:id="cbChooseSearch" layoutX="55.0" layoutY="147.0" prefHeight="31.0" prefWidth="186.0" promptText="Chọn" style="-fx-background-color: transperetn;" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.topAnchor="147.0" />
+      <Button layoutX="263.0" layoutY="147.0" mnemonicParsing="false" onAction="#loc" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../source/nhankhau.css" text="Thống kê" AnchorPane.topAnchor="147.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Button>
       <TableView fx:id="tvThongKe" layoutX="55.2" layoutY="196.8" prefHeight="489.0" prefWidth="954.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="197.0">
         <columns>
-            <TableColumn fx:id="colTenPhi" prefWidth="450.0" text="Tên phí" />
-            <TableColumn fx:id="colTongSoTien" prefWidth="492.0" text="Tổng số tiền " />
+            <TableColumn fx:id="colTenPhi" prefWidth="550.0" text="Tên loại phí" />
+            <TableColumn fx:id="colTongSoTien" prefWidth="395.0" text="Tổng số tiền " />
         </columns>
       </TableView>
-      <Label layoutX="20.0" layoutY="14.0" text="Thông tin tổng số lượng tiền đóng phí của cả tỉnh" AnchorPane.leftAnchor="54.0">
+      <Label layoutX="20.0" layoutY="14.0" text="Thống kê số lượng đóng phí" AnchorPane.leftAnchor="54.0">
          <font>
             <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
-      <Button layoutX="458.0" layoutY="150.0" mnemonicParsing="false" onAction="#goThongKe2" prefHeight="25.0" prefWidth="81.0" text="Button" />
+      <Button layoutX="476.0" layoutY="147.0" mnemonicParsing="false" onAction="#goThongKe2" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" stylesheets="@../source/nhankhau.css" text="Các hộ chưa đóng phí" textFill="#298ab1">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

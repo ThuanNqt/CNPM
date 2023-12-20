@@ -26,9 +26,11 @@ public class AddNhanKhau {
     @FXML
     private TextField tfTen;
     @FXML
+    private TextField tfGioiTinh;
+    @FXML
     private DatePicker dpNgaySinh;
     @FXML
-    private TextField tfCmnd;
+    private TextField tfCccd;
     @FXML
     private TextField tfSdt;
     @FXML
@@ -61,10 +63,15 @@ public class AddNhanKhau {
             throw new Exception("Invalid name. Please enter a name with 1 to 50 characters.");
         }
 
-        // Validate CMND
+     // Validate GioiTinh
+        if (tfGioiTinh.getText().length() >= 4 || tfGioiTinh.getText().length() <= 1) {
+            throw new Exception("Invalid gender. Please enter a name with 1 to 4 characters.");
+        }
+        
+        // Validate CCCD
         pattern = Pattern.compile("\\d{1,20}");
-        if (!pattern.matcher(tfCmnd.getText()).matches()) {
-            throw new Exception("Invalid CMND. Please enter a valid CMND (up to 20 digits).");
+        if (!pattern.matcher(tfCccd.getText()).matches()) {
+            throw new Exception("Invalid CCCD. Please enter a valid CCCD (up to 20 digits).");
         }
 
         // Validate SDT
@@ -88,7 +95,8 @@ public class AddNhanKhau {
     private void performDatabaseOperations() throws ClassNotFoundException, SQLException {
         int idInt = Integer.parseInt(tfId.getText());
         String tenString = tfTen.getText();
-        String cmndString = tfCmnd.getText();
+        String gioiTinhString = tfGioiTinh.getText();
+        String cccdString = tfCccd.getText();
         Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
         String sdtString = tfSdt.getText();
         int mahokhauInt = Integer.parseInt(tfMaHoKhau.getText());
@@ -97,7 +105,7 @@ public class AddNhanKhau {
         NhanKhauService nhanKhauService = new NhanKhauService();
         QuanHeService quanHeService = new QuanHeService();
 
-        NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cmndString, tenString, ngaySinhDate, sdtString);
+        NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString);
         QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
 
         nhanKhauService.add(nhanKhauModel);

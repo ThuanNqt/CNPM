@@ -9,17 +9,17 @@
 .button1
 {
 -fx-background-color : transperent;
--fx-background-radius :  5px;
+-fx-background-radius :  8px;
 }
 .button1:hover
 {
--fx-background-color : #847d7d ;
--fx-background-radius : 5px;
+-fx-background-color : #b5b7b9 ;
+-fx-background-radius : 8px;
 }
 .button1:pressed
 {
 -fx-background-color : #847d7d ;
--fx-background-radius :  5px;
+-fx-background-radius :  8px;
 }
 
 .button2

@@ -25,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -33,10 +34,16 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ChuHoModel;
+import models.HoKhauModel;
+import models.KhoanThuModel;
 import models.NhanKhauModel;
+import models.NopTienModel;
 import models.QuanHeModel;
 import services.ChuHoService;
+import services.HoKhauService;
+import services.KhoanThuService;
 import services.NhanKhauService;
+import services.NopTienService;
 import services.QuanHeService;
 
 public class NhanKhauController implements Initializable {
@@ -45,9 +52,11 @@ public class NhanKhauController implements Initializable {
 	@FXML
 	private TableColumn<NhanKhauModel, String> colTen;
 	@FXML
+	private TableColumn<NhanKhauModel, String> colGioiTinh;
+	@FXML
 	private TableColumn<NhanKhauModel, String> colTuoi;
 	@FXML
-	private TableColumn<NhanKhauModel, String> colCMND;
+	private TableColumn<NhanKhauModel, String> colCCCD;
 	@FXML
 	private TableColumn<NhanKhauModel, String> colSDT;
 	@FXML
@@ -58,7 +67,17 @@ public class NhanKhauController implements Initializable {
 	private TextField tfSearch;
 	@FXML
 	private ComboBox<String> cbChooseSearch;
-
+	
+	//
+	@FXML
+	private Label lbSoHoKhau;
+	@FXML
+	private Label lbSoNhanKhau;
+	@FXML
+	private Label lbSoNhanKhauNam;
+	@FXML
+	private Label lbSoNhanKhauNu;
+	//
 	private ObservableList<NhanKhauModel> listValueTableView;
 	private List<NhanKhauModel> listNhanKhau;
 
@@ -86,8 +105,9 @@ public class NhanKhauController implements Initializable {
 		// thiet lap cac cot cho tableviews
 		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("id"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ten"));
+		colGioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("gioiTinh"));
 		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ngaySinh"));
-		colCMND.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cmnd"));
+		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cccd"));
 		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("sdt"));
 		try {
 			colMaHo.setCellValueFactory(
@@ -304,6 +324,23 @@ public class NhanKhauController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		try {
+			List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+			long soNhanKhau = listNhanKhau.stream().count();
+			lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+			
+			List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+			long soNhanKhauNam = listNhanKhauNam.stream().count();
+			lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+			
+			List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+			long soNhanKhauNu = listNhanKhauNu.stream().count();
+			lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+			
+			List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+			long soHoKhau = listHoKhau.stream().count();
+			lbSoHoKhau.setText(Long.toString(soHoKhau));
+			
+			
 			showNhanKhau();
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

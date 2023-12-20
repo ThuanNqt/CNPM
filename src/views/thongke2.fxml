@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TableView fx:id="tvThongKe" layoutX="55.2" layoutY="200.0" prefHeight="376.0" prefWidth="822.0" AnchorPane.leftAnchor="55.0">
+      <TableView fx:id="tvThongKe" layoutX="58.0" layoutY="106.0" prefHeight="467.0" prefWidth="828.0" AnchorPane.leftAnchor="58.0">
         <columns>
           <TableColumn fx:id="colMaHo" prefWidth="100.0" text="Mã hộ" />
             <TableColumn fx:id="colTenChuHo" prefWidth="200.0" text="Tên chủ hộ" />
@@ -14,5 +16,10 @@
             <TableColumn fx:id="colDiaChi" prefWidth="422.0" text="Địa chỉ" />
         </columns>
       </TableView>
+      <Label layoutX="58.0" layoutY="31.0" text="Các hộ gia đình chưa đóng phí">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -21,11 +21,11 @@
                <children>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <Circle fill="#424f5b" radius="52.0" stroke="WHITE" strokeType="INSIDE" />
+                        <Circle fill="#b5b7b9" radius="52.0" stroke="WHITE" strokeType="INSIDE" />
                         <FontAwesomeIcon glyphName="USER" size="90" />
                      </children>
                   </StackPane>
-                  <Label prefHeight="18.0" prefWidth="109.0" text="Admin">
+                  <Label prefHeight="30.0" prefWidth="87.0" text="Admin">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -41,7 +41,7 @@
                   <Line endX="36.692901611328125" endY="-71.77798461914062" startX="193.67868041992188" startY="-71.77778625488281" stroke="#301a1a" strokeWidth="2.0" />
                   <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setTrangChu" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Trang chủ">
+                        <Button alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#setTrangChu" prefHeight="40.0" prefWidth="115.0" styleClass="button1" stylesheets="@../source/Home.css" text="Tổng quan">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
@@ -79,7 +79,7 @@
                               <Font name="System Bold" size="14.0" />
                            </font>
                            <graphic>
-                              <FontAwesomeIcon glyphName="USD" size="20" />
+                              <FontAwesomeIcon glyphName="MONEY" size="20" />
                            </graphic>
                            <VBox.margin>
                               <Insets bottom="20.0" />

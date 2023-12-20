@@ -25,6 +25,7 @@ public class AddHoKhau {
     @FXML private TextField tfDiaChi;
     @FXML private TextField tfMaChuHo;
     @FXML private TextField tfTenChuHo;
+    @FXML private TextField tfGioiTinhChuHo;
     @FXML private DatePicker dpNgaySinh;
     @FXML private TextField tfCMND;
     @FXML private TextField tfSoDienThoai;
@@ -36,12 +37,13 @@ public class AddHoKhau {
             String diaChi = tfDiaChi.getText();
             int maChuHo = Integer.parseInt(tfMaChuHo.getText());
             String tenChuHo = tfTenChuHo.getText();
+            String gioiTinhChuHo = tfGioiTinhChuHo.getText();
             Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
-            String cmndChuHo = tfCMND.getText();
+            String cccdChuHo = tfCMND.getText();
             String sdtChuHo = tfSoDienThoai.getText();
 
             HoKhauModel hoKhauModel = new HoKhauModel(maHo, 0, diaChi);
-            NhanKhauModel nhanKhauModel = new NhanKhauModel(maChuHo, cmndChuHo, tenChuHo, ngaySinhDate, sdtChuHo);
+            NhanKhauModel nhanKhauModel = new NhanKhauModel(maChuHo, cccdChuHo, tenChuHo,gioiTinhChuHo, ngaySinhDate, sdtChuHo);
 
             addHoKhauToDatabase(hoKhauModel, nhanKhauModel);
             closeStage(event);
