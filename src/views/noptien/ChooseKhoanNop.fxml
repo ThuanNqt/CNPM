@@ -20,10 +20,13 @@
       </Label>
       <TextField fx:id="tfSearch" layoutX="48.0" layoutY="71.2" prefHeight="30.0" prefWidth="418.0" promptText="Tìm kiếm" styleClass="search" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="357.0" AnchorPane.topAnchor="71.0" />
       <ComboBox fx:id="cbChooseSearch" layoutX="469.0" layoutY="70.0" prefHeight="30.0" prefWidth="170.0" promptText="Chọn" style="-fx-background-color: transperent;" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="160.60000000000002" AnchorPane.topAnchor="70.0" />
-      <Button layoutX="628.0" layoutY="71.2" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="30.0" prefWidth="115.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Tìm kiếm" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="71.0">
+      <Button layoutX="691.0" layoutY="66.0" mnemonicParsing="false" onAction="#searchKhoanThu" prefHeight="40.0" prefWidth="49.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="59.39999999999998" AnchorPane.topAnchor="66.0">
          <font>
             <Font name="System Bold" size="15.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#129ce1" glyphName="SEARCH" size="2em" />
+         </graphic></Button>
       <TableView fx:id="tvKhoanPhi" layoutX="25.0" layoutY="124.8" prefHeight="391.0" prefWidth="750.0" stylesheets="@../../source/nhankhau.css" AnchorPane.bottomAnchor="84.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="125.0">
          <columns>
             <TableColumn fx:id="colMaKhoanPhi" prefWidth="100.0" text="Mã khoản thu" />
@@ -36,7 +39,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <FontAwesomeIcon fill="#bfb9b9" glyphName="SEARCH" layoutX="32.0" layoutY="92.0" size="1.5EM" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

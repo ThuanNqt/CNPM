@@ -20,10 +20,13 @@
       </Label>
       <TextField fx:id="tfSearch" layoutX="14.0" layoutY="71.0" prefHeight="30.0" prefWidth="418.0" promptText="Tìm kiếm" styleClass="search" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="367.59999999999997" AnchorPane.topAnchor="71.0" />
       <ComboBox fx:id="cbChooseSearch" layoutX="462.0" layoutY="70.0" prefHeight="30.0" prefWidth="170.0" promptText="Chọn" style="-fx-background-color: transperent;" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="167.60000000000002" AnchorPane.topAnchor="70.0" />
-      <Button layoutX="660.0" layoutY="71.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="31.0" prefWidth="134.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Tìm kiếm" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="71.0">
+      <Button layoutX="682.0" layoutY="61.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="40.0" prefWidth="39.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" AnchorPane.rightAnchor="69.20000000000005" AnchorPane.topAnchor="61.0">
          <font>
             <Font name="System Bold" size="15.0" />
-         </font></Button>
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#00c9ff" glyphName="SEARCH" size="2em" />
+         </graphic></Button>
       <TableView fx:id="tvNhanKhau" layoutX="12.0" layoutY="111.2" prefHeight="398.0" prefWidth="782.0" stylesheets="@../../source/nhankhau.css" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="111.0">
          <columns>
             <TableColumn fx:id="colMaNhanKhau" text="ID" />
@@ -39,7 +42,6 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <FontAwesomeIcon fill="#bfb9b9" glyphName="SEARCH" layoutX="23.0" layoutY="93.0" size="1.5EM" />
    </children>
    <styleClass>
       <String fx:value="shadow" />
