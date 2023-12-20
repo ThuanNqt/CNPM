@@ -1,4 +1,4 @@
-create database quan_ly_khoan_thu;
+
 use quan_ly_khoan_thu;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -272,7 +272,7 @@ COMMIT;
 
 
 
-INSERT INTO `nhan_khau` (`ID`, `CCCD`, `HoTen`, `GioiTinh`, `NgaySinh`, `SDT`)
+INSERT INTO `nhan_khau` (`ID`, `CCCD`, `Ten`, `GioiTinh`, `NgaySinh`, `SDT`)
 VALUES
   -- Nhân khẩu của hộ khẩu số 1
   (1, '032545783459', 'Nguyễn Thị Lan Anh', 'Nữ', '2003-01-01', '0987654321'),
@@ -594,9 +594,5 @@ select * from users;
 
 select sum(SoTien) from khoan_thu;
 
-ALTER TABLE nhan_khau
-ADD COLUMN GioiTinh VARCHAR(10) AFTER Ten;
 
-ALTER TABLE nhan_khau
-CHANGE COLUMN CMND CCCD varchar(20);
 
