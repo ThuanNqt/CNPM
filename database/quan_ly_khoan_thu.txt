@@ -70,8 +70,9 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
-  `CMND` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `CCCD` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `GioiTinh`varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `NgaySinh` date NOT NULL,
   `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
@@ -558,8 +559,9 @@ select sum(SoTien) from khoan_thu;
 
 
 
-select * from users where username = 'Thuan' and passwdusers = '123';
+
 insert into users values
 	(1,'Thuan','123'),
-    (2,'Lang','456')
+    (2,'Lang','456');
+
 
