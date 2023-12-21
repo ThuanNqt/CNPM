@@ -82,11 +82,11 @@ public class AddNopTien {
 					return;
 				}
 			}
-			double soTienNop;
-			if(khoanThuModel.getHinhThucThu() == "Theo hộ") {
+			double soTienNop = 0;
+			if(khoanThuModel.getHinhThucThu().equals("Theo hộ")) {
 				soTienNop = khoanThuModel.getSoTien();
 			}
-			else {
+			if(khoanThuModel.getHinhThucThu().equals("Theo đầu người") ){
 				soTienNop = hokhau.getSoThanhvien()*khoanThuModel.getSoTien();
 			}
 			
