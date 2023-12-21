@@ -119,40 +119,7 @@ public class NhanKhauController implements Initializable {
 		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cccd"));
 		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("sdt"));
 		colAction.setCellFactory(param -> new TableCell<NhanKhauModel, Void>() {
-//	        private final Button deleteButton = new Button("Xóa");
-//	        {
-//	            deleteButton.setOnAction(event -> {
-//	                try {
-//	                    delNhanKhau();
-//	                } catch (IOException | ClassNotFoundException | SQLException e) {
-//	                    e.printStackTrace();
-//	                }
-//	            });
-//	        }
-//	        private final Button editButton = new Button("Sửa");
-//	        
-//	        {
-//	        	editButton.setOnAction(event -> {
-//	        		try {
-//	        			updateNhanKhau();
-//	        		} catch (IOException | ClassNotFoundException | SQLException e) {
-//	        			e.printStackTrace();
-//	        		}
-//	        	});
-//	        }
-//
-//	        @Override
-//	        protected void updateItem(Void item, boolean empty) {
-//	            super.updateItem(item, empty);
-//
-//	            if (empty) {
-//	                setGraphic(null);
-//	            } else {
-//	                setGraphic(deleteButton);
-//	                setGraphic(editButton);
-//	            }
-//	        }
-//	      
+      
 			    private final HBox container = new HBox(8);
 			    private final Button deleteButton = new Button("Xóa");
 			    private final Button editButton = new Button("Sửa");
@@ -336,6 +303,23 @@ public class NhanKhauController implements Initializable {
         stage.setScene(new Scene(home,400,600));
         stage.setResizable(false);
         stage.showAndWait();
+        
+        List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+		long soNhanKhau = listNhanKhau.stream().count();
+		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+		
+		List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+		long soNhanKhauNam = listNhanKhauNam.stream().count();
+		lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+		
+		List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+		long soNhanKhauNu = listNhanKhauNu.stream().count();
+		lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+		
+		List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+		long soHoKhau = listHoKhau.stream().count();
+		lbSoHoKhau.setText(Long.toString(soHoKhau));
+        
         showNhanKhau();
 	}
 	
@@ -380,6 +364,21 @@ public class NhanKhauController implements Initializable {
 			}
 		}
 		
+		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+		long soNhanKhau = listNhanKhau.stream().count();
+		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+		
+		List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+		long soNhanKhauNam = listNhanKhauNam.stream().count();
+		lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+		
+		List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+		long soNhanKhauNu = listNhanKhauNu.stream().count();
+		lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+		
+		List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+		long soHoKhau = listHoKhau.stream().count();
+		lbSoHoKhau.setText(Long.toString(soHoKhau));
 		showNhanKhau();
 	}
 	

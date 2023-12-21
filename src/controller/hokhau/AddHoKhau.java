@@ -108,7 +108,7 @@ public class AddHoKhau {
     private boolean validateCMND() {
         Pattern pattern = Pattern.compile("\\d{1,20}");
         if (!pattern.matcher(tfCMND.getText()).matches()) {
-            showAlert("Hãy nhập vào CMND hợp lệ!");
+            showAlert("Hãy nhập vào CCCD hợp lệ!");
             return false;
         }
         return true;

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +17,7 @@
    <children>
       <AnchorPane layoutX="533.0" layoutY="-15.0" prefHeight="602.0" prefWidth="517.0" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="533.0" AnchorPane.rightAnchor="0.599999999999909" AnchorPane.topAnchor="-15.0">
          <children>
-            <Text layoutX="52.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý nhân khẩu" textAlignment="CENTER" wrappingWidth="344.0" AnchorPane.bottomAnchor="482.8544921875" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="156.79999999999995" AnchorPane.topAnchor="88.7470703125">
+            <Text layoutX="104.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý nhân khẩu" textAlignment="CENTER" wrappingWidth="344.0" AnchorPane.bottomAnchor="483.2529296875" AnchorPane.leftAnchor="104.0" AnchorPane.rightAnchor="104.79999999999995" AnchorPane.topAnchor="88.7470703125">
                <font>
                   <Font name="Arial" size="29.0" />
                </font>
@@ -28,17 +27,11 @@
                   <Image url="@../../../../Miniproject/CNPM/src/main/resources/Image/bell.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginBTN" layoutX="109.0" layoutY="452.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 8;" text="Đăng nhập" textFill="WHITE">
+            <Button fx:id="loginBTN" layoutX="219.0" layoutY="386.0" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 8;" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button layoutX="285.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #F8F8FF; -fx-background-radius: 8;" text="Tạo tài khoản" textFill="#2b2323">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font></Button>
-            <RadioButton layoutX="110.0" layoutY="395.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="158.0" text="Lưu thông tin" />
-            <Button layoutX="303.0" layoutY="391.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: trasnsparent;" text="Quên mật khẩu ?" />
-            <Label layoutX="127.0" layoutY="355.0" text="Invalid your email or password, please try again !" textFill="RED">
+            <Label fx:id="lbLoginFail" layoutX="127.0" layoutY="355.0" text="Tài khoản hoặc mật khẩu không chính xác !" textFill="RED" visible="false">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font></Label>
@@ -57,7 +50,7 @@
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
                               <Label text="Tài khoản" />
-                              <TextField fx:id="userName" prefHeight="26.0" prefWidth="274.0" />
+                              <TextField fx:id="tfUsername" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
@@ -78,7 +71,7 @@
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
                               <Label text="Mật khẩu" />
-                              <PasswordField fx:id="passWord" prefHeight="26.0" prefWidth="274.0" />
+                              <PasswordField fx:id="tfPassword" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
