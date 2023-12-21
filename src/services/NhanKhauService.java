@@ -86,7 +86,7 @@ public class NhanKhauService {
     public boolean update(int id, String cccd, String ten,String gioiTinh, Date ngaySinh, String sdt)
             throws ClassNotFoundException, SQLException {
         try (Connection connection = MysqlConnection.getMysqlConnection()) {
-            String query = "UPDATE nhan_khau SET CCCD=?, Ten=?, NgaySinh=?, SDT=? WHERE ID=?";
+            String query = "UPDATE nhan_khau SET CCCD=?, Ten=?, GioiTinh = ?, NgaySinh=?, SDT=? WHERE ID=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
                 preparedStatement.setString(1, cccd);
                 preparedStatement.setString(2, ten);

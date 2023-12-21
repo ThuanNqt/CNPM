@@ -77,7 +77,7 @@ public class UpdateNhanKhau {
         String sdtString = tfSoDienThoai.getText();
 
         // Update the existing NhanKhau
-        new NhanKhauService().update(maNhanKhau, cccdString, tenString,gioiTinhString, ngaySinhDate, sdtString);
+        new NhanKhauService().update(maNhanKhau, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString);
 
         // Display success message
         showAlert("Cập nhật thông tin nhân khẩu thành công!");

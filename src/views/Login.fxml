@@ -18,9 +18,9 @@
    <children>
       <AnchorPane layoutX="533.0" layoutY="-15.0" prefHeight="602.0" prefWidth="517.0" style="-fx-background-radius: 15; -fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="533.0" AnchorPane.rightAnchor="0.599999999999909" AnchorPane.topAnchor="-15.0">
          <children>
-            <Text layoutX="61.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back" textAlignment="CENTER" wrappingWidth="181.5999231338501" AnchorPane.bottomAnchor="495.8939453124999" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="273.4000768661499" AnchorPane.topAnchor="69.7060546875">
+            <Text layoutX="52.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quản lý nhân khẩu" textAlignment="CENTER" wrappingWidth="344.0" AnchorPane.bottomAnchor="482.8544921875" AnchorPane.leftAnchor="52.0" AnchorPane.rightAnchor="156.79999999999995" AnchorPane.topAnchor="88.7470703125">
                <font>
-                  <Font name="Yu Gothic UI Light" size="29.0" />
+                  <Font name="Arial" size="29.0" />
                </font>
             </Text>
             <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="314.0" layoutY="141.0" nodeOrientation="INHERIT" AnchorPane.bottomAnchor="443.172265625" AnchorPane.leftAnchor="314.0" AnchorPane.rightAnchor="182.79999999999995" AnchorPane.topAnchor="141.0">
@@ -28,16 +28,16 @@
                   <Image url="@../../../../Miniproject/CNPM/src/main/resources/Image/bell.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginBTN" layoutX="109.0" layoutY="452.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 15;" text="Login Now" textFill="WHITE">
+            <Button fx:id="loginBTN" layoutX="109.0" layoutY="452.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 8;" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button layoutX="285.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #F8F8FF; -fx-background-radius: 15;" text="Create Account" textFill="#2b2323">
+            <Button layoutX="285.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #F8F8FF; -fx-background-radius: 8;" text="Tạo tài khoản" textFill="#2b2323">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <RadioButton layoutX="110.0" layoutY="395.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="113.0" text="Remember me" />
-            <Button layoutX="303.0" layoutY="391.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: trasnsparent;" text="Forgot Password ?" />
+            <RadioButton layoutX="110.0" layoutY="395.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="158.0" text="Lưu thông tin" />
+            <Button layoutX="303.0" layoutY="391.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="114.0" style="-fx-background-color: trasnsparent;" text="Quên mật khẩu ?" />
             <Label layoutX="127.0" layoutY="355.0" text="Invalid your email or password, please try again !" textFill="RED">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
@@ -56,8 +56,8 @@
                         </ImageView>
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
-                              <Label text="Email Address" />
-                              <TextField fx:id="userName" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: transparent;" />
+                              <Label text="Tài khoản" />
+                              <TextField fx:id="userName" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
@@ -77,16 +77,14 @@
                         </ImageView>
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
-                              <Label text="Password" />
-                              <PasswordField fx:id="passWord" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: transparent;" />
+                              <Label text="Mật khẩu" />
+                              <PasswordField fx:id="passWord" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
                   </HBox>
                </children>
             </VBox>
-            <Label layoutX="61.0" layoutY="124.0" prefHeight="18.0" prefWidth="403.0" text="To keep to continue with us, please login with personnal information  by" />
-            <Label layoutX="61.0" layoutY="142.0" prefHeight="18.0" prefWidth="403.0" text="email address or phone number and password" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="14.0" layoutY="23.0" prefHeight="602.0" prefWidth="547.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="490.0" AnchorPane.topAnchor="0.0">

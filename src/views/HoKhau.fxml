@@ -15,15 +15,11 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" stylesheets="@../source/hokhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HoKhauController">
    <children>
-      <Button layoutX="54.0" layoutY="204.0" mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Thêm" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="204.0">
+      <Button layoutX="166.0" layoutY="204.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="166.0" AnchorPane.topAnchor="204.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="166.0" layoutY="204.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Sửa" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="166.0" AnchorPane.topAnchor="204.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <Button layoutX="271.0" layoutY="204.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Xóa" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="204.0">
+      <Button layoutX="271.0" layoutY="204.0" mnemonicParsing="false" onAction="#delHoKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="271.0" AnchorPane.topAnchor="204.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -39,13 +35,14 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <ComboBox fx:id="cbChooseSearch" layoutX="650.0" layoutY="14.0" prefHeight="31.0" prefWidth="119.0" promptText="Select By" style="-fx-background-color: transparent;" styleClass="af" stylesheets="@../source/hokhau.css" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="14.0" />
+      <ComboBox fx:id="cbChooseSearch" layoutX="618.4" layoutY="15.2" prefHeight="31.0" prefWidth="148.0" promptText="Tìm kiếm theo" style="-fx-background-color: transparent;" styleClass="af" stylesheets="@../source/hokhau.css" AnchorPane.leftAnchor="618.0" AnchorPane.rightAnchor="254.0" AnchorPane.topAnchor="15.0" />
       <TableView fx:id="tvHoKhau" layoutX="51.2" layoutY="249.0" prefHeight="438.0" prefWidth="895.0" styleClass="column-header-background" stylesheets="@../source/hokhau.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="249.0">
         <columns>
-          <TableColumn fx:id="colMaHoKhau" prefWidth="100.0" text="ID" />
-            <TableColumn fx:id="colMaChuHo" prefWidth="200.0" text="Tên chủ hộ" />
+          <TableColumn fx:id="colMaHoKhau" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="colMaChuHo" prefWidth="160.0" text="Tên chủ hộ" />
             <TableColumn fx:id="colSoThanhVien" prefWidth="100.0" text="Số lượng" />
-            <TableColumn fx:id="colDiaChi" prefWidth="545.0" text="Địa chỉ thường trú" />
+            <TableColumn fx:id="colDiaChi" prefWidth="490.0" text="Địa chỉ thường trú" />
+            <TableColumn fx:id="colAction" prefWidth="120.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="15.0" layoutY="14.0" text="Thông tin toàn bộ hộ khẩu" AnchorPane.leftAnchor="54.0">
@@ -53,7 +50,7 @@
             <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
-      <HBox layoutX="58.0" layoutY="69.0" prefHeight="100.0" prefWidth="942.0" styleClass="a" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="87.0">
+      <HBox layoutX="58.0" layoutY="69.0" prefHeight="100.0" prefWidth="942.0" style="-fx-background-color: #e7e7e7;" styleClass="a" AnchorPane.leftAnchor="58.0" AnchorPane.topAnchor="87.0">
          <children>
             <AnchorPane prefHeight="89.0" prefWidth="148.0">
                <children>
@@ -107,6 +104,11 @@
                   <Insets right="50.0" />
                </HBox.margin>
             </AnchorPane>
+            <Button mnemonicParsing="false" onAction="#addHoKhau" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Thêm hộ khẩu" textFill="DEEPSKYBLUE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
    </children>

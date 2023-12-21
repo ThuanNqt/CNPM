@@ -6,8 +6,6 @@ import javafx.stage.Stage;
 
 
 import java.io.IOException;
-
-import java.awt.Button;
 import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
@@ -24,12 +22,18 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.HBox;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
@@ -51,7 +55,10 @@ public class ThongKeController implements Initializable {
 	TableView<KhoanThuModel> tvThongKe;
 	@FXML
 	ComboBox<String> cbChooseSearch;
+	@FXML
+	private TableColumn<KhoanThuModel, Void> colAction;
 
+	
 	private ObservableList<KhoanThuModel> listValueTableView;
 	private List<KhoanThuModel> listKhoanThu;
 
@@ -76,11 +83,35 @@ public class ThongKeController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		colAction.setCellFactory(param -> new TableCell<KhoanThuModel, Void>() {
+		    private final HBox container = new HBox();
+		    private final Button btn = new Button("Các hộ chưa nộp");
+
+		    {
+		    	 btn.setOnAction(event -> {
+		            goThongKe2();
+		        });
+		        container.setAlignment(Pos.CENTER);
+		        container.getChildren().addAll(btn);
+		    }
+
+		    @Override
+		    protected void updateItem(Void item, boolean empty) {
+		        super.updateItem(item, empty);
+
+		        if (empty) {
+		            setGraphic(null);
+		        } else {
+		            setGraphic(container);
+		        }
+		    }
+		});
 
 		tvThongKe.setItems(listValueTableView);
 		// thiet lap gia tri cho combobox
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Bắt buộc", "Tự nguyện");
-		cbChooseSearch.setValue("Tất cả");
+		cbChooseSearch.setValue("Thống kê theo");
 		cbChooseSearch.setItems(listComboBox);
 	}
 

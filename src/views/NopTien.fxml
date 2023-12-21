@@ -10,11 +10,11 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NopTienController">
    <children>
-      <Button layoutX="765.0" layoutY="46.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Đóng phí" textFill="#236de4" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="46.0">
+      <Button layoutX="771.0" layoutY="38.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Đóng phí" textFill="#236de4" AnchorPane.rightAnchor="98.60000000000002" AnchorPane.topAnchor="38.0">
          <font>
-            <Font name="System Bold" size="12.0" />
+            <Font name="System Bold" size="17.0" />
          </font></Button>
-      <Button layoutX="663.0" layoutY="46.0" mnemonicParsing="false" onAction="#delNopTien" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Xoá đóng phí" textFill="#0077ff" AnchorPane.leftAnchor="663.0" AnchorPane.topAnchor="46.0">
+      <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" onAction="#delNopTien" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" textFill="#0077ff" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -25,9 +25,10 @@
          </font></Button>
       <TableView fx:id="tvNopTien" layoutX="57.0" layoutY="107.2" prefHeight="579.0" prefWidth="950.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="107.0">
         <columns>
-          <TableColumn fx:id="tbcTenNguoi" prefWidth="250.0" text="Tên người nộp" />
-          <TableColumn fx:id="tbcTenKhoanThu" prefWidth="500.0" text="Tên khoản thu" />
-          <TableColumn fx:id="tbcNgayThu" prefWidth="200.0" text="Ngày thu" />
+          <TableColumn fx:id="tbcTenNguoi" prefWidth="230.0" text="Tên người nộp" />
+          <TableColumn fx:id="tbcTenKhoanThu" prefWidth="470.0" text="Tên khoản thu" />
+          <TableColumn fx:id="tbcNgayThu" prefWidth="160.0" text="Ngày thu" />
+            <TableColumn fx:id="colAction" prefWidth="85.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="116.0" layoutY="14.0" text="Đóng phí" textFill="#0b0b0b" AnchorPane.leftAnchor="54.0">

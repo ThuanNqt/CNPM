@@ -15,11 +15,11 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #ffffff;" stylesheets="@../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NhanKhauController">
    <children>
-      <Button layoutX="234.0" layoutY="208.0" mnemonicParsing="false" onAction="#delNhanKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../source/nhankhau.css" text="Xóa" textAlignment="CENTER" textFill="DEEPSKYBLUE" wrapText="true" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="208.0">
+      <Button layoutX="234.0" layoutY="208.0" mnemonicParsing="false" onAction="#delNhanKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../source/nhankhau.css" textAlignment="CENTER" textFill="DEEPSKYBLUE" wrapText="true" AnchorPane.leftAnchor="234.0" AnchorPane.topAnchor="208.0">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="146.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../source/nhankhau.css" text="Sửa" textAlignment="CENTER" textFill="DEEPSKYBLUE" wrapText="true" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="208.0">
+      <Button cancelButton="true" layoutX="146.0" layoutY="208.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../source/nhankhau.css" textAlignment="CENTER" textFill="DEEPSKYBLUE" wrapText="true" AnchorPane.leftAnchor="146.0" AnchorPane.topAnchor="208.0">
          <font>
             <Font name="Arial Bold" size="12.0" />
          </font></Button>
@@ -27,7 +27,7 @@
          <font>
             <Font name="Arial" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="cbChooseSearch" layoutX="621.0" layoutY="12.0" prefHeight="31.0" prefWidth="126.0" promptText="Select By" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="621.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="12.0" />
+      <ComboBox fx:id="cbChooseSearch" layoutX="612.8" layoutY="12.0" prefHeight="31.0" prefWidth="134.0" promptText="Tìm kiếm theo" style="-fx-background-color: transparent;" AnchorPane.leftAnchor="613.0" AnchorPane.rightAnchor="273.0" AnchorPane.topAnchor="12.0" />
       <Button layoutX="942.0" layoutY="9.0" mnemonicParsing="false" onAction="#searchNhanKhau" prefHeight="30.0" prefWidth="38.0" style="-fx-background-color: transparent;" text=" " textFill="WHITE" AnchorPane.rightAnchor="24.399999999999977" AnchorPane.topAnchor="9.0">
          <font>
             <Font name="System Bold" size="12.0" />
@@ -42,12 +42,13 @@
       <TableView fx:id="tvNhanKhau" layoutX="54.4" layoutY="251.2" prefHeight="439.0" prefWidth="950.0" stylesheets="@../source/nhankhau.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="251.0">
         <columns>
           <TableColumn fx:id="colMaNhanKhau" prefWidth="100.0" text="ID" />
-          <TableColumn fx:id="colTen" prefWidth="200.0" text="Họ tên" />
-            <TableColumn fx:id="colGioiTinh" prefWidth="85.0" text="Giới tính" />
-            <TableColumn fx:id="colTuoi" prefWidth="150.0" text="Ngày sinh" />
+          <TableColumn fx:id="colTen" prefWidth="180.0" text="Họ tên" />
+            <TableColumn fx:id="colGioiTinh" text="Giới tính" />
+            <TableColumn fx:id="colTuoi" prefWidth="130.0" text="Ngày sinh" />
             <TableColumn fx:id="colCCCD" prefWidth="140.0" text="CCCD" />
-            <TableColumn fx:id="colSDT" prefWidth="170.0" text="Số điện thoại" />
-            <TableColumn fx:id="colMaHo" prefWidth="100.0" text="Mã hộ" />
+            <TableColumn fx:id="colSDT" prefWidth="135.0" text="Số điện thoại" />
+            <TableColumn fx:id="colMaHo" prefWidth="65.0" text="Mã hộ" />
+            <TableColumn fx:id="colAction" prefWidth="120.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="54.0" layoutY="12.0" text="Thông tin toàn bộ nhân khẩu" textFill="#030303">
@@ -55,7 +56,7 @@
             <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
-      <HBox layoutX="54.0" layoutY="87.0" prefHeight="100.0" prefWidth="942.0" styleClass="a">
+      <HBox layoutX="54.0" layoutY="87.0" prefHeight="100.0" prefWidth="942.0" style="-fx-background-color: #e7e7e7;" styleClass="a">
          <children>
             <AnchorPane prefHeight="89.0" prefWidth="148.0">
                <children>
@@ -109,12 +110,12 @@
                   <Insets right="50.0" />
                </HBox.margin>
             </AnchorPane>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="30.0" prefWidth="166.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Thêm nhân khẩu" textAlignment="CENTER" textFill="#17cfdc" wrapText="true">
+               <font>
+                  <Font name="Arial Bold" size="17.0" />
+               </font>
+            </Button>
          </children>
       </HBox>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="208.0" mnemonicParsing="false" onAction="#addNhanKhau" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" text="Thêm" textAlignment="CENTER" textFill="DEEPSKYBLUE" wrapText="true">
-         <font>
-            <Font name="Arial Bold" size="12.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>

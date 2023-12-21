@@ -20,15 +20,19 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.SingleSelectionModel;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -69,6 +73,9 @@ public class HoKhauController implements Initializable {
 	//
 	
 	@FXML
+	private TableColumn<HoKhauModel, Void> colAction;
+	
+	@FXML
 	ComboBox<String> cbChooseSearch;
 
 	ObservableList<HoKhauModel> listValueTableView;
@@ -102,6 +109,45 @@ public class HoKhauController implements Initializable {
 				mapIdToTen.get(mapMahoToId.get(p.getValue().getMaHo())).toString()));
 		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("soThanhvien"));
 		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
+		
+		colAction.setCellFactory(param -> new TableCell<HoKhauModel, Void>() {
+			    private final HBox container = new HBox(8);
+			    private final Button deleteButton = new Button("Xóa");
+			    private final Button editButton = new Button("Sửa");
+
+			    {
+			        deleteButton.setOnAction(event -> {
+			            try {
+			                delHoKhau();
+			            } catch (ClassNotFoundException | SQLException e) {
+			                e.printStackTrace();
+			            }
+			        });
+
+			        editButton.setOnAction(event -> {
+			            try {
+			                updateHoKhau();
+			            } catch (IOException | ClassNotFoundException | SQLException e) {
+			                e.printStackTrace();
+			            }
+			        });
+			        container.setAlignment(Pos.CENTER);
+			        container.getChildren().addAll(editButton, deleteButton);
+			    }
+
+			    @Override
+			    protected void updateItem(Void item, boolean empty) {
+			        super.updateItem(item, empty);
+
+			        if (empty) {
+			            setGraphic(null);
+			        } else {
+			            setGraphic(container);
+			        }
+			    }
+			});
+		
+		
 		tvHoKhau.setItems(listValueTableView);
 		
 		
@@ -109,14 +155,15 @@ public class HoKhauController implements Initializable {
 
 		// Thiet lap Combo box
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Mã hộ", "Tên chủ hộ", "Địa chỉ");
-		cbChooseSearch.setValue("Mã hộ");
+		cbChooseSearch.setValue("Tìm kiếm theo");
 		cbChooseSearch.setItems(listComboBox);
 	}
 
 	public void addHoKhau() throws ClassNotFoundException, SQLException, IOException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/hokhau/AddHoKhau.fxml"));
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setTitle("Thêm hộ khẩu mới");
+		stage.setScene(new Scene(home, 400, 600));
 		stage.setResizable(false);
 		stage.showAndWait();
 		showHoKhau();
@@ -130,9 +177,9 @@ public class HoKhauController implements Initializable {
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			Alert alert = new Alert(AlertType.WARNING, "Khi xóa hộ khẩu, tất cả các thành viên trong hộ sẽ bị xóa!",
+			Alert alert = new Alert(AlertType.WARNING, "Bạn chắc chắn muốn xóa hộ khẩu này?",
 					ButtonType.YES, ButtonType.NO);
-			alert.setHeaderText("Bạn chắc chắn muốn xóa hộ khẩu này?");
+			//alert.setHeaderText("Bạn chắc chắn muốn xóa hộ khẩu này?");
 			Optional<ButtonType> result = alert.showAndWait();
 
 			if (result.get() == ButtonType.NO) {
@@ -292,7 +339,8 @@ public class HoKhauController implements Initializable {
 		loader.setLocation(getClass().getResource("/views/hokhau/UpdateHoKhau.fxml"));
 		Parent home = loader.load();
 		Stage stage = new Stage();
-		stage.setScene(new Scene(home, 800, 600));
+		stage.setTitle("Sửa thông tin hộ khẩu");
+		stage.setScene(new Scene(home, 400, 600));
 		UpdateHoKhau updateHoKhau = loader.getController();
 
 		// bat loi truong hop khong hop le

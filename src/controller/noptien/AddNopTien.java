@@ -33,6 +33,7 @@ public class AddNopTien {
 		loader.setLocation(getClass().getResource("/views/noptien/ChooseKhoanNop.fxml"));
 		Parent home = loader.load(); 
         Stage stage = new Stage();
+        stage.setTitle("Chọn khoản thu");
         stage.setScene(new Scene(home,800,600));
         stage.setResizable(false);
         stage.showAndWait();
@@ -63,7 +64,7 @@ public class AddNopTien {
 	
 	public void addNopTien(ActionEvent event) throws ClassNotFoundException, SQLException {		
 		if(tfTenKhoanThu.getText().length() == 0 || tfTenNguoiNop.getText().length() == 0) {
-			Alert alert = new Alert(AlertType.WARNING, "Vui lòng nhập khoản nộp hợp lí!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Khoản nộp không hợp lệ!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
@@ -71,7 +72,7 @@ public class AddNopTien {
 			for(NopTienModel nopTienModel : listNopTien) {
 				if(nopTienModel.getIdNopTien() == nhanKhauModel.getId() 
 						&& nopTienModel.getMaKhoanThu() == khoanThuModel.getMaKhoanThu()) {
-					Alert alert = new Alert(AlertType.WARNING, "Người này đã từng nộp khoản phí này!", ButtonType.OK);
+					Alert alert = new Alert(AlertType.WARNING, "Đã đóng khoản phí này!", ButtonType.OK);
 					alert.setHeaderText(null);
 					alert.showAndWait();
 					return;
@@ -81,7 +82,7 @@ public class AddNopTien {
 			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu()));
 		}
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-		stage.setTitle("Thêm nộp tiền");
+		stage.setTitle("Thêm khoản phí");
 		stage.setResizable(false);
         stage.close();
 	}

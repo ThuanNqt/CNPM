@@ -114,7 +114,7 @@ public class AddKhoanThu implements Initializable {
 
     private void initializeLoaiKhoanThuComboBox() {
         ObservableList<String> listComboBox = FXCollections.observableArrayList("Tự nguyện", "Bắt buộc");
-        cbLoaiKhoanThu.setValue("Bắt buộc");
+        //cbLoaiKhoanThu.setValue("Bắt buộc");
         cbLoaiKhoanThu.setItems(listComboBox);
     }
 }

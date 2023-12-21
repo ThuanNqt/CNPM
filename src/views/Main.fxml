@@ -110,7 +110,7 @@
                <children>
                   <AnchorPane prefHeight="172.0" prefWidth="200.0" style="-fx-border-color: #696969;">
                      <children>
-                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="23.2" layoutY="107.2" mnemonicParsing="false" prefHeight="38.0" prefWidth="218.0" style="-fx-background-color: transparent;" text="Tổng số hộ đã đóng phí" AnchorPane.leftAnchor="22.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="106.0">
+                        <Button alignment="CENTER" contentDisplay="CENTER" layoutX="3.2" layoutY="108.8" mnemonicParsing="false" prefHeight="38.0" prefWidth="267.0" style="-fx-background-color: transparent;" text="Tổng số khoản phí được đóng" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="108.0">
                            <font>
                               <Font name="System Bold" size="17.0" />
                            </font>
