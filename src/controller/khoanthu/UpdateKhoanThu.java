@@ -23,6 +23,8 @@ public class UpdateKhoanThu {
     private TextField tfLoaiKhoanThu;
     @FXML
     private TextField tfSoTien;
+    @FXML
+    private TextField tfHinhThucThu;
 
     private KhoanThuModel khoanThuModel;
 
@@ -34,6 +36,7 @@ public class UpdateKhoanThu {
         tfMaKhoanThu.setText(String.valueOf(khoanThuModel.getMaKhoanThu()));
         tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc" : "Tự nguyện");
         tfSoTien.setText(String.valueOf(khoanThuModel.getSoTien()));
+        tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
     }
 
     public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
@@ -46,9 +49,10 @@ public class UpdateKhoanThu {
         String tenKhoanThuString = tfTenKhoanThu.getText();
         int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
         double soTienDouble = Double.parseDouble(tfSoTien.getText());
+        String hinhThucThuString = tfHinhThucThu.getText();
 
         // Update data
-        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt);
+        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt,hinhThucThuString);
 
         // Close the window after successful update
         closeWindow(event);

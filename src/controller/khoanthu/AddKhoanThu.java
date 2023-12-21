@@ -31,6 +31,8 @@ public class AddKhoanThu implements Initializable {
     private ComboBox<String> cbLoaiKhoanThu;
     @FXML
     private TextField tfSoTien;
+    @FXML
+    private ComboBox<String> cbHinhThucThu;
 
     private final KhoanThuService khoanThuService = new KhoanThuService();
 
@@ -87,13 +89,14 @@ public class AddKhoanThu implements Initializable {
     private void saveKhoanThu() throws ClassNotFoundException, SQLException {
         SingleSelectionModel<String> loaiKhoanThuSelection = cbLoaiKhoanThu.getSelectionModel();
         String loaiKhoanThu_tmp = loaiKhoanThuSelection.getSelectedItem();
-
+        SingleSelectionModel<String> hinhThucThuSelection = cbHinhThucThu.getSelectionModel();
+        String hinhThucThu = hinhThucThuSelection.getSelectedItem();
         int maKhoanThu = Integer.parseInt(tfMaKhoanThu.getText());
         String tenKhoanThu = tfTenKhoanThu.getText();
         double soTien = Double.parseDouble(tfSoTien.getText());
         int loaiKhoanThu = loaiKhoanThu_tmp.equals("Bắt buộc") ? 1 : 0;
 
-        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThu));
+        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThu,hinhThucThu));
     }
 
     private void showAlert(String message) {
@@ -106,15 +109,19 @@ public class AddKhoanThu implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         initializeLoaiKhoanThuComboBox();
+        initializeHinhThucThuComboBox();
     }
-
+    
     private void initializeLoaiKhoanThuComboBox() {
         ObservableList<String> listComboBox = FXCollections.observableArrayList("Tự nguyện", "Bắt buộc");
-        //cbLoaiKhoanThu.setValue("Bắt buộc");
         cbLoaiKhoanThu.setItems(listComboBox);
     }
+    private void initializeHinhThucThuComboBox() {
+        ObservableList<String> listComboBox = FXCollections.observableArrayList("Theo hộ", "Theo đầu người");
+        cbHinhThucThu.setItems(listComboBox);
+    }
+    
 }

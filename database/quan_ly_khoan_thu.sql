@@ -69,11 +69,13 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
-  `CMND` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `CCCD` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `GioiTinh` VARCHAR(10) NOT NULL,
   `NgaySinh` date NOT NULL,
   `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
 
 -- --------------------------------------------------------
 
@@ -132,7 +134,9 @@ CREATE TABLE `khoan_thu` (
   `MaKhoanThu` int(11) NOT NULL,
   `TenKhoanThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `SoTien` double NOT NULL,
-  `LoaiKhoanThu` int(11) NOT NULL
+  `LoaiKhoanThu` int(11) NOT NULL,
+  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -144,6 +148,7 @@ CREATE TABLE `khoan_thu` (
 CREATE TABLE `nop_tien` (
   `IDNopTien` int(11) NOT NULL,
   `MaKhoanThu` int(11) NOT NULL,
+  `SoTien` double NOT NULL,
   `NgayThu` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
