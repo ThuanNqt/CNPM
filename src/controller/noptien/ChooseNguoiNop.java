@@ -93,7 +93,7 @@ public class ChooseNguoiNop implements Initializable {
 
 		// thiet lap gia tri cho combobox
 		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên", "Tuổi", "Id");
-		cbChooseSearch.setValue("Tên");
+		cbChooseSearch.setValue("Tìm kiếm theo");
 		cbChooseSearch.setItems(listComboBox);
 	}
 

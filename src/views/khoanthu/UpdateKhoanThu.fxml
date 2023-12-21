@@ -7,21 +7,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.UpdateKhoanThu">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.UpdateKhoanThu">
    <children>
-      <Label layoutX="234.0" layoutY="50.0" text="Sửa đổi thông tin khoản thu" AnchorPane.topAnchor="50.0">
+      <Label layoutX="79.0" layoutY="14.0" text="Thông tin khoản thu" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="tfMaKhoanThu" editable="false" layoutX="240.0" layoutY="200.0" prefHeight="30.0" prefWidth="435.0" promptText="Mã khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="150.0" />
-      <TextField fx:id="tfTenKhoanThu" prefHeight="30.0" prefWidth="435.0" promptText="Tên khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="210.0" />
-      <TextField fx:id="tfLoaiKhoanThu" editable="false" prefHeight="30.0" prefWidth="435.0" promptText="Loại khoản thu" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="270.0" />
-      <TextField fx:id="tfSoTien" prefHeight="30.0" prefWidth="435.0" promptText="Số tiền" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="330.0" />
-      <Button layoutX="300.0" layoutY="424.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật khoản thu" AnchorPane.bottomAnchor="145.60000000000002">
+      <TextField fx:id="tfMaKhoanThu" editable="false" layoutX="50.0" layoutY="137.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="110.0" />
+      <TextField fx:id="tfTenKhoanThu" layoutX="50.0" layoutY="199.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
+      <TextField fx:id="tfLoaiKhoanThu" editable="false" layoutX="50.0" layoutY="259.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="250.0" />
+      <TextField fx:id="tfSoTien" layoutX="50.0" layoutY="319.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="330.0" />
+      <Button layoutX="100.0" layoutY="403.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật khoản thu" AnchorPane.bottomAnchor="165.8">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
+      <Label layoutX="50.0" layoutY="93.0" text="Mã khoản thu" />
+      <Label layoutX="50.0" layoutY="163.0" text="Tên khoản thu" />
+      <Label layoutX="50.0" layoutY="232.0" text="Loại khoản thu" />
+      <Label layoutX="50.0" layoutY="313.0" text="Số tiền" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

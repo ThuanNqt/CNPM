@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,26 +8,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.AddNopTien">
+<AnchorPane prefHeight="400.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.AddNopTien">
    <children>
-      <Label layoutX="214.0" layoutY="54.0" text="Nhập thông tin người đóng phí" AnchorPane.topAnchor="54.0">
+      <Label layoutX="86.0" layoutY="14.0" text="Thông tin đóng phí" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font></Label>
-      <Button layoutX="530.0" layoutY="154.0" mnemonicParsing="false" onAction="#chooseKhoanThu" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn loại khoản thu" AnchorPane.leftAnchor="530.0" AnchorPane.topAnchor="154.0">
+      <Button layoutX="333.0" layoutY="109.0" mnemonicParsing="false" onAction="#chooseKhoanThu" prefHeight="33.0" prefWidth="30.0" style="-fx-background-color: TRANSPERENT;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="333.0" AnchorPane.topAnchor="109.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#968787" glyphName="PLUS" size="1.5EM" />
+         </graphic></Button>
+      <TextField fx:id="tfTenKhoanThu" editable="false" layoutX="33.0" layoutY="117.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="110.0" />
+      <Button layoutX="332.0" layoutY="178.0" mnemonicParsing="false" onAction="#chooseNguoiNop" prefHeight="33.0" prefWidth="30.0" style="-fx-background-color: TRANSPERENT;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="332.0">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <graphic>
+            <FontAwesomeIcon fill="#968787" glyphName="PLUS" size="1.5EM" text="" />
+         </graphic></Button>
+      <TextField fx:id="tfTenNguoiNop" editable="false" layoutX="33.0" layoutY="173.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
+      <Button layoutX="100.0" layoutY="255.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Đóng phí" AnchorPane.bottomAnchor="113.80000000000001">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <TextField fx:id="tfTenKhoanThu" editable="false" layoutX="161.0" layoutY="154.0" prefHeight="30.0" prefWidth="395.0" style="-fx-background-color: transperent;" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="289.4" AnchorPane.topAnchor="154.0" />
-      <Button layoutX="530.0" layoutY="220.0" mnemonicParsing="false" onAction="#chooseNguoiNop" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Chọn người đóng phí" AnchorPane.leftAnchor="530.0">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <TextField fx:id="tfTenNguoiNop" editable="false" layoutX="161.0" layoutY="221.0" prefHeight="30.0" prefWidth="395.0" style="-fx-background-color: transperent;" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.leftAnchor="161.0" AnchorPane.rightAnchor="289.4" AnchorPane.topAnchor="221.0" />
-      <Button layoutX="300.0" layoutY="367.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Xác nhận đóng phí" AnchorPane.bottomAnchor="201.8">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
+      <Label layoutX="33.0" layoutY="92.0" text="Loại khoản thu" />
+      <Label layoutX="33.0" layoutY="161.0" text="Người đóng phí" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

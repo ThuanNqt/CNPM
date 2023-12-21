@@ -28,11 +28,11 @@
                   <Image url="@../../../../Miniproject/CNPM/src/main/resources/Image/bell.png" />
                </image>
             </ImageView>
-            <Button fx:id="loginBTN" layoutX="109.0" layoutY="452.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 15;" text="Đăng nhập" textFill="WHITE">
+            <Button fx:id="loginBTN" layoutX="109.0" layoutY="452.0" mnemonicParsing="false" onAction="#login" prefHeight="30.0" prefWidth="114.0" style="-fx-background-color: #0000FF; -fx-background-radius: 8;" text="Đăng nhập" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
-            <Button layoutX="285.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #F8F8FF; -fx-background-radius: 15;" text="Tạo tài khoản" textFill="#2b2323">
+            <Button layoutX="285.0" layoutY="452.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="138.0" style="-fx-background-color: #F8F8FF; -fx-background-radius: 8;" text="Tạo tài khoản" textFill="#2b2323">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Button>
@@ -57,7 +57,7 @@
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
                               <Label text="Tài khoản" />
-                              <TextField fx:id="userName" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: transparent;" />
+                              <TextField fx:id="userName" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
@@ -78,7 +78,7 @@
                         <VBox prefHeight="54.0" prefWidth="362.0">
                            <children>
                               <Label text="Mật khẩu" />
-                              <PasswordField fx:id="passWord" prefHeight="26.0" prefWidth="274.0" style="-fx-background-color: transparent;" />
+                              <PasswordField fx:id="passWord" prefHeight="26.0" prefWidth="274.0" />
                            </children>
                         </VBox>
                      </children>
