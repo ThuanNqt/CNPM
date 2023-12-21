@@ -19,6 +19,7 @@ import models.QuanHeModel;
 import services.NhanKhauService;
 import services.QuanHeService;
 
+
 public class AddNhanKhau {
 
     @FXML
@@ -44,7 +45,7 @@ public class AddNhanKhau {
             performDatabaseOperations();
             closeStage(event);
         } catch (Exception e) {
-            showAlert("Error", "An error occurred during the operation.", AlertType.ERROR);
+            showAlert("Error", "Không thể thực hiện", AlertType.ERROR);
             e.printStackTrace(); // Handle or log the exception appropriately
         }
     }
@@ -91,6 +92,8 @@ public class AddNhanKhau {
             throw new Exception("Invalid relationship. Please enter a valid relationship with 1 to 30 characters.");
         }
     }
+    
+    
 
     private void performDatabaseOperations() throws ClassNotFoundException, SQLException {
         int idInt = Integer.parseInt(tfId.getText());
