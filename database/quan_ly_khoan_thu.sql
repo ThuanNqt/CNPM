@@ -134,7 +134,9 @@ CREATE TABLE `khoan_thu` (
   `MaKhoanThu` int(11) NOT NULL,
   `TenKhoanThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `SoTien` double NOT NULL,
-  `LoaiKhoanThu` int(11) NOT NULL
+  `LoaiKhoanThu` int(11) NOT NULL,
+  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -146,6 +148,7 @@ CREATE TABLE `khoan_thu` (
 CREATE TABLE `nop_tien` (
   `IDNopTien` int(11) NOT NULL,
   `MaKhoanThu` int(11) NOT NULL,
+  `SoTien` double NOT NULL,
   `NgayThu` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 

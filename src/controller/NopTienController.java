@@ -95,7 +95,7 @@ public class NopTienController implements Initializable {
 			// TODO: handle exception
 		}
 
-		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("ngayThu"));
+		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("soTien"));
 		
 		colAction.setCellFactory(param -> new TableCell<NopTienModel, Void>() {
 //	       

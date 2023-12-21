@@ -78,8 +78,12 @@ public class ThongKeController implements Initializable {
 		colTenPhi.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("tenKhoanThu"));
 		try {
 			colTongSoTien.setCellValueFactory(
-					(CellDataFeatures<KhoanThuModel, String> p) -> new ReadOnlyStringWrapper(Double.toString(
-							mapMaKhoanThuToSoLuong.get(p.getValue().getMaKhoanThu()) * p.getValue().getSoTien())));
+	                (CellDataFeatures<KhoanThuModel, String> p) -> {
+	                    double totalAmount = calculateTotalAmount(p.getValue().getMaKhoanThu());
+	                    return new ReadOnlyStringWrapper(Double.toString(totalAmount));
+	                }
+	        );
+	                
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
@@ -163,6 +167,19 @@ public class ThongKeController implements Initializable {
 			e.printStackTrace();
 		}
 
+	}
+	private double calculateTotalAmount(int maKhoanThu) {
+	    List<NopTienModel> listNopTien;
+	    try {
+	        listNopTien = new NopTienService().getListNopTien();
+	        return listNopTien.stream()
+	                .filter(nopTien -> nopTien.getMaKhoanThu() == maKhoanThu)
+	                .mapToDouble(NopTienModel::getSoTien)
+	                .sum();
+	    } catch (ClassNotFoundException | SQLException e) {
+	        e.printStackTrace();
+	        return 0.0; // Handle the exception appropriately in your application
+	    }
 	}
 	
 	  @FXML

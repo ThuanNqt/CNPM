@@ -15,9 +15,11 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import models.HoKhauModel;
 import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.NopTienModel;
+import services.HoKhauService;
 import services.NopTienService;
 
 public class AddNopTien {
@@ -69,17 +71,26 @@ public class AddNopTien {
 			alert.showAndWait();
 		} else {
 			List<NopTienModel> listNopTien = new NopTienService().getListNopTien();
+			HoKhauModel hokhau = new HoKhauService().getHoKhaubyIdNhanKhau(nhanKhauModel.getId());
 			for(NopTienModel nopTienModel : listNopTien) {
-				if(nopTienModel.getIdNopTien() == nhanKhauModel.getId() 
+				HoKhauModel hokhaunoptien = new HoKhauService().getHoKhaubyIdNhanKhau(nopTienModel.getIdNopTien());
+				if(hokhau.getMaHo()== hokhaunoptien.getMaHo() 
 						&& nopTienModel.getMaKhoanThu() == khoanThuModel.getMaKhoanThu()) {
-					Alert alert = new Alert(AlertType.WARNING, "Đã đóng khoản phí này!", ButtonType.OK);
+					Alert alert = new Alert(AlertType.WARNING, "Hộ đã đóng khoản phí này!", ButtonType.OK);
 					alert.setHeaderText(null);
 					alert.showAndWait();
 					return;
 				}
 			}
+			double soTienNop;
+			if(khoanThuModel.getHinhThucThu() == "Theo hộ") {
+				soTienNop = khoanThuModel.getSoTien();
+			}
+			else {
+				soTienNop = hokhau.getSoThanhvien()*khoanThuModel.getSoTien();
+			}
 			
-			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu()));
+			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu(),soTienNop));
 		}
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Thêm khoản phí");

@@ -5,6 +5,7 @@ public class KhoanThuModel {
 	private String tenKhoanThu;
 	private double soTien;
 	private int loaiKhoanThu;// tự nguyện là 1 bắt buộc là 0
+	private String hinhThucThu;
 	
 	public KhoanThuModel() {}
 	
@@ -14,11 +15,19 @@ public class KhoanThuModel {
 		this.loaiKhoanThu = loaiKhoanThu;
 	}
 	
+	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu,String hinhThucThu ) {
+		this.maKhoanThu = maKhoanThu;
+		this.tenKhoanThu=tenKhoanThu;
+		this.soTien = soTien;
+		this.loaiKhoanThu = loaiKhoanThu;
+		this.hinhThucThu = hinhThucThu;
+	}
 	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu ) {
 		this.maKhoanThu = maKhoanThu;
 		this.tenKhoanThu=tenKhoanThu;
 		this.soTien = soTien;
 		this.loaiKhoanThu = loaiKhoanThu;
+		
 	}
 
 	public int getMaKhoanThu() {
@@ -52,5 +61,10 @@ public class KhoanThuModel {
 	public void setLoaiKhoanThu(int loaiKhoanThu) {
 		this.loaiKhoanThu = loaiKhoanThu;
 	}
-	
+	public String getHinhThucThu(){
+		return hinhThucThu;
+	}
+	public void setHinhThucThu(String hinhThucThu) {
+		this.hinhThucThu = hinhThucThu;
+	}
 }

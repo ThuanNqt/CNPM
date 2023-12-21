@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.HoKhauModel;
+import models.KhoanThuModel;
+import models.NhanKhauModel;
 
 public class HoKhauService {
 
@@ -78,4 +81,26 @@ public class HoKhauService {
         }
         return list;
     }
+    public HoKhauModel getHoKhaubyIdNhanKhau(int IdNhanKhau) throws ClassNotFoundException, SQLException {
+    	 HoKhauModel hoKhau = new HoKhauModel();
+    	try (Connection connection = MysqlConnection.getMysqlConnection()) {
+	        String query = "SELECT hk.MaHo,hk.SoThanhVien, hk.DiaChi "
+	                + "FROM ho_khau hk "
+	                + "JOIN quan_he qh ON hk.MaHo = qh.MaHo "
+	                + "JOIN nhan_khau nk ON qh.IDThanhVien = nk.ID "
+	                + "WHERE nk.ID = ?";
+	        try (PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
+	            preparedStatement.setInt(1,IdNhanKhau);
+	            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+	                while (resultSet.next()) {
+	                    hoKhau.setMaHo(resultSet.getInt("MaHo"));
+	                    hoKhau.setSoThanhvien(resultSet.getInt("SoThanhVien"));
+	                    hoKhau.setDiaChi(resultSet.getString("DiaChi"));
+	                 
+	                }
+	            }
+	        }
+	    }
+	    return hoKhau;
+	}
 }
