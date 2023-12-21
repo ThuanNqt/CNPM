@@ -70,9 +70,8 @@ DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
-  `CCCD` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `CMND` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `GioiTinh` VARCHAR(10) NOT NULL,
   `NgaySinh` date NOT NULL,
   `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
@@ -123,9 +122,7 @@ CREATE TABLE `users` (
   `username` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `passwd` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
 -- --------------------------------------------------------
-
 --
 -- Cấu trúc bảng cho bảng `khoan_thu`
 --
@@ -271,7 +268,7 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 
-
+DELETE FROM nhan_khau;
 INSERT INTO `nhan_khau` (`ID`, `CCCD`, `HoTen`, `GioiTinh`, `NgaySinh`, `SDT`)
 VALUES
   -- Nhân khẩu của hộ khẩu số 1
@@ -594,9 +591,11 @@ select * from users;
 
 select sum(SoTien) from khoan_thu;
 
-ALTER TABLE nhan_khau
-ADD COLUMN GioiTinh VARCHAR(10) AFTER Ten;
 
-ALTER TABLE nhan_khau
-CHANGE COLUMN CMND CCCD varchar(20);
+
+
+select * from users where username = 'Thuan' and passwdusers = '123';
+insert into users values
+	(1,'Thuan','123'),
+    (2,'Lang','456')
 
