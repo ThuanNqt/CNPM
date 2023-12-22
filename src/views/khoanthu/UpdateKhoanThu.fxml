@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.UpdateKhoanThu">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.UpdateKhoanThu">
    <children>
       <Label layoutX="79.0" layoutY="14.0" text="Thông tin khoản thu" AnchorPane.topAnchor="14.0">
          <font>
@@ -17,7 +17,7 @@
       <TextField fx:id="tfMaKhoanThu" editable="false" layoutX="50.0" layoutY="137.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="110.0" />
       <TextField fx:id="tfTenKhoanThu" layoutX="50.0" layoutY="199.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
       <TextField fx:id="tfLoaiKhoanThu" editable="false" layoutX="50.0" layoutY="259.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="250.0" />
-      <TextField fx:id="tfSoTien" layoutX="50.0" layoutY="319.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="330.0" />
+      <TextField fx:id="tfSoTien" layoutX="50.0" layoutY="319.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="320.0" />
       <Button layoutX="100.0" layoutY="462.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật khoản thu" AnchorPane.bottomAnchor="106.0">
          <font>
             <Font name="System Bold" size="15.0" />
@@ -25,9 +25,9 @@
       <Label layoutX="50.0" layoutY="93.0" text="Mã khoản thu" />
       <Label layoutX="50.0" layoutY="163.0" text="Tên khoản thu" />
       <Label layoutX="50.0" layoutY="232.0" text="Loại khoản thu" />
-      <Label layoutX="50.0" layoutY="313.0" text="Số tiền" />
-      <Label layoutX="45.0" layoutY="388.0" prefHeight="17.0" prefWidth="87.0" text="Hình thức thu" />
-      <TextField fx:id="tfHinhThucThu" layoutX="50.0" layoutY="422.0" prefHeight="25.0" prefWidth="300.0" />
+      <Label layoutX="50.0" layoutY="300.0" text="Số tiền" />
+      <Label layoutX="46.0" layoutY="372.0" prefHeight="17.0" prefWidth="87.0" text="Hình thức thu" />
+      <TextField fx:id="tfHinhThucThu" layoutX="50.0" layoutY="422.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.topAnchor="390.0" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

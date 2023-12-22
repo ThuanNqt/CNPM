@@ -56,8 +56,8 @@ public class MainController implements Initializable{
 			long soKhoanThu = listKhoanThu.stream().count();
 			lbSoKhoanThu.setText(Long.toString(soKhoanThu));
 			
-			double tongSoTienThu = new KhoanThuService().getSoTienThu();
-			lbSoTienThu.setText(Long.toString((long) tongSoTienThu));
+			double tongSoTienThu = new NopTienService().getTongNopTien();
+			lbSoTienThu.setText( Double.toString((Double)tongSoTienThu));
 			
 			List<NopTienModel> listNopTien = new NopTienService().getListNopTien();
 			long soNopTien = listNopTien.stream().count();

@@ -2,6 +2,8 @@ package controller.noptien;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 import javafx.event.ActionEvent;
@@ -27,6 +29,9 @@ public class AddNopTien {
 	private TextField tfTenKhoanThu;
 	@FXML
 	private TextField tfTenNguoiNop;
+	@FXML
+	private TextField tfSoTien;
+	
 	private KhoanThuModel khoanThuModel;
 	private NhanKhauModel nhanKhauModel;
 	
@@ -82,15 +87,15 @@ public class AddNopTien {
 					return;
 				}
 			}
-			double soTienNop = 0;
+			double soTienNop = Double.parseDouble(tfSoTien.getText());
 			if(khoanThuModel.getHinhThucThu().equals("Theo hộ")) {
 				soTienNop = khoanThuModel.getSoTien();
 			}
 			if(khoanThuModel.getHinhThucThu().equals("Theo đầu người") ){
-				soTienNop = hokhau.getSoThanhvien()*khoanThuModel.getSoTien();
+				soTienNop = hokhau.getSoThanhvien() * khoanThuModel.getSoTien();
 			}
-			
-			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu(),soTienNop));
+			Date currentDate = new Date();
+			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu(),soTienNop, currentDate));
 		}
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Thêm khoản phí");

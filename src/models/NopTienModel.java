@@ -13,10 +13,11 @@ public class NopTienModel {
 		this.idNopTien = idNopTien;
 		this.maKhoanThu = maKhoanThu;
 	}
-	public NopTienModel(int idNopTien, int maKhoanThu, double soTien) {
+	public NopTienModel(int idNopTien, int maKhoanThu, double soTien, Date ngayThu) {
 		this.idNopTien = idNopTien;
 		this.maKhoanThu = maKhoanThu;
 		this.soTien = soTien;
+		this.ngayThu = ngayThu;
 	}
 
 	public int getIdNopTien() {

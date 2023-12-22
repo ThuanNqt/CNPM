@@ -25,9 +25,10 @@
          </font></Button>
       <TableView fx:id="tvNopTien" layoutX="57.0" layoutY="107.2" prefHeight="579.0" prefWidth="950.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="107.0">
         <columns>
-          <TableColumn fx:id="tbcTenNguoi" prefWidth="230.0" text="Tên người nộp" />
-          <TableColumn fx:id="tbcTenKhoanThu" prefWidth="470.0" text="Tên khoản thu" />
-          <TableColumn fx:id="tbcNgayThu" prefWidth="160.0" text="Ngày thu" />
+          <TableColumn fx:id="tbcTenNguoi" prefWidth="200.0" text="Tên người nộp" />
+          <TableColumn fx:id="tbcTenKhoanThu" prefWidth="400.0" text="Tên khoản thu" />
+            <TableColumn fx:id="tbcSoTien" prefWidth="130.0" text="Số tiền" />
+          <TableColumn fx:id="tbcNgayThu" prefWidth="130.0" text="Ngày thu" />
             <TableColumn fx:id="colAction" prefWidth="85.0" text="Chức năng" />
         </columns>
       </TableView>

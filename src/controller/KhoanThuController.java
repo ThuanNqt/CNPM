@@ -54,6 +54,8 @@ public class KhoanThuController implements Initializable {
 	@FXML
 	private TableColumn<KhoanThuModel, String> colLoaiKhoanThu;
 	@FXML
+	private TableColumn<KhoanThuModel, String> colHinhThucThu;
+	@FXML
 	private TableColumn<KhoanThuModel, Void> colAction;
 	@FXML
 	private TextField tfSearch;
@@ -120,6 +122,9 @@ public class KhoanThuController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+		
+		colHinhThucThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("hinhThucThu"));
+		
 		tvKhoanPhi.setItems(listValueTableView);
 
 		// thiet lap gia tri cho combobox

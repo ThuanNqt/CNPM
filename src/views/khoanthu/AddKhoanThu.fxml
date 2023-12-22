@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.AddKhoanThu">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.AddKhoanThu">
    <children>
-      <Label layoutX="79.0" layoutY="22.0" text="Thông tin khoản thu" AnchorPane.topAnchor="22.0">
+      <Label layoutX="79.0" layoutY="14.0" text="Thông tin khoản thu" AnchorPane.topAnchor="14.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -19,7 +19,7 @@
       <TextField fx:id="tfTenKhoanThu" layoutX="54.0" layoutY="208.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
       <ComboBox fx:id="cbLoaiKhoanThu" layoutX="54.0" layoutY="266.0" prefHeight="30.0" prefWidth="300.0" styleClass="choose" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="250.0" />
       <TextField fx:id="tfSoTien" layoutX="54.0" layoutY="332.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="330.0" />
-      <Button layoutX="100.0" layoutY="474.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm khoản thu" AnchorPane.bottomAnchor="94.0">
+      <Button layoutX="100.0" layoutY="482.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Thêm khoản thu" AnchorPane.bottomAnchor="86.79999999999995">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
@@ -27,8 +27,8 @@
       <Label layoutX="54.0" layoutY="162.0" text="Tên khoản thu" />
       <Label layoutX="54.0" layoutY="233.0" text="Loại khoản thu" />
       <Label layoutX="54.0" layoutY="313.0" text="Số tiền" />
-      <Label layoutX="54.0" layoutY="395.0" prefHeight="17.0" prefWidth="105.0" text="Hình thức thu" />
-      <ComboBox fx:id="cbHinhThucThu" layoutX="56.0" layoutY="429.0" prefHeight="25.0" prefWidth="300.0" />
+      <Label layoutX="56.0" layoutY="382.0" prefHeight="17.0" prefWidth="105.0" text="Hình thức thu" />
+      <ComboBox fx:id="cbHinhThucThu" layoutX="56.0" layoutY="429.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.topAnchor="400.0" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

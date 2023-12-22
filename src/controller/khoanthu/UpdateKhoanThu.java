@@ -41,6 +41,7 @@ public class UpdateKhoanThu {
 
     public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
         if (!isValidInput()) {
+        	showAlert("Không thể thực hiện");
             return;
         }
 
@@ -52,7 +53,7 @@ public class UpdateKhoanThu {
         String hinhThucThuString = tfHinhThucThu.getText();
 
         // Update data
-        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt,hinhThucThuString);
+        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt, hinhThucThuString);
 
         // Close the window after successful update
         closeWindow(event);

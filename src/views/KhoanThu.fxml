@@ -36,10 +36,11 @@
          </graphic></Button>
       <TableView fx:id="tvKhoanPhi" layoutX="22.0" layoutY="167.2" prefHeight="520.0" prefWidth="950.0" style="-fx-background-color: #C0C0C0;" styleClass="tabview" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="167.0">
         <columns>
-          <TableColumn fx:id="colMaKhoanPhi" prefWidth="100.0" text="Mã khoản thu" />
-          <TableColumn fx:id="colTenKhoanThu" prefWidth="370.0" text="Tên khoản thu" />
-            <TableColumn fx:id="colSoTien" prefWidth="173.0" text="Số tiền" />
-            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="180.0" text="Loại khoản thu" />
+          <TableColumn fx:id="colMaKhoanPhi" prefWidth="85.0" text="Mã khoản thu" />
+          <TableColumn fx:id="colTenKhoanThu" prefWidth="325.0" text="Tên khoản thu" />
+            <TableColumn fx:id="colSoTien" prefWidth="150.0" text="Số tiền" />
+            <TableColumn fx:id="colLoaiKhoanThu" prefWidth="110.0" text="Loại khoản thu" />
+            <TableColumn fx:id="colHinhThucThu" prefWidth="155.0" text="Hình thức thu" />
             <TableColumn fx:id="colAction" prefWidth="120.0" text="Chức năng" />
         </columns>
       </TableView>

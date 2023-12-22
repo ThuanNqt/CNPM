@@ -63,4 +63,26 @@ public class NopTienService {
 
         return list;
     }
+    
+    public double getTongNopTien() throws ClassNotFoundException, SQLException {
+        List<NopTienModel> list = new ArrayList<>();
+        double tongSoTien = 0;
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                NopTienModel nopTienModel = new NopTienModel();
+                nopTienModel.setIdNopTien(rs.getInt("IDNopTien"));
+                nopTienModel.setMaKhoanThu(rs.getInt("MaKhoanThu"));
+                nopTienModel.setSoTien(rs.getDouble("SoTien"));
+                nopTienModel.setNgayThu(rs.getDate("NgayThu"));
+                list.add(nopTienModel);
+                
+                tongSoTien += nopTienModel.getSoTien();
+            }
+        } // Auto-closes connection, preparedStatement, and resultSet
+
+        return tongSoTien;
+    }
 }

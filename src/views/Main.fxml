@@ -115,7 +115,7 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Label fx:id="lbSoNopTien" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="118.0" layoutY="26.0" prefHeight="18.0" prefWidth="125.0" text="0">
+                        <Label fx:id="lbSoNopTien" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="147.0" layoutY="26.0" prefHeight="18.0" prefWidth="125.0" text="0">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
@@ -132,11 +132,11 @@
                               <Font name="System Bold" size="17.0" />
                            </font>
                         </Button>
-                        <Label fx:id="lbSoTienThu" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="111.0" layoutY="23.0" prefHeight="18.0" prefWidth="125.0" text="0">
+                        <Label fx:id="lbSoTienThu" alignment="TOP_RIGHT" contentDisplay="RIGHT" layoutX="81.0" layoutY="24.0" prefHeight="22.0" prefWidth="192.0" text="0">
                            <font>
                               <Font size="15.0" />
                            </font></Label>
-                        <FontAwesomeIcon glyphName="USD" layoutX="26.0" layoutY="83.0" size="80" wrappingWidth="47.199951171875" />
+                        <FontAwesomeIcon glyphName="USD" layoutX="27.0" layoutY="71.0" size="70" wrappingWidth="47.199951171875" />
                      </children>
                   </AnchorPane>
                </children>

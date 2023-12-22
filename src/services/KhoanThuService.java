@@ -15,7 +15,7 @@ public class KhoanThuService {
     public boolean add(KhoanThuModel khoanThuModel) throws ClassNotFoundException, SQLException {
         try (Connection connection = MysqlConnection.getMysqlConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO khoan_thu(MaKhoanThu, TenKhoanThu, SoTien, LoaiKhoanThu,HinhThucThu) VALUES (?, ?, ?, ?,?)",
+                     "INSERT INTO khoan_thu(MaKhoanThu, TenKhoanThu, SoTien, LoaiKhoanThu, HinhThucThu) VALUES (?, ?, ?, ?, ?)",
                      Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setInt(1, khoanThuModel.getMaKhoanThu());
@@ -24,7 +24,6 @@ public class KhoanThuService {
             preparedStatement.setInt(4, khoanThuModel.getLoaiKhoanThu());
             preparedStatement.setString(5, khoanThuModel.getHinhThucThu());
             
-
             preparedStatement.executeUpdate();
         }
 
@@ -64,8 +63,8 @@ public class KhoanThuService {
             preparedStatement.setString(1, tenKhoanThu);
             preparedStatement.setDouble(2, soTien);
             preparedStatement.setInt(3, loaiKhoanThu);
-            preparedStatement.setInt(4, maKhoanThu);
-            preparedStatement.setString(5, hinhThucThu);
+            preparedStatement.setString(4, hinhThucThu);
+            preparedStatement.setInt(5, maKhoanThu);
 
             preparedStatement.executeUpdate();
         }
@@ -90,22 +89,24 @@ public class KhoanThuService {
         return list;
     }
     
-    public double getSoTienThu() throws ClassNotFoundException, SQLException {
-        List<KhoanThuModel> list = new ArrayList<>();
-        double totalMoney = 0;
-        try (Connection connection = MysqlConnection.getMysqlConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM khoan_thu");
-             ResultSet rs = preparedStatement.executeQuery()) {
-
-            while (rs.next()) {
-                KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),
-                        rs.getString("TenKhoanThu"), rs.getDouble("SoTien"), rs.getInt("LoaiKhoanThu"),rs.getString("HinhThucThu"));
-         
-                list.add(khoanThuModel);    
-                totalMoney += khoanThuModel.getSoTien();
-            }
-        }
-        
-        return totalMoney;
-    }
+    //KHÔNG DÙNG TỚI NÓ
+    
+//    public double getSoTienThu() throws ClassNotFoundException, SQLException {
+//        List<KhoanThuModel> list = new ArrayList<>();
+//        double totalMoney = 0;
+//        try (Connection connection = MysqlConnection.getMysqlConnection();
+//             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM khoan_thu");
+//             ResultSet rs = preparedStatement.executeQuery()) {
+//
+//            while (rs.next()) {
+//                KhoanThuModel khoanThuModel = new KhoanThuModel(rs.getInt("MaKhoanThu"),
+//                        rs.getString("TenKhoanThu"), rs.getDouble("SoTien"), rs.getInt("LoaiKhoanThu"),rs.getString("HinhThucThu"));
+//         
+//                list.add(khoanThuModel);    
+//                totalMoney += khoanThuModel.getSoTien();
+//            }
+//        }
+//        
+//        return totalMoney;
+//    }
 }

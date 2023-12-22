@@ -52,6 +52,8 @@ public class NopTienController implements Initializable {
 	@FXML
 	private TableColumn<NopTienModel, String> tbcTenKhoanThu;
 	@FXML
+	private TableColumn<NopTienModel, String> tbcSoTien;
+	@FXML
 	private TableColumn<NopTienModel, String> tbcNgayThu;
 	@FXML
 	private TableColumn<NopTienModel, Void> colAction;
@@ -94,8 +96,10 @@ public class NopTienController implements Initializable {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-
-		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("soTien"));
+		
+		tbcSoTien.setCellValueFactory(new PropertyValueFactory<>("soTien"));
+		
+		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("ngayThu"));
 		
 		colAction.setCellFactory(param -> new TableCell<NopTienModel, Void>() {
 //	       
