@@ -52,7 +52,7 @@ public class AddNopTien {
         tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
 	}
 	
-	public void chooseNguoiNop() throws IOException {
+	public void chooseNguoiNop() throws IOException, ClassNotFoundException, SQLException {
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/views/noptien/ChooseNguoiNop.fxml"));
 		Parent home = loader.load(); 
@@ -67,6 +67,21 @@ public class AddNopTien {
         if(nhanKhauModel == null) return;
         
         tfTenNguoiNop.setText(nhanKhauModel.getTen());
+        tfSoTien.setText(String.valueOf(soTienNop()));
+	}
+	public double soTienNop() throws ClassNotFoundException, SQLException {
+	
+		double soTienNop = 0;
+		HoKhauModel hokhau = new HoKhauService().getHoKhaubyIdNhanKhau(nhanKhauModel.getId());
+		
+		if(khoanThuModel.getHinhThucThu().equals("Theo hộ")) {
+			soTienNop = khoanThuModel.getSoTien();
+		}
+		if(khoanThuModel.getHinhThucThu().equals("Theo đầu người") ){
+			soTienNop = hokhau.getSoThanhvien() * khoanThuModel.getSoTien();
+		}
+		
+		return soTienNop;
 	}
 	
 	public void addNopTien(ActionEvent event) throws ClassNotFoundException, SQLException {		
@@ -87,16 +102,13 @@ public class AddNopTien {
 					return;
 				}
 			}
-			double soTienNop = Double.parseDouble(tfSoTien.getText());
-			if(khoanThuModel.getHinhThucThu().equals("Theo hộ")) {
-				soTienNop = khoanThuModel.getSoTien();
-			}
-			if(khoanThuModel.getHinhThucThu().equals("Theo đầu người") ){
-				soTienNop = hokhau.getSoThanhvien() * khoanThuModel.getSoTien();
-			}
+			double soTienNop = soTienNop();
+			
+			
 			Date currentDate = new Date();
 			new NopTienService().add(new NopTienModel( nhanKhauModel.getId(),khoanThuModel.getMaKhoanThu(),soTienNop, currentDate));
 		}
+		
 		Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
 		stage.setTitle("Thêm khoản phí");
 		stage.setResizable(false);
