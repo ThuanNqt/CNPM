@@ -1,5 +1,7 @@
 package controller;
 import javafx.scene.Scene;
+import controller.ThongKe3Controller;
+
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -25,7 +27,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.SingleSelectionModel;
@@ -36,8 +37,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
-
 import models.HoKhauModel;
 import models.KhoanThuModel;
 import models.NhanKhauModel;
@@ -46,7 +45,7 @@ import services.KhoanThuService;
 import services.NopTienService;
 import services.ThongKeService;
 
-public class ThongKeController implements Initializable {
+public class ThongKeController<ThongKeController> implements Initializable {
 	@FXML
 	TableColumn<KhoanThuModel, String> colTenPhi;
 	@FXML
@@ -98,7 +97,7 @@ public class ThongKeController implements Initializable {
 		        });
 		    	 
 		    	 btn2.setOnAction(event ->{
-		    		 
+		    		 goThongKe3();
 		    	 });
 		    	 
 		        container.setAlignment(Pos.CENTER);
@@ -213,6 +212,31 @@ public class ThongKeController implements Initializable {
 	            }
 	        }
 	    }
+	  private void goThongKe3() {
+	        
+	        KhoanThuModel selectedKhoanThuModel = tvThongKe.getSelectionModel().getSelectedItem();
+	        
+	        if (selectedKhoanThuModel != null) {
+	            try {
+	                
+	            	ThongKe3Controller thongKe3Controller = new ThongKe3Controller();
+	                 ((controller.ThongKe3Controller) thongKe3Controller).setkhoanThuModel(selectedKhoanThuModel);
+
+	                // Load ThongKe2 FXML
+	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke2.fxml"));
+	                loader.setController(thongKe3Controller);
+	                Parent root = loader.load();
+
+	                // Show ThongKe2 stage
+	                Stage stage = new Stage();
+	                stage.setScene(new Scene(root));
+	                stage.show();
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	    }
+	 
 
 	
   }
