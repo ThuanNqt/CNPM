@@ -41,14 +41,14 @@
          </graphic></Button>
       <TableView fx:id="tvNhanKhau" layoutX="54.4" layoutY="251.2" prefHeight="439.0" prefWidth="950.0" stylesheets="@../source/nhankhau.css" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="251.0">
         <columns>
-          <TableColumn fx:id="colMaNhanKhau" prefWidth="100.0" text="ID" />
+          <TableColumn fx:id="colMaNhanKhau" prefWidth="65.0" text="ID" />
           <TableColumn fx:id="colTen" prefWidth="180.0" text="Họ tên" />
             <TableColumn fx:id="colGioiTinh" text="Giới tính" />
             <TableColumn fx:id="colTuoi" prefWidth="130.0" text="Ngày sinh" />
             <TableColumn fx:id="colCCCD" prefWidth="140.0" text="CCCD" />
             <TableColumn fx:id="colSDT" prefWidth="135.0" text="Số điện thoại" />
             <TableColumn fx:id="colMaHo" prefWidth="65.0" text="Mã hộ" />
-            <TableColumn fx:id="colAction" prefWidth="120.0" text="Chức năng" />
+            <TableColumn fx:id="colAction" prefWidth="150.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="54.0" layoutY="12.0" text="Thông tin toàn bộ nhân khẩu" textFill="#030303">

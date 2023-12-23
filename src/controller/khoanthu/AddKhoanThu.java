@@ -94,7 +94,7 @@ public class AddKhoanThu implements Initializable {
         int maKhoanThu = Integer.parseInt(tfMaKhoanThu.getText());
         String tenKhoanThu = tfTenKhoanThu.getText();
         double soTien = Double.parseDouble(tfSoTien.getText());
-        int loaiKhoanThu = loaiKhoanThu_tmp.equals("Bắt buộc") ? 1 : 0;
+        int loaiKhoanThu = loaiKhoanThu_tmp.equals("Bắt buộc đóng") ? 1 : 0;
 
         khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThu,hinhThucThu));
     }
@@ -116,7 +116,7 @@ public class AddKhoanThu implements Initializable {
     }
     
     private void initializeLoaiKhoanThuComboBox() {
-        ObservableList<String> listComboBox = FXCollections.observableArrayList("Tự nguyện", "Bắt buộc");
+        ObservableList<String> listComboBox = FXCollections.observableArrayList("Ủng hộ", "Bắt buộc đóng");
         cbLoaiKhoanThu.setItems(listComboBox);
     }
     private void initializeHinhThucThuComboBox() {

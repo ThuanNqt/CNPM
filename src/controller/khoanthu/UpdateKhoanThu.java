@@ -34,7 +34,7 @@ public class UpdateKhoanThu {
         // Set data from KhoanThuModel to respective fields
         tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
         tfMaKhoanThu.setText(String.valueOf(khoanThuModel.getMaKhoanThu()));
-        tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc" : "Tự nguyện");
+        tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc đóng" : "Ủng hộ");
         tfSoTien.setText(String.valueOf(khoanThuModel.getSoTien()));
         tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
     }

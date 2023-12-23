@@ -121,7 +121,7 @@ public class NhanKhauController implements Initializable {
 		colAction.setCellFactory(param -> new TableCell<NhanKhauModel, Void>() {
       
 			    private final HBox container = new HBox(8);
-			    private final Button deleteButton = new Button("Xóa");
+			    private final Button deleteButton = new Button("Khai tử");
 			    private final Button editButton = new Button("Sửa");
 
 			    {

@@ -112,8 +112,8 @@ public class KhoanThuController implements Initializable {
 			});
 
 		Map<Integer, String> mapLoaiKhoanThu = new TreeMap();
-		mapLoaiKhoanThu.put(1, "Bắt buộc");
-		mapLoaiKhoanThu.put(0, "Tự nguyện");
+		mapLoaiKhoanThu.put(1, "Bắt buộc đóng");
+		mapLoaiKhoanThu.put(0, "Ủng hộ");
 
 		try {
 			colLoaiKhoanThu

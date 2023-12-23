@@ -89,15 +89,20 @@ public class ThongKeController implements Initializable {
 		}
 		
 		colAction.setCellFactory(param -> new TableCell<KhoanThuModel, Void>() {
-		    private final HBox container = new HBox();
-		    private final Button btn = new Button("Các hộ chưa nộp");
-
+		    private final HBox container = new HBox(8);
+		    private final Button btn1 = new Button("Các hộ chưa nộp");
+		    private final Button btn2 = new Button("Các hộ đã nộp");
 		    {
-		    	 btn.setOnAction(event -> {
+		    	 btn1.setOnAction(event -> {
 		            goThongKe2();
 		        });
+		    	 
+		    	 btn2.setOnAction(event ->{
+		    		 
+		    	 });
+		    	 
 		        container.setAlignment(Pos.CENTER);
-		        container.getChildren().addAll(btn);
+		        container.getChildren().addAll(btn1, btn2);
 		    }
 
 		    @Override
@@ -114,7 +119,7 @@ public class ThongKeController implements Initializable {
 
 		tvThongKe.setItems(listValueTableView);
 		// thiet lap gia tri cho combobox
-		ObservableList<String> listComboBox = FXCollections.observableArrayList("Bắt buộc", "Tự nguyện");
+		ObservableList<String> listComboBox = FXCollections.observableArrayList("Bắt buộc đóng", "Ủng hộ");
 		cbChooseSearch.setValue("Thống kê theo");
 		cbChooseSearch.setItems(listComboBox);
 	}
@@ -140,11 +145,11 @@ public class ThongKeController implements Initializable {
 		case "Tất cả":
 			tvThongKe.setItems(listValueTableView);
 			break;
-		case "Bắt buộc":
+		case "Bắt buộc đóng":
 			listValueTableView_tmp = FXCollections.observableArrayList(listKhoanThuBatBuoc);
 			tvThongKe.setItems(listValueTableView_tmp);
 			break;
-		case "Tự nguyện":
+		case "Ủng hộ":
 			listValueTableView_tmp = FXCollections.observableArrayList(listKhoanThuTuNguyen);
 			tvThongKe.setItems(listValueTableView_tmp);
 			break;

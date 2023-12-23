@@ -111,18 +111,12 @@ public class HoKhauController implements Initializable {
 		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
 		
 		colAction.setCellFactory(param -> new TableCell<HoKhauModel, Void>() {
-			    private final HBox container = new HBox(8);
-			    private final Button deleteButton = new Button("Xóa");
-			    private final Button editButton = new Button("Sửa");
+			    private final HBox container = new HBox();
+			    //private final Button deleteButton = new Button("Xóa");
+			    private final Button editButton = new Button("Sửa thông tin");
 
 			    {
-			        deleteButton.setOnAction(event -> {
-			            try {
-			                delHoKhau();
-			            } catch (ClassNotFoundException | SQLException e) {
-			                e.printStackTrace();
-			            }
-			        });
+			       
 
 			        editButton.setOnAction(event -> {
 			            try {
@@ -132,7 +126,7 @@ public class HoKhauController implements Initializable {
 			            }
 			        });
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(editButton, deleteButton);
+			        container.getChildren().addAll(editButton);
 			    }
 
 			    @Override

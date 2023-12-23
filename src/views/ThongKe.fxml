@@ -17,9 +17,9 @@
          </font></Button>
       <TableView fx:id="tvThongKe" layoutX="55.2" layoutY="184.0" prefHeight="502.0" prefWidth="949.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="55.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="184.0">
         <columns>
-            <TableColumn fx:id="colTenPhi" prefWidth="500.0" text="Tên loại phí" />
+            <TableColumn fx:id="colTenPhi" prefWidth="450.0" text="Tên loại phí" />
             <TableColumn fx:id="colTongSoTien" prefWidth="200.0" text="Tổng số tiền " />
-            <TableColumn fx:id="colAction" prefWidth="245.0" text="Chức năng" />
+            <TableColumn fx:id="colAction" prefWidth="295.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="20.0" layoutY="14.0" text="Thống kê số lượng đóng phí" AnchorPane.leftAnchor="54.0">
