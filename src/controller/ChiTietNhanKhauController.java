@@ -33,7 +33,6 @@ public class ChiTietNhanKhauController {
     private TextField tfNguyenQuan;
     @FXML
     private TextField tfNoiCap;
-    
 
     private NhanKhauModel nhanKhauModel;
 
@@ -42,26 +41,45 @@ public class ChiTietNhanKhauController {
     }
 
     public void setNhanKhauModel(NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
-        // Set the NhanKhauModel and populate the form fields
         this.nhanKhauModel = nhanKhauModel;
 
-        
-
+        // Convert java.util.Date to LocalDate for DatePicker
         java.util.Date ngaySinhUtilDate = new java.util.Date(nhanKhauModel.getNgaySinh().getTime());
         LocalDate localDate = ngaySinhUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dpNgaySinh.setValue(localDate);
+
+        // Set values for TextFields and make them uneditable
         tfHoTen.setText(nhanKhauModel.getTen());
         tfHoTen.setEditable(false);
+
         tfGioiTinh.setText(nhanKhauModel.getGioiTinh());
+        tfGioiTinh.setEditable(false);
+
         tfSoDienThoai.setText(nhanKhauModel.getSdt());
+        tfSoDienThoai.setEditable(false);
+
         tfCCCD.setText(nhanKhauModel.getCccd());
+        tfCCCD.setEditable(false);
+
         tfBietDanh.setText(nhanKhauModel.getBietDanh());
+        tfBietDanh.setEditable(false);
+
         tfDanToc.setText(nhanKhauModel.getDanToc());
+        tfDanToc.setEditable(false);
+
         tfNoiThuongTru.setText(nhanKhauModel.getNoiThuongTru());
+        tfNoiThuongTru.setEditable(false);
+
         tfNgheNghiep.setText(nhanKhauModel.getNgheNghiep());
+        tfNgheNghiep.setEditable(false);
+
         tfNoiLamViec.setText(nhanKhauModel.getNoiLamViec());
+        tfNoiLamViec.setEditable(false);
+
         tfNguyenQuan.setText(nhanKhauModel.getNguyenQuan());
+        tfNguyenQuan.setEditable(false);
+
         tfNoiCap.setText(nhanKhauModel.getNoiCapCCCD());
-        
+        tfNoiCap.setEditable(false);
     }
 }
