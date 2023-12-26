@@ -30,50 +30,65 @@ public class UpdateKhoanThu {
 
     public void setKhoanThuModel(KhoanThuModel khoanThuModel) {
         this.khoanThuModel = khoanThuModel;
+        populateFields();
+    }
 
-        // Set data from KhoanThuModel to respective fields
+    private void populateFields() {
         tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
         tfMaKhoanThu.setText(String.valueOf(khoanThuModel.getMaKhoanThu()));
         tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc đóng" : "Ủng hộ");
+        tfLoaiKhoanThu.setEditable(false);
         tfSoTien.setText(String.valueOf(khoanThuModel.getSoTien()));
         tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
+        tfHinhThucThu.setEditable(false);
     }
 
-    public void updateKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
-        if (!isValidInput()) {
-        	showAlert("Không thể thực hiện");
-            return;
+    public void updateKhoanThu(ActionEvent event) {
+        try {
+            if (isValidInput()) {
+                extractAndUpdateData();
+                closeWindow(event);
+            } else {
+                showAlert("Không thể thực hiện");
+            }
+        } catch (Exception e) {
+            e.printStackTrace(); // Handle or log the exception as needed
+            showAlert("Đã xảy ra lỗi khi cập nhật khoản thu.");
         }
+    }
 
-        // Extract information after validation
+    private void extractAndUpdateData() throws SQLException, ClassNotFoundException {
         int maKhoanThuInt = khoanThuModel.getMaKhoanThu();
         String tenKhoanThuString = tfTenKhoanThu.getText();
         int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
         double soTienDouble = Double.parseDouble(tfSoTien.getText());
         String hinhThucThuString = tfHinhThucThu.getText();
 
-        // Update data
         new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt, hinhThucThuString);
-
-        // Close the window after successful update
-        closeWindow(event);
     }
 
     private boolean isValidInput() {
-        // Validate the name input
-        if (tfTenKhoanThu.getText().length() < 1 || tfTenKhoanThu.getText().length() > 50) {
-            showAlert("Hãy nhập vào tên khoản thu hợp lệ!");
+        if (isInvalidName() || isInvalidAmount()) {
             return false;
         }
+        return true;
+    }
 
-        // Validate the amount input
+    private boolean isInvalidName() {
+        if (tfTenKhoanThu.getText().length() < 1 || tfTenKhoanThu.getText().length() > 50) {
+            showAlert("Hãy nhập vào tên khoản thu hợp lệ!");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isInvalidAmount() {
         Pattern amountPattern = Pattern.compile("\\d{1,11}");
         if (!amountPattern.matcher(tfSoTien.getText()).matches()) {
             showAlert("Hãy nhập vào số tiền hợp lệ!");
-            return false;
+            return true;
         }
-
-        return true;
+        return false;
     }
 
     private void showAlert(String message) {

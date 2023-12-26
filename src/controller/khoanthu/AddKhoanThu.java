@@ -23,80 +23,99 @@ import models.KhoanThuModel;
 import services.KhoanThuService;
 
 public class AddKhoanThu implements Initializable {
-    @FXML
-    private TextField tfMaKhoanThu;
-    @FXML
-    private TextField tfTenKhoanThu;
-    @FXML
-    private ComboBox<String> cbLoaiKhoanThu;
-    @FXML
-    private TextField tfSoTien;
-    @FXML
-    private ComboBox<String> cbHinhThucThu;
+
+    @FXML private TextField tfMaKhoanThu;
+    @FXML private TextField tfTenKhoanThu;
+    @FXML private ComboBox<String> cbLoaiKhoanThu;
+    @FXML private TextField tfSoTien;
+    @FXML private ComboBox<String> cbHinhThucThu;
 
     private final KhoanThuService khoanThuService = new KhoanThuService();
 
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        initializeComboBoxes();
+    }
+
+    private void initializeComboBoxes() {
+        initializeComboBox(cbLoaiKhoanThu, "Ủng hộ", "Bắt buộc đóng");
+        initializeComboBox(cbHinhThucThu, "Theo hộ", "Theo đầu người");
+    }
+
+    private void initializeComboBox(ComboBox<String> comboBox, String... items) {
+        ObservableList<String> listComboBox = FXCollections.observableArrayList(items);
+        comboBox.setItems(listComboBox);
+    }
+
+    @FXML
     public void addKhoanThu(ActionEvent event) throws ClassNotFoundException, SQLException {
-        if (validateInput()) {
+        if (isValidInput()) {
             saveKhoanThu();
             closeWindow(event);
         }
     }
 
-    private boolean validateInput() throws ClassNotFoundException, SQLException {
-        return validateMaKhoanThu() && validateDuplicateMaKhoanThu() && validateTenKhoanThu() && validateSoTien();
+    private boolean isValidInput() throws ClassNotFoundException, SQLException {
+        return validateField("Mã khoản thu", tfMaKhoanThu, this::validateMaKhoanThu)
+                && validateField("Mã khoản thu", tfMaKhoanThu, value -> {
+					try {
+						return validateDuplicateMaKhoanThu(value);
+					} catch (ClassNotFoundException | SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return false;
+				})
+                && validateField("Tên khoản thu", tfTenKhoanThu, this::validateTenKhoanThu)
+                && validateField("Số tiền", tfSoTien, this::validateSoTien);
     }
 
-    private boolean validateMaKhoanThu() {
-        String maKhoanThuText = tfMaKhoanThu.getText();
+    private boolean validateField(String fieldName, TextField textField, Validator validator) {
+        String fieldValue = textField.getText();
+        if (!validator.isValid(fieldValue)) {
+            showAlert("Hãy nhập vào " + fieldName.toLowerCase() + " hợp lệ!");
+            return false;
+        }
+        return true;
+    }
+
+    private interface Validator {
+        boolean isValid(String value);
+    }
+
+    private boolean validateMaKhoanThu(String value) {
         Pattern pattern = Pattern.compile("\\d{1,11}");
-        if (!pattern.matcher(maKhoanThuText).matches()) {
-            showAlert("Hãy nhập vào mã khoản thu hợp lệ!");
-            return false;
-        }
-        return true;
+        return pattern.matcher(value).matches();
     }
 
-    private boolean validateDuplicateMaKhoanThu() throws ClassNotFoundException, SQLException {
-        int maKhoanThu = Integer.parseInt(tfMaKhoanThu.getText());
+    private boolean validateDuplicateMaKhoanThu(String value) throws ClassNotFoundException, SQLException {
+        int maKhoanThu = Integer.parseInt(value);
         List<KhoanThuModel> existingKhoanThuList = khoanThuService.getListKhoanThu();
-        if (existingKhoanThuList.stream().anyMatch(k -> k.getMaKhoanThu() == maKhoanThu)) {
-            showAlert("Mã khoản thu bị trùng!");
-            return false;
-        }
-        return true;
+        return existingKhoanThuList.stream().noneMatch(k -> k.getMaKhoanThu() == maKhoanThu);
     }
 
-    private boolean validateTenKhoanThu() {
-        String tenKhoanThu = tfTenKhoanThu.getText();
-        if (tenKhoanThu.length() >= 50 || tenKhoanThu.length() <= 1) {
-            showAlert("Hãy nhập vào tên khoản thu hợp lệ!");
-            return false;
-        }
-        return true;
+    private boolean validateTenKhoanThu(String value) {
+        return value.length() >= 1 && value.length() <= 50;
     }
 
-    private boolean validateSoTien() {
-        String soTienText = tfSoTien.getText();
+    private boolean validateSoTien(String value) {
         Pattern pattern = Pattern.compile("^[1-9]\\d*(\\.\\d+)?$");
-        if (!pattern.matcher(soTienText).matches()) {
-            showAlert("Hãy nhập vào số tiền hợp lệ!");
-            return false;
-        }
-        return true;
+        return pattern.matcher(value).matches();
     }
 
     private void saveKhoanThu() throws ClassNotFoundException, SQLException {
         SingleSelectionModel<String> loaiKhoanThuSelection = cbLoaiKhoanThu.getSelectionModel();
-        String loaiKhoanThu_tmp = loaiKhoanThuSelection.getSelectedItem();
+        String loaiKhoanThu = loaiKhoanThuSelection.getSelectedItem();
+        
         SingleSelectionModel<String> hinhThucThuSelection = cbHinhThucThu.getSelectionModel();
         String hinhThucThu = hinhThucThuSelection.getSelectedItem();
+        
         int maKhoanThu = Integer.parseInt(tfMaKhoanThu.getText());
         String tenKhoanThu = tfTenKhoanThu.getText();
         double soTien = Double.parseDouble(tfSoTien.getText());
-        int loaiKhoanThu = loaiKhoanThu_tmp.equals("Bắt buộc đóng") ? 1 : 0;
+        int loaiKhoanThuValue = loaiKhoanThu.equals("Bắt buộc đóng") ? 1 : 0;
 
-        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThu,hinhThucThu));
+        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThuValue, hinhThucThu));
     }
 
     private void showAlert(String message) {
@@ -109,19 +128,5 @@ public class AddKhoanThu implements Initializable {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
-    @Override
-    public void initialize(URL arg0, ResourceBundle arg1) {
-        initializeLoaiKhoanThuComboBox();
-        initializeHinhThucThuComboBox();
-    }
-    
-    private void initializeLoaiKhoanThuComboBox() {
-        ObservableList<String> listComboBox = FXCollections.observableArrayList("Ủng hộ", "Bắt buộc đóng");
-        cbLoaiKhoanThu.setItems(listComboBox);
-    }
-    private void initializeHinhThucThuComboBox() {
-        ObservableList<String> listComboBox = FXCollections.observableArrayList("Theo hộ", "Theo đầu người");
-        cbHinhThucThu.setItems(listComboBox);
-    }
-    
 }
+
