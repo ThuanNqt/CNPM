@@ -1,14 +1,20 @@
 package controller.nhankhau;
 
+import java.net.URL;
+
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -19,14 +25,15 @@ import services.NhanKhauService;
 import services.QuanHeService;
 
 
-public class AddNhanKhau {
+public class AddNhanKhau implements Initializable{
 
     @FXML
     private TextField tfId;
     @FXML
     private TextField tfTen;
     @FXML
-    private TextField tfGioiTinh;
+    private ComboBox<String> tfGioiTinh;
+    
     @FXML
     private DatePicker dpNgaySinh;
     @FXML
@@ -79,9 +86,13 @@ public class AddNhanKhau {
         }
 
      // Validate GioiTinh
-        if (tfGioiTinh.getText().length() >= 4 || tfGioiTinh.getText().length() <= 1) {
+        /*if (tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() >= 4 || tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() <= 1) {
             throw new Exception("Invalid gender. Please enter a name with 1 to 4 characters.");
-        }
+        }*/
+     // Validate GioiTinh
+       
+        
+
         
         // Validate CCCD
         pattern = Pattern.compile("\\d{1,20}");
@@ -112,7 +123,7 @@ public class AddNhanKhau {
     private void performDatabaseOperations() throws ClassNotFoundException, SQLException {
         int idInt = Integer.parseInt(tfId.getText());
         String tenString = tfTen.getText();
-        String gioiTinhString = tfGioiTinh.getText();
+        String gioiTinhString = tfGioiTinh.getSelectionModel().getSelectedItem().trim();
         String cccdString = tfCccd.getText();
         Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
         String sdtString = tfSdt.getText();
@@ -147,4 +158,10 @@ public class AddNhanKhau {
         alert.setHeaderText(null);
         alert.showAndWait();
     }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		tfGioiTinh.setItems(FXCollections.observableArrayList("Nam", "Nữ"));
+	}
 }

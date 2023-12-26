@@ -1,14 +1,20 @@
 package controller.nhankhau;
 
+import java.net.URL;
 import java.sql.Date;
+
 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.scene.control.ComboBox;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -19,7 +25,7 @@ import javafx.stage.Stage;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 
-public class UpdateNhanKhau {
+public class UpdateNhanKhau implements Initializable{
     private int maNhanKhau;
 
     @FXML
@@ -28,8 +34,10 @@ public class UpdateNhanKhau {
     private DatePicker dpNgaySinh;
     @FXML
     private TextField tfTenNhanKhau;
+    
+    //private TextField tfGioiTinh;
     @FXML
-    private TextField tfGioiTinh;
+    private ComboBox<String> tfGioiTinh;
     @FXML
     private TextField tfSoDienThoai;
     @FXML
@@ -70,7 +78,7 @@ public class UpdateNhanKhau {
         LocalDate localDate = ngaySinhUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         dpNgaySinh.setValue(localDate);
         tfTenNhanKhau.setText(nhanKhauModel.getTen());
-        tfGioiTinh.setText(nhanKhauModel.getGioiTinh());
+        tfGioiTinh.setValue(nhanKhauModel.getGioiTinh());
         tfSoDienThoai.setText(nhanKhauModel.getSdt());
         tfSoCCCD.setText(nhanKhauModel.getCccd());
         tfBietDanh.setText(nhanKhauModel.getBietDanh());
@@ -96,7 +104,7 @@ public class UpdateNhanKhau {
         // Get values from form fields
         String tenString = tfTenNhanKhau.getText();
         String cccdString = tfSoCCCD.getText();
-        String gioiTinhString = tfGioiTinh.getText();
+        String gioiTinhString = tfGioiTinh.getSelectionModel().getSelectedItem().trim();
         String sdtString = tfSoDienThoai.getText();
         String bietdanhString = tfBietDanh.getText();
         String nguyenquanString = tfNguyenQuan.getText();
@@ -165,4 +173,8 @@ public class UpdateNhanKhau {
         alert.setHeaderText(null);
         alert.showAndWait();
     }
+    public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		tfGioiTinh.setItems(FXCollections.observableArrayList("Nam", "Nữ"));
+	}
 }

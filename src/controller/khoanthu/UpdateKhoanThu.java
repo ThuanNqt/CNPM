@@ -1,10 +1,15 @@
 package controller.khoanthu;
 
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.scene.control.ComboBox;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -14,17 +19,22 @@ import javafx.stage.Stage;
 import models.KhoanThuModel;
 import services.KhoanThuService;
 
-public class UpdateKhoanThu {
+public class UpdateKhoanThu implements Initializable{
+	@FXML
+	private ComboBox<String> tfHinhThucThu;
+
+	@FXML
+	private ComboBox<String> tfLoaiKhoanThu;
     @FXML
     private TextField tfMaKhoanThu;
     @FXML
     private TextField tfTenKhoanThu;
-    @FXML
-    private TextField tfLoaiKhoanThu;
+    
+    //private TextField tfLoaiKhoanThu;
     @FXML
     private TextField tfSoTien;
-    @FXML
-    private TextField tfHinhThucThu;
+ 
+    //private TextField tfHinhThucThu;
 
     private KhoanThuModel khoanThuModel;
 
@@ -36,10 +46,12 @@ public class UpdateKhoanThu {
     private void populateFields() {
         tfTenKhoanThu.setText(khoanThuModel.getTenKhoanThu());
         tfMaKhoanThu.setText(String.valueOf(khoanThuModel.getMaKhoanThu()));
-        tfLoaiKhoanThu.setText((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc đóng" : "Ủng hộ");
+        tfLoaiKhoanThu.setValue((khoanThuModel.getLoaiKhoanThu() == 1) ? "Bắt buộc đóng" : "Ủng hộ");
+        //tfLoaiKhoanThu.setValue(hoanThuModel.getLoaiKhoanThu());
         tfLoaiKhoanThu.setEditable(false);
         tfSoTien.setText(String.valueOf(khoanThuModel.getSoTien()));
-        tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
+        //tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
+        tfHinhThucThu.setValue(khoanThuModel.getHinhThucThu());
         tfHinhThucThu.setEditable(false);
     }
 
@@ -60,9 +72,10 @@ public class UpdateKhoanThu {
     private void extractAndUpdateData() throws SQLException, ClassNotFoundException {
         int maKhoanThuInt = khoanThuModel.getMaKhoanThu();
         String tenKhoanThuString = tfTenKhoanThu.getText();
-        int loaiKhoanThuInt = khoanThuModel.getLoaiKhoanThu();
+        String a = tfLoaiKhoanThu.getSelectionModel().getSelectedItem().trim();
+        int loaiKhoanThuInt = a.equals("Bắt buộc đóng") ? 1 : 0;
         double soTienDouble = Double.parseDouble(tfSoTien.getText());
-        String hinhThucThuString = tfHinhThucThu.getText();
+        String hinhThucThuString = tfHinhThucThu.getSelectionModel().getSelectedItem().trim();
 
         new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt, hinhThucThuString);
     }
@@ -101,4 +114,10 @@ public class UpdateKhoanThu {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
     }
+    public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		//tfGioiTinh.setItems(FXCollections.observableArrayList("Nam", "Nữ"));
+    	tfHinhThucThu.setItems(FXCollections.observableArrayList("Theo hộ", "Theo đầu người"));
+    	tfLoaiKhoanThu.setItems(FXCollections.observableArrayList("Ủng hộ", "Bắt buộc đóng"));
+	}
 }
