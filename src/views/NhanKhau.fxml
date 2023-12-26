@@ -48,7 +48,7 @@
             <TableColumn fx:id="colCCCD" prefWidth="140.0" text="CCCD" />
             <TableColumn fx:id="colSDT" prefWidth="135.0" text="Số điện thoại" />
             <TableColumn fx:id="colMaHo" prefWidth="65.0" text="Mã hộ" />
-            <TableColumn fx:id="colAction" prefWidth="150.0" text="Chức năng" />
+            <TableColumn fx:id="colAction" prefWidth="200.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="54.0" layoutY="12.0" text="Thông tin toàn bộ nhân khẩu" textFill="#030303">

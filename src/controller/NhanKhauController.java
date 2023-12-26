@@ -123,6 +123,7 @@ public class NhanKhauController implements Initializable {
 			    private final HBox container = new HBox(8);
 			    private final Button deleteButton = new Button("Khai tử");
 			    private final Button editButton = new Button("Sửa");
+			    private final Button chiTietButton = new Button("Chi tiết");
 
 			    {
 			        deleteButton.setOnAction(event -> {
@@ -140,8 +141,15 @@ public class NhanKhauController implements Initializable {
 			                e.printStackTrace();
 			            }
 			        });
+			        chiTietButton.setOnAction(event -> {
+			            try {
+			            	showChiTiet();
+			            } catch (IOException | ClassNotFoundException | SQLException e) {
+			                e.printStackTrace();
+			            }
+			        });
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(editButton, deleteButton);
+			        container.getChildren().addAll(chiTietButton,editButton, deleteButton);
 			    }
 
 			    @Override
@@ -408,6 +416,33 @@ public class NhanKhauController implements Initializable {
         stage.showAndWait();
         showNhanKhau();
 	}
+	public void showChiTiet() throws IOException, ClassNotFoundException, SQLException {
+		// lay ra nhan khau can update
+		NhanKhauModel selectNhanKhau = tvNhanKhau.getSelectionModel().getSelectedItem();
+		
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/views/ChiTietNhanKhau.fxml"));
+		Parent home = loader.load(); 
+        Stage stage = new Stage();
+        stage.setTitle("Thông tin chi tiết nhân khẩu");
+        stage.setScene(new Scene(home,800,550));
+        ChiTietNhanKhauController showChiTietNhanKhau = loader.getController();
+        
+        // bat loi truong hop khong hop le
+        if(showChiTietNhanKhau == null) return;
+        if(selectNhanKhau == null) {
+			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần sửa!", ButtonType.OK);
+			alert.setHeaderText(null);
+			alert.showAndWait();
+			return;
+		}
+        showChiTietNhanKhau.setNhanKhauModel(selectNhanKhau);
+        //showChiTietNhanKhau.setHoVanTenLabel(nhanKhauModel.getTen());
+        stage.setResizable(false);
+        stage.showAndWait();
+        showNhanKhau();
+	}
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
