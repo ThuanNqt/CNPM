@@ -1,39 +1,250 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.UpdateNhanKhau">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.UpdateNhanKhau">
    <children>
-      <Label layoutX="77.0" layoutY="14.0" text="Thông tin nhân khẩu" textAlignment="CENTER" AnchorPane.topAnchor="14.0">
+      <Label layoutX="265.0" layoutY="35.0" text="Thông tin chi tiết nhân khẩu">
          <font>
-            <Font name="Arial Bold" size="25.0" />
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="80.0" layoutY="480.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/khoanthu.css" text="Cập nhật thông tin nhân khẩu" AnchorPane.bottomAnchor="88.80000000000001">
+      <HBox layoutX="51.0" layoutY="80.0" prefHeight="409.0" prefWidth="714.0">
+         <children>
+            <VBox prefHeight="410.0" prefWidth="237.0">
+               <children>
+                  <HBox prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="48.0">
+                           <children>
+                              <Label text="ID">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfMaNhanKhau" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="141.0">
+                           <children>
+                              <Label text="Họ và tên">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfTenNhanKhau" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefWidth="206.0">
+                           <children>
+                              <Label text="Ngày sinh">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <DatePicker fx:id="dpNgaySinh" prefHeight="31.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefWidth="206.0">
+                           <children>
+                              <Label text="Dân tộc">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfDanToc" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="173.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefWidth="206.0">
+                           <children>
+                              <Label text="Nghề nghiệp">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfNgheNghiep" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="255.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefWidth="206.0">
+                           <children>
+                              <Label text="Số CCCD/CMND">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfSoCCCD" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="410.0" prefWidth="477.0">
+               <children>
+                  <HBox prefHeight="62.0" prefWidth="445.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="289.0">
+                           <children>
+                              <Label text="Tên thường gọi">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfBietDanh" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="53.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="112.0">
+                           <children>
+                              <Label text="Giới tính">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfGioiTinh" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="26.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="454.0">
+                           <children>
+                              <Label text="Nguyên quán">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfNguyenQuan" prefHeight="30.0" prefWidth="448.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="456.0">
+                           <children>
+                              <Label text="Nơi thường trú">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfNoiThuongTru" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="173.0" prefHeight="61.0" prefWidth="206.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="457.0">
+                           <children>
+                              <Label text="Nơi làm việc">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfNoiLamViec" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets bottom="36.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="445.0">
+                     <children>
+                        <VBox prefHeight="62.0" prefWidth="226.0">
+                           <children>
+                              <Label text="Số điện thoại">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="226.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="198.0">
+                           <children>
+                              <Label text="Nơi cấp">
+                                 <VBox.margin>
+                                    <Insets bottom="5.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="206.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button layoutX="294.0" layoutY="497.0" mnemonicParsing="false" onAction="#updateNhanKhau" prefHeight="30.0" prefWidth="218.0" style="-fx-background-color: transparent;" text="Cập nhật thông tin nhân khẩu">
          <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <TextField fx:id="tfMaNhanKhau" editable="false" layoutX="50.0" layoutY="100.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="100.0" />
-      <TextField fx:id="tfTenNhanKhau" layoutX="50.0" layoutY="160.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="160.0" />
-      <TextField fx:id="tfSoCCCD" layoutX="50.0" layoutY="340.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="340.0" />
-      <TextField fx:id="tfSoDienThoai" layoutX="50.0" layoutY="400.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="400.0" />
-      <DatePicker fx:id="dpNgaySinh" layoutX="50.0" layoutY="280.0" prefHeight="30.0" prefWidth="300.0" AnchorPane.topAnchor="280.0" />
-      <TextField fx:id="tfGioiTinh" layoutX="50.0" layoutY="220.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="220.0" />
-      <Label layoutX="50.0" layoutY="83.0" text="Mã nhân khẩu" />
-      <Label layoutX="50.0" layoutY="143.0" text="Họ và tên" />
-      <Label layoutX="50.0" layoutY="203.0" text="Giới tính" />
-      <Label layoutX="50.0" layoutY="263.0" text="Ngày sinh" />
-      <Label layoutX="50.0" layoutY="323.0" text="CCCD" />
-      <Label layoutX="50.0" layoutY="383.0" text="Số điện thoại" />
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
    </children>
-   <styleClass>
-      <String fx:value="white-bg" />
-      <String fx:value="shadow" />
-   </styleClass>
 </AnchorPane>

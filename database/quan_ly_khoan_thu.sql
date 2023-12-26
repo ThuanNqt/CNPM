@@ -73,7 +73,8 @@ CREATE TABLE `nhan_khau` (
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
   `GioiTinh` VARCHAR(10) NOT NULL,
   `NgaySinh` date NOT NULL,
-  `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
+  `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 

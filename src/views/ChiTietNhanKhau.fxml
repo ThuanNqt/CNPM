@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,8 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChiTietNhanKhauController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChiTietNhanKhauController">
    <children>
       <Label layoutX="265.0" layoutY="35.0" text="Thông tin chi tiết nhân khẩu">
          <font>
@@ -29,7 +29,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="hoVanTenLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfHoTen" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -46,7 +46,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="ngaySinhLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <DatePicker fx:id="dpNgaySinh" prefHeight="31.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -63,7 +63,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="danTocLaBel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfDanToc" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -80,7 +80,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="ngheNghiepLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfNgheNghiep" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -97,7 +97,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="soCCCDLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfCCCD" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -115,7 +115,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tenThuongGoiLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfBietDanh" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="53.0" />
@@ -128,7 +128,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="gioiTinhLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfGioiTinh" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="26.0" />
@@ -143,12 +143,12 @@
                      <children>
                         <VBox prefHeight="62.0" prefWidth="454.0">
                            <children>
-                              <Label text="Nơi sinh">
+                              <Label text="Nguyên quán">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="noiSinhLabel" prefHeight="30.0" prefWidth="448.0" />
+                              <TextField fx:id="tfNguyenQuan" prefHeight="30.0" prefWidth="448.0" />
                            </children>
                         </VBox>
                      </children>
@@ -160,12 +160,12 @@
                      <children>
                         <VBox prefHeight="62.0" prefWidth="456.0">
                            <children>
-                              <Label text="Nguyên quán">
+                              <Label text="Nơi thường trú">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="nguyenQuanLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfNoiThuongTru" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                         </VBox>
                      </children>
@@ -182,7 +182,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="noiLamViecLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfNoiLamViec" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets bottom="36.0" />
@@ -197,12 +197,12 @@
                      <children>
                         <VBox prefHeight="62.0" prefWidth="226.0">
                            <children>
-                              <Label text="Ngày cấp CCCD/CMND">
+                              <Label text="Số điện thoại">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="ngayCapLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="226.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="30.0" />
@@ -215,7 +215,7 @@
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="noiCapLabel" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets />

@@ -72,10 +72,18 @@ CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
   `CCCD` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `GioiTinh`varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `GioiTinh` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `NgaySinh` date NOT NULL,
-  `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
+  `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `BietDanh` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `DanToc` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiThuongTru` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NgheNghiep` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiLamViec` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NguyenQuan` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiCapCCCD` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
 
 -- --------------------------------------------------------
 
@@ -274,102 +282,21 @@ COMMIT;
 
 
 
-INSERT INTO `nhan_khau` (`ID`, `CCCD`, `Ten`, `GioiTinh`, `NgaySinh`, `SDT`)
-
+INSERT INTO nhan_khau (ID, CCCD, Ten, GioiTinh, NgaySinh, SDT, BietDanh, DanToc, NoiThuongTru, NgheNghiep, NoiLamViec, NguyenQuan, NoiCapCCCD)
 VALUES
-  -- Nhân khẩu của hộ khẩu số 1
-  (1, '032545783459', 'Nguyễn Thị Lan Anh', 'Nữ', '2003-01-01', '0987654321'),
-  (2, '033906453010', 'Trần Văn Minh Bảo', 'Nam', '2005-01-01', '0234567890'),
-  (3, '037132958064', 'Lê Thị Thanh Cường', 'Nữ', '1983-01-01', '0789012345'),
-  (4, '033202618356', 'Phạm Văn Hải Dương', 'Nam', '1988-01-01', '0456789012'),
+  (1, '123456789', 'Nguyen Van A', 'Nam', '1990-05-15', '0987654321', 'A', 'Kinh', '12 Nguyen Hue, TP HCM', 'Nhan vien kinh doanh', 'ABC Company', 'Ha Noi', 'Public Security Department'),
+  (2, '987654321', 'Tran Thi B', 'Nu', '1995-08-22', '0123456789', 'B', 'Kinh', '45 Le Loi, Da Nang', 'Giao vien', 'XYZ School', 'Da Nang', 'Public Security Department'),
+  (3, '111223344', 'Le Van C', 'Nam', '1988-11-03', '0765432109', 'C', 'Kinh', '30 Ba Trieu, Hue', 'Bac si', 'DEF Hospital', 'Hue', 'Public Security Department'),
+  (4, '444444444', 'Phan Thi D', 'Nu', '1993-04-05', '0999888777', 'D', 'Kinh', '18 Tran Hung Dao, Quang Ninh', 'Ky su', 'JKL Engineering', 'Quang Ninh', 'Public Security Department'),
+  (5, '555555555', 'Ho Van E', 'Nam', '1992-07-18', '0321654987', 'E', 'Kinh', '99 Truong Chinh, Hai Phong', 'Nha van', 'GHI Publishing', 'Hai Phong', 'Public Security Department'),
+  (6, '666666666', 'Do Thi F', 'Nu', '1997-01-30', '0777888999', 'F', 'Kinh', '25 Nguyen Dinh Chieu, Can Tho', 'Nong dan', 'MNO Farm', 'Can Tho', 'Public Security Department'),
+  (7, '777777777', 'Vu Van G', 'Nam', '1985-09-12', '0888777666', 'G', 'Kinh', '72 Le Lai, Vinh', 'Chuyen vien IT', 'PQR Solutions', 'Vinh', 'Public Security Department'),
+  (8, '888888888', 'Trinh Thi H', 'Nu', '1998-03-25', '0666999888', 'H', 'Kinh', '6 Hoang Dieu, Nha Trang', 'Nhan vien marketing', 'STU Marketing', 'Nha Trang', 'Public Security Department'),
+  (9, '999999999', 'Nguyen Van I', 'Nam', '1987-06-08', '0555666777', 'I', 'Kinh', '8 Tran Phu, Hue', 'Bac si', 'VXY Hospital', 'Hue', 'Public Security Department'),
+  (10, '101010101', 'Le Thi K', 'Nu', '1994-12-20', '0444333222', 'K', 'Kinh', '15 Le Thanh Tong, Da Nang', 'Giao vien', 'WYZ School', 'Da Nang', 'Public Security Department');
 
-  -- Nhân khẩu của hộ khẩu số 2
-  (5, '034714027813', 'Hoàng Thị Mai', 'Nữ', '1995-01-01', '0567890123'),
-  (6, '039087019412', 'Trịnh Văn Anh Dũng', 'Nam', '1963-01-01', '0678901234'),
-  (7, '032679418573', 'Nguyễn Văn Tuấn', 'Nam', '1989-01-01', '0123456789'),
 
-  -- Nhân khẩu của hộ khẩu số 3
-  (8, '037363920149', 'Trần Thị Hồng Hạnh', 'Nữ', '1977-01-01', '0345678901'),
-  (9, '035437692058', 'Lê Văn Hiếu', 'Nam', '1972-01-01', '0890123456'),
-  (10, '034509128756', 'Phạm Thị Ngọc Anh', 'Nữ', '1995-01-01', '0567849032'),
-  -- Nhân khẩu của hộ khẩu số 4
-  (11, '038914692432', 'Hoàng Văn Khoa', 'Nam', '1989-01-01', '0345678923'),
-  (12, '032137829405', 'Trịnh Thị Lan', 'Nữ', '1953-01-01', '0912345678'),
 
-  -- Nhân khẩu của hộ khẩu số 5
-  (13, '031587049860', 'Nguyễn Văn Mạnh', 'Nam', '1981-01-01', '0789034567'),
-  (14, '033458609123', 'Trần Thị Ngọc', 'Nữ', '1968-01-01', '0980123456'),
-
-  -- Nhân khẩu của hộ khẩu số 6
-  (15, '039521874619', 'Lê Văn Thanh', 'Nam', '1984-01-01', '0890123456'),
-  (16, '031219603705', 'Phạm Thị Quỳnh', 'Nữ', '1993-01-01', '0456789012'),
-
-  -- Nhân khẩu của hộ khẩu số 7
-  (17, '034650782349', 'Hoàng Văn Đông', 'Nam', '1975-01-01', '0567890123'),
-  (18, '038283478913', 'Trịnh Thị Ngọc', 'Nữ', '1987-01-01', '0678901234'),
-
-  -- Nhân khẩu của hộ khẩu số 8
-  (19, '038867214905', 'Nguyễn Văn Nam', 'Nam', '1990-01-01', '0923456780'),
-  (20, '039143526849', 'Trần Thị Mai', 'Nữ', '1992-01-01', '0123456789'),
-
-  -- Nhân khẩu của hộ khẩu số 9
-  (21, '037420183705', 'Lê Thị Hương', 'Nữ', '1979-01-01', '0789012345'),
-  (22, '036012359281', 'Trần Văn Phú', 'Nam', '1992-01-01', '0345678901'),
-  (23, '036358921045', 'Nguyễn Thị Thảo', 'Nữ', '1967-01-01', '0345678901'),
-  -- Nhân khẩu của hộ khẩu số 10
-  (24, '038325906783', 'Lê Văn Duy', 'Nam', '1986-01-01', '0234567890'),
-  (25, '033758419273', 'Phạm Thị Hiền', 'Nữ', '1994-01-01', '0765432109'),
-  (26, '031978563290', 'Trần Văn Tùng', 'Nam', '1973-01-01', '0890123456'),
-
-  -- Nhân khẩu của hộ khẩu số 11
-  (27, '038743915270', 'Nguyễn Thị Bình', 'Nữ', '1991-01-01', '0456789012'),
-  (28, '033765192304', 'Trần Văn Thắng', 'Nam', '1996-01-01', '0567890123'),
-  (29, '031345092738', 'Phạm Thị Lan', 'Nữ', '1982-01-01', '0923456780'),
-
-  -- Nhân khẩu của hộ khẩu số 12
-  (30, '038590324618', 'Lê Văn Tuấn', 'Nam', '1994-01-01', '0980123456'),
-  (31, '036785093274', 'Hoàng Thị Ngọc', 'Nữ', '1963-01-01', '0678901234'),
-
-  -- Nhân khẩu của hộ khẩu số 13
-  (32, '032198745609', 'Trần Văn Hòa', 'Nam', '1978-01-01', '0789012345'),
-  (33, '037091526378', 'Nguyễn Thị Hằng', 'Nữ', '1971-01-01', '0123456789'),
-  (34, '031478693542', 'Lê Văn Khôi', 'Nam', '1994-01-01', '0456789012'),
-
-  -- Nhân khẩu của hộ khẩu số 14
-  (35, '038259041703', 'Phạm Thị Trang', 'Nữ', '1989-01-01', '0765432109'),
-  (36, '035726940283', 'Trần Văn Tiến', 'Nam', '1953-01-01', '0234567890'),
-
-  -- Nhân khẩu của hộ khẩu số 15
-  (37, '034920857631', 'Nguyễn Thị Hương', 'Nữ', '1979-01-01', '0345678901'),
-  (38, '035761924038', 'Lê Văn Quân', 'Nam', '1966-01-01', '0980123456'),
-
-  -- Nhân khẩu của hộ khẩu số 16
-  (39, '038650279314', 'Hoàng Thị Mai', 'Nữ', '1984-01-01', '0912345678'),
-  (40, '031782469051', 'Phạm Thị Nga', 'Nam', '1993-01-01', '0678901234'),
-
-  -- Nhân khẩu của hộ khẩu số 17
-  (41, '039078563921', 'Trần Văn Hưng', 'Nam', '1973-01-01', '0123456789'),
-  (42, '036239817456', 'Nguyễn Thị Phương', 'Nữ', '1985-01-01', '0789012345'),
-
-  -- Nhân khẩu của hộ khẩu số 18
-  (43, '034509287134', 'Lê Văn Quang', 'Nam', '1988-01-01', '0456789012'),
-  (44, '036594281093', 'Phạm Thị Ngọc', 'Nữ', '1990-01-01', '0890123456'),
-
-  -- Nhân khẩu của hộ khẩu số 19
-  (45, '033645982017', 'Trần Văn Hoàng', 'Nam', '1971-01-01', '0765432109'),
-  (46, '033176528490', 'Nguyễn Thị Thu', 'Nữ', '1996-01-01', '0923456780'),
-  (47, '037590812643', 'Lê Văn Tâm', 'Nam', '1984-01-01', '0345678901'),
-
-  -- Nhân khẩu của hộ khẩu số 20
-  (48, '031839405672', 'Phạm Thị Phương', 'Nữ', '1978-01-01', '0567890123'),
-  (49, '036259418730', 'Trần Văn Dũng', 'Nam', '1987-01-01', '0980123456'),
-  (50, '037902861534', 'Nguyễn Thị Mai', 'Nữ', '1981-01-01', '0234567890'),
-  (51, '038517462309', 'Nguyễn Văn Đức', 'Nam', '2004-01-01', '0789012345'),
-  (52, '035497612480', 'Nguyễn Văn Tú', 'Nam', '1998-01-01', '0456789012');
-
-  -- ... (continue with the remaining data)
-
-  -- ... (continue with the remaining data)
 
   
   
@@ -378,23 +305,6 @@ VALUES
   (1, 4, 'Ngõ 123, Đường Lạc Long Quân, Quận Hồng Bàng, Hải Phòng'),
   (2, 3, 'Số 10, Đường Lê Lợi, Phường Đông Cương, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
   (3, 3, 'Tầng 8, Tòa nhà Dolphin Plaza, Số 6 Nguyễn Hoàng, Quận Ngô Quyền, Hải Phòng'),
-  (4, 2, 'Nhà số 15, Khu phố 5, Phường Ba Đình, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
-  (5, 2, 'Số 12A, Đường Trần Phú, Quận Lê Chân, Hải Phòng'),
-  (6, 2, 'Số 20, Đường Trường Thi, Phường Điện Biên, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
-  (7, 2, 'Nhà số 15, Khu phố 5, Phường Đằng Lâm, Quận Hải An, Hải Phòng'),
-  (8, 2, 'Tầng 3, Tòa nhà Vinaconex 3, Số 100, Đường Quang Trung, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
-  (9, 3, 'Số 10, Đường Lê Hồng Phong, Quận Kiến An, Hải Phòng'),
-  (10, 3, 'Ngõ 8, Đường Hàm Rồng, Phường Đông Vệ, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
-  (11, 3, 'Số 10, Phố Tràng Tiền, Quận Hoàn Kiếm, Hà Nội'),
-  (12, 2, 'Số 10, Đường Hồ Chí Minh, Phường Hưng Bình, Thành phố Vinh, Tỉnh Nghệ An'),
-  (13, 3, 'Tòa nhà Keangnam Landmark 72, Phạm Hùng, Quận Nam Từ Liêm, Hà Nội'),
-  (14, 2, 'Tòa nhà Vincom Plaza Nghệ An, Số 191, Đường Lê Lợi, Phường Hưng Dũng, Thành phố Vinh, Tỉnh Nghệ An'),
-  (15, 2, 'Số 20, Ngõ 123, Đường Nguyễn Chí Thanh, Quận Đống Đa, Hà Nội'),
-  (16, 2, 'Số 20, Ngõ 123, Đường Quang Trung, Phường Quang Trung, Thành phố Vinh, Tỉnh Nghệ An'),
-  (17, 2, 'Tầng 5, Tòa nhà Vincom Center Ba Trieu, Số 191, Bà Triệu, Quận Hai Bà Trưng, Hà Nội'),
-  (18, 2, 'Tầng 3, Tòa nhà 789, Số 456, Đường Trần Phú, Phường Hà Huy Tập, Thành phố Vinh, Tỉnh Nghệ An'),
-  (19, 3, 'Số 30, Đường Lê Văn Lương, Quận Thanh Xuân, Hà Nội'),
-  (20, 5, 'Nhà số 30, Khu phố 5, Xã Nghi Phú, Huyện Nghi Lộc, Tỉnh Nghệ An');
 
 
 
@@ -403,23 +313,7 @@ VALUES
   (1, 3),  -- Chủ hộ của hộ khẩu số 1 có ID là 3
   (2, 6),  -- Chủ hộ của hộ khẩu số 2 có ID là 6
   (3, 9),  -- Chủ hộ của hộ khẩu số 3 có ID là 9
-  (4, 12), -- Chủ hộ của hộ khẩu số 4 có ID là 12
-  (5, 14), -- Chủ hộ của hộ khẩu số 5 có ID là 14
-  (6, 15), -- Chủ hộ của hộ khẩu số 6 có ID là 15
-  (7, 17), -- Chủ hộ của hộ khẩu số 7 có ID là 17
-  (8, 19), -- Chủ hộ của hộ khẩu số 8 có ID là 19
-  (9, 23), -- Chủ hộ của hộ khẩu số 9 có ID là 23
-  (10, 26),-- Chủ hộ của hộ khẩu số 10 có ID là 26
-  (11, 29),-- Chủ hộ của hộ khẩu số 11 có ID là 29
-  (12, 31),-- Chủ hộ của hộ khẩu số 12 có ID là 31
-  (13, 33),-- Chủ hộ của hộ khẩu số 13 có ID là 33
-  (14, 36),-- Chủ hộ của hộ khẩu số 14 có ID là 36
-  (15, 38),-- Chủ hộ của hộ khẩu số 15 có ID là 38
-  (16, 39),-- Chủ hộ của hộ khẩu số 16 có ID là 39
-  (17, 41),-- Chủ hộ của hộ khẩu số 17 có ID là 41
-  (18, 43),-- Chủ hộ của hộ khẩu số 18 có ID là 43
-  (19, 45),-- Chủ hộ của hộ khẩu số 19 có ID là 45
-  (20, 48);-- Chủ hộ của hộ khẩu số 20 có ID là 48
+
 
 
 
@@ -438,64 +332,6 @@ VALUES
   (3, 9, 'Chủ hộ'),
   (3, 10, 'Con'),     -- Thành viên có ID là 10 trong hộ khẩu số 3 có quan hệ là "Con"
 
-  (4, 11, 'Con'),     -- Thành viên có ID là 11 trong hộ khẩu số 4 có quan hệ là "Con"
-  (4, 12, 'Chủ hộ'),  
-
-  (5, 13, 'Chồng'),   -- Thành viên có ID là 13 trong hộ khẩu số 5 có quan hệ là "Chồng"
-  (5, 14, 'Chủ hộ'),
-  
-  (6, 15, 'Chủ hộ'), 
-  (6, 16, 'Vợ'),      -- Thành viên có ID là 16 trong hộ khẩu số 6 có quan hệ là "Vợ"
-
-  (7, 17, 'Chủ hộ'), 
-  (7, 18, 'Vợ'),      -- Thành viên có ID là 18 trong hộ khẩu số 7 có quan hệ là "Vợ"
-
-  (8, 19, 'Chủ hộ'),  
-  (8, 20, 'Vợ'),      -- Thành viên có ID là 20 trong hộ khẩu số 8 có quan hệ là "Vợ"
-
-  (9, 21, 'Em gái'), -- Thành viên có ID là 21 trong hộ khẩu số 9 có quan hệ là "Em gái"
-  (9, 22, 'Con'),     -- Thành viên có ID là 22 trong hộ khẩu số 9 có quan hệ là "Con"
-  (9, 23, 'Chủ hộ'),
-
-  (10, 24, 'Em trai'),-- Thành viên có ID là 24 trong hộ khẩu số 10 có quan hệ là "Em trai"
-  (10, 25, 'Con'),    -- Thành viên có ID là 25 trong hộ khẩu số 10 có quan hệ là "Con"
-  (10, 26, 'Chủ hộ'),
-     
-  (11, 27, 'Em gái'), -- Thành viên có ID là 27 trong hộ khẩu số 10 có quan hệ là "Em gái"
-  (11, 28, 'Em trai'),-- Thành viên có ID là 25 trong hộ khẩu số 10 có quan hệ là "Em trai"
-  (11, 29, 'Chủ hộ'),
-
-  (12, 30, 'Con'),    -- Thành viên có ID là 30 trong hộ khẩu số 12 có quan hệ là "Con"
-  (12, 31, 'Chủ hộ'), 
-
-  (13, 32, 'Chồng'),  -- Thành viên có ID là 32 trong hộ khẩu số 13 có quan hệ là "Chồng"
-  (13, 33, 'Chủ hộ'),
-  (13, 34, 'Con'),     -- Thành viên có ID là 34 trong hộ khẩu số 13 có quan hệ là "Con"
-
-  (14, 35, 'Con'),    -- Thành viên có ID là 35 trong hộ khẩu số 14 có quan hệ là "Con"
-  (14, 36, 'Chủ hộ'),
-
-  (15, 37, 'Vợ'),     -- Thành viên có ID là 37 trong hộ khẩu số 15 có quan hệ là "Vợ"
-  (15, 38, 'Chủ hộ'),
-
-  (16, 39, 'Chủ hộ'),
-  (16, 40, 'Em gái'),  -- Thành viên có ID là 40 trong hộ khẩu số 10 có quan hệ là "Em gái"
-
-  (17, 41, 'Chủ hộ'), 
-  (17, 42, 'Vợ'),     -- Thành viên có ID là 42 trong hộ khẩu số 17 có quan hệ là "Con"
-
-  (18, 43, 'Chủ hộ'), 
-  (18, 44, 'Vợ'),     -- Thành viên có ID là 44 trong hộ khẩu số 18 có quan hệ là "Vợ"
-
-  (19, 45, 'Chủ hộ'), 
-  (19, 46, 'Con'),    -- Thành viên có ID là 46 trong hộ khẩu số 19 có quan hệ là "Con"
-  (19, 47, 'Con'),    -- Thành viên có ID là 47 trong hộ khẩu số 19 có quan hệ là "Con"
- 
-  (20, 48, 'Chủ hộ'), 
-  (20, 49, 'Chồng'),  -- Thành viên có ID là 49 trong hộ khẩu số 20 có quan hệ là "Chồng"
-  (20, 50, 'Em gái'), -- Thành viên có ID là 50 trong hộ khẩu số 20 có quan hệ là "Em gái"
-  (20, 51, 'Con'),    -- Thành viên có ID là 51 trong hộ khẩu số 10 có quan hệ là "Con"
-  (20, 52, 'Con');    -- Thành viên có ID là 52 trong hộ khẩu số 20 có quan hệ là "Con"
   
   
   
@@ -526,23 +362,6 @@ INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`,`SoTien`, `NgayThu`) VALUES
 (7, 1, 66000,'2023-07-01'),
 (8, 1,66000, '2023-03-11'),
 (10, 1,66000, '2023-01-16'),
-(11, 7,66000, '2023-02-17'),
-(12, 1,66000, '2023-06-01'),
-(12, 3,66000, '2023-06-13'),
-(12, 4,66000, '2023-06-11'),
-(12, 5, 66000,'2023-05-25'),
-(12, 6,66000, '2023-04-17'),
-(12, 7, 66000,'2023-02-01'),
-(12, 8,66000, '2023-02-07'),
-(12, 9,66000,'2023-01-29'),
-(12, 10,66000, '2023-01-31'),
-(12, 11, 66000,'2023-02-28'),
-(12, 12,66000, '2023-04-16'),
-(13, 1,66000, '2023-01-16'),
-(14, 1,66000, '2023-05-06'),
-(15, 1,66000, '2023-05-16'),
-(16, 1,66000, '2023-02-17'),
-(17, 1,66000, '2023-01-18');
 
 
 select * from chu_ho;

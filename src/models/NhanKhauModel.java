@@ -2,7 +2,6 @@ package models;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.ZoneId;
 import java.util.Date;
 
 public class NhanKhauModel {
@@ -12,6 +11,13 @@ public class NhanKhauModel {
     private String gioiTinh;
     private Date ngaySinh;
     private String sdt;
+    private String bietDanh;
+    private String danToc;
+    private String noiThuongTru;
+    private String ngheNghiep;
+    private String noiLamViec;
+    private String nguyenQuan;
+    private String noiCapCCCD;
 
     public NhanKhauModel() {
     }
@@ -40,8 +46,29 @@ public class NhanKhauModel {
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
     }
+    
+    
 
-    public int getId() {
+    public NhanKhauModel(int id, String cccd, String ten, String gioiTinh, Date ngaySinh, String sdt, String bietDanh,
+			String danToc, String noiThuongTru, String ngheNghiep, String noiLamViec, String nguyenQuan,
+			String noiCapCCCD) {
+		super();
+		this.id = id;
+		this.cccd = cccd;
+		this.ten = ten;
+		this.gioiTinh = gioiTinh;
+		this.ngaySinh = ngaySinh;
+		this.sdt = sdt;
+		this.bietDanh = bietDanh;
+		this.danToc = danToc;
+		this.noiThuongTru = noiThuongTru;
+		this.ngheNghiep = ngheNghiep;
+		this.noiLamViec = noiLamViec;
+		this.nguyenQuan = nguyenQuan;
+		this.noiCapCCCD = noiCapCCCD;
+	}
+
+	public int getId() {
         return id;
     }
 
@@ -96,5 +123,47 @@ public class NhanKhauModel {
         LocalDate currentDate = LocalDate.now();
         return Period.between(birthDate, currentDate).getYears();
     }
+    public String getBietDanh() {
+		return bietDanh;
+	}
+    public String getDanToc() {
+		return danToc;
+	}
+    public String getNgheNghiep() {
+		return ngheNghiep;
+	}
+    public String getNguyenQuan() {
+		return nguyenQuan;
+	}
+    public String getNoiCapCCCD() {
+		return noiCapCCCD;
+	}
+    public String getNoiLamViec() {
+		return noiLamViec;
+	}
+    public String getNoiThuongTru() {
+		return noiThuongTru;
+	}
+    public void setBietDanh(String bietDanh) {
+		this.bietDanh = bietDanh;
+	}
+    public void setDanToc(String danToc) {
+		this.danToc = danToc;
+	}
+    public void setNgheNghiep(String ngheNghiep) {
+		this.ngheNghiep = ngheNghiep;
+	}
+    public void setNguyenQuan(String nguyenQuan) {
+		this.nguyenQuan = nguyenQuan;
+	}
+    public void setNoiCapCCCD(String noiCapCCCD) {
+		this.noiCapCCCD = noiCapCCCD;
+	}
+    public void setNoiLamViec(String noiLamViec) {
+		this.noiLamViec = noiLamViec;
+	}
+    public void setNoiThuongTru(String noiThuongTru) {
+		this.noiThuongTru = noiThuongTru;
+	}
     
 }

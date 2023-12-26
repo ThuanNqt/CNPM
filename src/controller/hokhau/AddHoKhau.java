@@ -131,7 +131,7 @@ public class AddHoKhau {
 
     private void addHoKhauToDatabase(HoKhauModel hoKhauModel, NhanKhauModel nhanKhauModel) throws ClassNotFoundException, SQLException {
         new HoKhauService().add(hoKhauModel);
-        new NhanKhauService().add(nhanKhauModel);
+        new NhanKhauService().addnk(nhanKhauModel);
         new QuanHeService().add(new QuanHeModel(hoKhauModel.getMaHo(), nhanKhauModel.getId(), "Là chủ hộ"));
         new ChuHoService().add(new ChuHoModel(hoKhauModel.getMaHo(), nhanKhauModel.getId()));
     }

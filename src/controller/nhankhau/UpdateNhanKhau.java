@@ -34,6 +34,20 @@ public class UpdateNhanKhau {
     private TextField tfSoDienThoai;
     @FXML
     private TextField tfSoCCCD;
+    @FXML
+    private TextField tfDanToc;
+    @FXML
+    private TextField tfNoiThuongTru;
+    @FXML
+    private TextField tfNgheNghiep;
+    @FXML
+    private TextField tfNoiLamViec;
+    @FXML
+    private TextField tfNguyenQuan;
+    @FXML
+    private TextField tfNoiCap;
+    @FXML
+    private TextField tfBietDanh;
 
     private NhanKhauModel nhanKhauModel;
 
@@ -59,6 +73,14 @@ public class UpdateNhanKhau {
         tfGioiTinh.setText(nhanKhauModel.getGioiTinh());
         tfSoDienThoai.setText(nhanKhauModel.getSdt());
         tfSoCCCD.setText(nhanKhauModel.getCccd());
+        tfBietDanh.setText(nhanKhauModel.getBietDanh());
+        tfDanToc.setText(nhanKhauModel.getDanToc());
+        tfNoiThuongTru.setText(nhanKhauModel.getNoiThuongTru());
+        tfNgheNghiep.setText(nhanKhauModel.getNgheNghiep());
+        tfNoiLamViec.setText(nhanKhauModel.getNoiLamViec());
+        tfNguyenQuan.setText(nhanKhauModel.getNguyenQuan());
+        tfNoiCap.setText(nhanKhauModel.getNoiCapCCCD());
+        
     }
 
     @FXML
@@ -76,9 +98,18 @@ public class UpdateNhanKhau {
         String cccdString = tfSoCCCD.getText();
         String gioiTinhString = tfGioiTinh.getText();
         String sdtString = tfSoDienThoai.getText();
+        String bietdanhString = tfBietDanh.getText();
+        String nguyenquanString = tfNguyenQuan.getText();
+        String dantocString = tfDanToc.getText();
+        String noithuongtruString = tfNoiThuongTru.getText();
+        String nghenghiepString = tfNgheNghiep.getText();
+        String noilamviecString = tfNoiLamViec.getText();
+        String noicapString = tfNoiCap.getText();
+        
 
         // Update the existing NhanKhau
-        new NhanKhauService().update(maNhanKhau, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString);
+        NhanKhauModel nhankhauModel = new NhanKhauModel(maNhanKhau, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString,bietdanhString,dantocString,noithuongtruString,nghenghiepString,noilamviecString,nguyenquanString,noicapString);
+        new NhanKhauService().update(nhankhauModel);
 
         // Display success message
         showAlert("Cập nhật thông tin nhân khẩu thành công!");

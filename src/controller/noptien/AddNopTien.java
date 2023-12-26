@@ -52,8 +52,10 @@ public class AddNopTien {
         nhanKhauModel = chooseNguoiNop.getNhanKhauChoose();
         if (nhanKhauModel != null) {
             tfTenNguoiNop.setText(nhanKhauModel.getTen());
+            
             tfSoTien.setText(String.valueOf(soTienNop()));
-            tfSoTien.setEditable(khoanThuModel.getLoaiKhoanThu() != 1);
+            if(khoanThuModel.getLoaiKhoanThu() == 1) {
+            tfSoTien.setEditable(false);}
         }
     }
 

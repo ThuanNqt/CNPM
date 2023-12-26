@@ -1,7 +1,6 @@
 package controller.nhankhau;
 
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.regex.Pattern;
 
@@ -38,6 +37,21 @@ public class AddNhanKhau {
     private TextField tfMaHoKhau;
     @FXML
     private TextField tfQuanHe;
+    @FXML
+    private TextField tfBietDanh;
+    @FXML
+    private TextField tfNguyenQuan;
+    @FXML
+    private TextField tfDanToc;
+    @FXML
+    private TextField tfNoiThuongTru;
+    @FXML
+    private TextField tfNgheNghiep;
+    @FXML
+    private TextField tfNoiLamViec;
+    @FXML
+    private TextField tfNoiCap;
+    
 
     public void addNhanKhau(ActionEvent event) {
         try {
@@ -104,11 +118,18 @@ public class AddNhanKhau {
         String sdtString = tfSdt.getText();
         int mahokhauInt = Integer.parseInt(tfMaHoKhau.getText());
         String quanheString = tfQuanHe.getText();
+        String bietdanhString = tfBietDanh.getText();
+        String nguyenquanString = tfNguyenQuan.getText();
+        String dantocString = tfDanToc.getText();
+        String noithuongtruString = tfNoiThuongTru.getText();
+        String nghenghiepString = tfNgheNghiep.getText();
+        String noilamviecString = tfNoiLamViec.getText();
+        String noicapString = tfNoiCap.getText();
 
         NhanKhauService nhanKhauService = new NhanKhauService();
         QuanHeService quanHeService = new QuanHeService();
 
-        NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString);
+        NhanKhauModel nhanKhauModel = new NhanKhauModel(idInt, cccdString, tenString, gioiTinhString, ngaySinhDate, sdtString,bietdanhString,dantocString,noithuongtruString,nghenghiepString,noilamviecString,nguyenquanString,noicapString);
         QuanHeModel quanHeModel = new QuanHeModel(mahokhauInt, idInt, quanheString);
 
         nhanKhauService.add(nhanKhauModel);

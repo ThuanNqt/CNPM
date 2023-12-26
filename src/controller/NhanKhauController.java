@@ -39,15 +39,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
-import models.KhoanThuModel;
 import models.NhanKhauModel;
-import models.NopTienModel;
 import models.QuanHeModel;
 import services.ChuHoService;
 import services.HoKhauService;
-import services.KhoanThuService;
 import services.NhanKhauService;
-import services.NopTienService;
 import services.QuanHeService;
 
 public class NhanKhauController implements Initializable {
@@ -308,7 +304,7 @@ public class NhanKhauController implements Initializable {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/nhankhau/AddNhanKhau.fxml"));
         Stage stage = new Stage();
         stage.setTitle("Thêm nhân khẩu mới");
-        stage.setScene(new Scene(home,400,600));
+        stage.setScene(new Scene(home,800,612));
         stage.setResizable(false);
         stage.showAndWait();
         
@@ -399,7 +395,7 @@ public class NhanKhauController implements Initializable {
 		Parent home = loader.load(); 
         Stage stage = new Stage();
         stage.setTitle("Sửa thông tin nhân khẩu");
-        stage.setScene(new Scene(home,400,600));
+        stage.setScene(new Scene(home,800,550));
         UpdateNhanKhau updateNhanKhau = loader.getController();
         
         // bat loi truong hop khong hop le
@@ -437,7 +433,6 @@ public class NhanKhauController implements Initializable {
 			return;
 		}
         showChiTietNhanKhau.setNhanKhauModel(selectNhanKhau);
-        //showChiTietNhanKhau.setHoVanTenLabel(nhanKhauModel.getTen());
         stage.setResizable(false);
         stage.showAndWait();
         showNhanKhau();
