@@ -8,8 +8,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import models.HoKhauModel;
-import models.KhoanThuModel;
-import models.NhanKhauModel;
 
 public class HoKhauService {
 

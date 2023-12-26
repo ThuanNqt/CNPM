@@ -1,4 +1,5 @@
-USE quan_ly_khoan_thu;
+
+use quan_ly_khoan_thu;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -71,10 +72,16 @@ CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
   `CCCD` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `Ten` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `GioiTinh` VARCHAR(10) NOT NULL,
+  `GioiTinh` varchar(20) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
   `NgaySinh` date NOT NULL,
   `SDT` varchar(15) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
-  
+  `BietDanh` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `DanToc` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiThuongTru` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NgheNghiep` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiLamViec` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NguyenQuan` varchar(50) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL,
+  `NoiCapCCCD` varchar(255) COLLATE utf8mb4_vietnamese_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 
@@ -124,9 +131,7 @@ CREATE TABLE `users` (
   `username` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `passwd` varchar(30) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
-
 -- --------------------------------------------------------
-
 --
 -- Cấu trúc bảng cho bảng `khoan_thu`
 --
@@ -136,8 +141,7 @@ CREATE TABLE `khoan_thu` (
   `TenKhoanThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `SoTien` double NOT NULL,
   `LoaiKhoanThu` int(11) NOT NULL,
-  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
-  
+  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -152,6 +156,7 @@ CREATE TABLE `nop_tien` (
   `SoTien` double NOT NULL,
   `NgayThu` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
+
 
 -- --------------------------------------------------------
 
@@ -262,6 +267,10 @@ ALTER TABLE `chu_ho`
 ALTER TABLE `nop_tien`
   ADD CONSTRAINT `nop_tien_1` FOREIGN KEY (`IDNopTien`) REFERENCES `nhan_khau` (`ID`),
   ADD CONSTRAINT `nop_tien_2` FOREIGN KEY (`MaKhoanThu`) REFERENCES `khoan_thu` (`MaKhoanThu`);
+
+--
+-- Các ràng buộc cho bảng `khoan_thu`
+--
 
 
 COMMIT;

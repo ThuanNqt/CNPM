@@ -111,8 +111,9 @@ public class HoKhauController implements Initializable {
 		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
 		
 		colAction.setCellFactory(param -> new TableCell<HoKhauModel, Void>() {
-			    private final HBox container = new HBox();
+			    private final HBox container = new HBox(8);
 			    //private final Button deleteButton = new Button("Xóa");
+			    private final Button showChiTietButton = new Button("Chi tiết");
 			    private final Button editButton = new Button("Sửa thông tin");
 
 			    {
@@ -125,8 +126,11 @@ public class HoKhauController implements Initializable {
 			                e.printStackTrace();
 			            }
 			        });
+			        showChiTietButton.setOnAction(event -> {
+			            showChiTiet();
+			        });
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(editButton);
+			        container.getChildren().addAll(showChiTietButton,editButton);
 			    }
 
 			    @Override
@@ -385,6 +389,28 @@ public class HoKhauController implements Initializable {
 		stage.showAndWait();
 		showHoKhau();
 	}
+	private void showChiTiet() {
+        
+        HoKhauModel selectedHoKhau = tvHoKhau.getSelectionModel().getSelectedItem();
+        
+        if (selectedHoKhau != null) {
+            try {
+                
+                ChiTietHoKhauController ctHoKhau = new ChiTietHoKhauController ();
+                ctHoKhau.setHoKhauModel(selectedHoKhau);
+
+                
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ChiTietHoKhau.fxml"));
+                loader.setController(ctHoKhau);
+                Parent root = loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

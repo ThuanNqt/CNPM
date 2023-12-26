@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
+import models.HoKhauModel;
 import models.NhanKhauModel;
 
 public class NhanKhauService {
@@ -225,6 +227,40 @@ public class NhanKhauService {
         }
         return true;
     }
+    public List<NhanKhauModel> getNhanKhauByHoKhau(HoKhauModel hoKhauModel) throws ClassNotFoundException {
+        List<NhanKhauModel> nhanKhauList = new ArrayList<>();
+
+        try (Connection connection = MysqlConnection.getMysqlConnection()) {
+            String sql = "SELECT nk.ID, nk.Ten, qh.QuanHe FROM nhan_khau nk " +
+                         "JOIN quan_he qh ON nk.ID = qh.IDThanhVien " +
+                         "WHERE qh.MaHo = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+                preparedStatement.setInt(1, hoKhauModel.getMaHo());
+
+                try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                    while (resultSet.next()) {
+                        int id = resultSet.getInt("ID");
+                        String ten = resultSet.getString("Ten");
+                        String quanHeChuHo = resultSet.getString("QuanHe");
+
+                        
+                        NhanKhauModel nhanKhauModel = new NhanKhauModel();
+                        nhanKhauModel.setId(id);
+                        nhanKhauModel.setTen(ten);
+                        nhanKhauModel.setQuanHeChuHo(quanHeChuHo);
+
+                        nhanKhauList.add(nhanKhauModel);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return nhanKhauList;
+    }
+    
 
 
 }

@@ -41,8 +41,8 @@
           <TableColumn fx:id="colMaHoKhau" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="colMaChuHo" prefWidth="160.0" text="Tên chủ hộ" />
             <TableColumn fx:id="colSoThanhVien" prefWidth="100.0" text="Số lượng" />
-            <TableColumn fx:id="colDiaChi" prefWidth="490.0" text="Địa chỉ thường trú" />
-            <TableColumn fx:id="colAction" prefWidth="120.0" text="Chức năng" />
+            <TableColumn fx:id="colDiaChi" prefWidth="420.0" text="Địa chỉ thường trú" />
+            <TableColumn fx:id="colAction" prefWidth="190.0" text="Chức năng" />
         </columns>
       </TableView>
       <Label layoutX="15.0" layoutY="14.0" text="Thông tin toàn bộ hộ khẩu" AnchorPane.leftAnchor="54.0">

@@ -18,6 +18,7 @@ public class NhanKhauModel {
     private String noiLamViec;
     private String nguyenQuan;
     private String noiCapCCCD;
+    private String quanHeChuHo;
 
     public NhanKhauModel() {
     }
@@ -164,6 +165,19 @@ public class NhanKhauModel {
 	}
     public void setNoiThuongTru(String noiThuongTru) {
 		this.noiThuongTru = noiThuongTru;
+	}
+    public String getQuanHeChuHo() {
+		return quanHeChuHo;
+	}
+    public void setQuanHeChuHo(String quanHeChuHo) {
+		this.quanHeChuHo = quanHeChuHo;
+	}
+
+	public NhanKhauModel(int id, String ten, String quanHeChuHo) {
+		super();
+		this.id = id;
+		this.ten = ten;
+		this.quanHeChuHo = quanHeChuHo;
 	}
     
 }
