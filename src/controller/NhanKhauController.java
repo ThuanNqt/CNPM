@@ -184,7 +184,7 @@ public class NhanKhauController implements Initializable {
 		cbChooseSearch.setItems(listComboBox);
 	}
 
-	// tim kiem nhan khau theo ten, tuoi, id
+	// Tìm kiếm nhân khẩu theo tên, tuổi, ID
 	public void searchNhanKhau() {
 		ObservableList<NhanKhauModel> listValueTableView_tmp = null;
 		String keySearch = tfSearch.getText();
@@ -199,52 +199,53 @@ public class NhanKhauController implements Initializable {
 			// neu khong nhap gi -> thong bao loi
 			if (keySearch.length() == 0) {
 				tvNhanKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Bạn chưa nhập tên!", ButtonType.OK);
+				Alert alert = new Alert(AlertType.WARNING, "Bạn chưa nhập tên nhân khẩu!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 				break;
 			}
 			
-			int index = 0;	
+			int index = 0;	//Số lượng nhân khẩu có tên mà ta tìm được
 			List<NhanKhauModel> listNhanhKhauModelsSearch = new ArrayList<>();
 			for(NhanKhauModel nhanKhauModel : listNhanKhau) {
 				if(nhanKhauModel.getTen().contains(keySearch)) {
-					listNhanhKhauModelsSearch.add(nhanKhauModel);
+					listNhanhKhauModelsSearch.add(nhanKhauModel); //Thêm vào nếu như có nhiều nhân khẩu cùng tên
 					index++;
 				}
 			}
+			
 			listValueTableView_tmp = FXCollections.observableArrayList(listNhanhKhauModelsSearch);
 			tvNhanKhau.setItems(listValueTableView_tmp);
 			
-			// neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong tim thay
+			// Nếu không tìm thấy thì thông báo lỗi
 			if (index == 0) {
-				tvNhanKhau.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy nhân khẩu này!", ButtonType.OK);
+				tvNhanKhau.setItems(listValueTableView); // Hiển thị toàn bộ thông tin
+				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy nhân khẩu có tên như vậy!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 			}
 			break;
 		}
 		case "Tuổi": {
-			// neu khong nhap gi -> thong bao loi
+			//Không nhập thì thông báo lỗi
 			if (keySearch.length() == 0) {
 				tvNhanKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Bạn chưa nhập vào tuổi!", ButtonType.OK);
+				Alert alert = new Alert(AlertType.WARNING, "Bạn chưa nhập tuổi!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 				break;
 			}
 
-			// kiem tra chuoi nhap vao co phai la chuoi hop le hay khong
+			// Kiểm tra tuổi nhập vào có hợp lệ hay không
 			Pattern pattern = Pattern.compile("\\d{1,}");
 			if(!pattern.matcher(keySearch).matches()) {
-				Alert alert = new Alert(AlertType.WARNING, "Không hợp lệ!", ButtonType.OK);
+				Alert alert = new Alert(AlertType.WARNING, "Tuổi không hợp lệ!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 				break;
 			}
 			
-			int index = 0;
+			int index = 0; //Số lượng nhân khẩu tìm được
 			List<NhanKhauModel> listNhanKhau_tmp = new ArrayList<>();
 			for (NhanKhauModel nhanKhauModel : listNhanKhau) {
 				if (nhanKhauModel.getTuoi() == Integer.parseInt(keySearch)) {
@@ -255,29 +256,29 @@ public class NhanKhauController implements Initializable {
 			listValueTableView_tmp = FXCollections.observableArrayList(listNhanKhau_tmp);
 			tvNhanKhau.setItems(listValueTableView_tmp);
 			
-			// neu khong tim thay thong tin tim kiem -> thong bao toi nguoi dung
+			// Nếu không tìm thấy thì thông báo cho người dùng
 			if (index == 0) {
-				tvNhanKhau.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy nhân khẩu này!", ButtonType.OK);
+				tvNhanKhau.setItems(listValueTableView); // Hiển thị toàn bộ thông tin
+				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy nhân khẩu có tuổi như vậy!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 			}
 			break;
 		}
-		default: { // truong hop con lai : tim theo id
-			// neu khong nhap gi -> thong bao loi
+		default: { //Mặc định tìm theo ID
+			// Không nhập gì thì thông báo lỗi
 			if (keySearch.length() == 0) {
 				tvNhanKhau.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.INFORMATION, "Bạn chưa nhập vào ID", ButtonType.OK);
+				Alert alert = new Alert(AlertType.INFORMATION, "Bạn chưa nhập ID", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 				break;
 			}
 
-			// kiem tra thong tin tim kiem co hop le hay khong
+			// Kiểm tra thông tin ID có hợp lệ hay không
 			Pattern pattern = Pattern.compile("\\d{1,}");
 			if(!pattern.matcher(keySearch).matches()) {
-				Alert alert = new Alert(AlertType.WARNING, "Không hợp lệ!", ButtonType.OK);
+				Alert alert = new Alert(AlertType.WARNING, "ID không hợp lệ!", ButtonType.OK);
 				alert.setHeaderText(null);
 				alert.showAndWait();
 				break;
@@ -291,15 +292,17 @@ public class NhanKhauController implements Initializable {
 				}
 			}
 			
-			// khong tim thay thong tin -> thong bao toi nguoi dung
+			// Không tìm thấy thì thông báo lỗi
 			tvNhanKhau.setItems(listValueTableView);
-			Alert alert = new Alert(AlertType.WARNING, "Không tìm thấy!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Không tìm thấy nhân khẩu có ID như vậy!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		}
 		}
 	}
 
+	
+	//Thêm nhân khẩu
 	public void addNhanKhau(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/nhankhau/AddNhanKhau.fxml"));
         Stage stage = new Stage();
@@ -308,6 +311,7 @@ public class NhanKhauController implements Initializable {
         stage.setResizable(false);
         stage.showAndWait();
         
+        //Update lại thông tin trên label
         List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
 		long soNhanKhau = listNhanKhau.stream().count();
 		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
@@ -327,8 +331,9 @@ public class NhanKhauController implements Initializable {
         showNhanKhau();
 	}
 	
-	// con truong hop neu xoa chu ho chua xet
+	// Xóa nhân khẩu
 	public void delNhanKhau() throws IOException, ClassNotFoundException, SQLException {
+		//Chọn một nhân khẩu trên table view
 		NhanKhauModel nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
 		int maho = 0;
 		
@@ -337,7 +342,7 @@ public class NhanKhauController implements Initializable {
 			alert.setHeaderText(null);
 			alert.showAndWait();
 		} else {
-			// kiem tra dieu kien chu ho
+			// Kiểm tra nếu là chủ hộ
 			List<ChuHoModel> listChuHo = new ChuHoService().getListChuHo();
 			for(ChuHoModel chuho : listChuHo) {
 				if(chuho.getIdChuHo() == nhanKhauModel.getId()) {
@@ -368,6 +373,7 @@ public class NhanKhauController implements Initializable {
 			}
 		}
 		
+		//Update lại thông tin trên label
 		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
 		long soNhanKhau = listNhanKhau.stream().count();
 		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
@@ -383,11 +389,12 @@ public class NhanKhauController implements Initializable {
 		List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
 		long soHoKhau = listHoKhau.stream().count();
 		lbSoHoKhau.setText(Long.toString(soHoKhau));
+		
 		showNhanKhau();
 	}
 	
 	public void updateNhanKhau() throws IOException, ClassNotFoundException, SQLException {
-		// lay ra nhan khau can update
+		//Lấy ra nhân khẩu cần update
 		NhanKhauModel nhanKhauModel = tvNhanKhau.getSelectionModel().getSelectedItem();
 		
 		FXMLLoader loader = new FXMLLoader();
@@ -398,7 +405,7 @@ public class NhanKhauController implements Initializable {
         stage.setScene(new Scene(home,800,550));
         UpdateNhanKhau updateNhanKhau = loader.getController();
         
-        // bat loi truong hop khong hop le
+        // Trường hợp chưa chọn nhân khẩu
         if(updateNhanKhau == null) return;
         if(nhanKhauModel == null) {
 			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần sửa!", ButtonType.OK);
@@ -406,14 +413,17 @@ public class NhanKhauController implements Initializable {
 			alert.showAndWait();
 			return;
 		}
+        
         updateNhanKhau.setNhanKhauModel(nhanKhauModel);
         
         stage.setResizable(false);
         stage.showAndWait();
         showNhanKhau();
 	}
+	
+	//Show thông tin chi tiêt nhân khẩu
 	public void showChiTiet() throws IOException, ClassNotFoundException, SQLException {
-		// lay ra nhan khau can update
+		//chọn nhân khẩu cần show thông tin
 		NhanKhauModel selectNhanKhau = tvNhanKhau.getSelectionModel().getSelectedItem();
 		
 		FXMLLoader loader = new FXMLLoader();
@@ -424,15 +434,17 @@ public class NhanKhauController implements Initializable {
         stage.setScene(new Scene(home,800,550));
         ChiTietNhanKhauController showChiTietNhanKhau = loader.getController();
         
-        // bat loi truong hop khong hop le
+        // Trường hợp không hợp lệ
         if(showChiTietNhanKhau == null) return;
         if(selectNhanKhau == null) {
-			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần sửa!", ButtonType.OK);
+			Alert alert = new Alert(AlertType.WARNING, "Chọn nhân khẩu cần xem thông tin chi tiết!", ButtonType.OK);
 			alert.setHeaderText(null);
 			alert.showAndWait();
 			return;
 		}
+        
         showChiTietNhanKhau.setNhanKhauModel(selectNhanKhau);
+        
         stage.setResizable(false);
         stage.showAndWait();
         showNhanKhau();

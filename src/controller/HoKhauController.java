@@ -116,9 +116,7 @@ public class HoKhauController implements Initializable {
 			    private final Button showChiTietButton = new Button("Chi tiết");
 			    private final Button editButton = new Button("Sửa thông tin");
 
-			    {
-			       
-
+			    {		
 			        editButton.setOnAction(event -> {
 			            try {
 			                updateHoKhau();

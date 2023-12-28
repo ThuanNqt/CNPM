@@ -79,6 +79,8 @@ public class HoKhauService {
         }
         return list;
     }
+    
+    
     public HoKhauModel getHoKhaubyIdNhanKhau(int IdNhanKhau) throws ClassNotFoundException, SQLException {
     	 HoKhauModel hoKhau = new HoKhauModel();
     	try (Connection connection = MysqlConnection.getMysqlConnection()) {

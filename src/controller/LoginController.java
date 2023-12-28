@@ -51,11 +51,7 @@ public class LoginController {
 	            preparedStatement.setString(2, pass);
 	            
 	            try (ResultSet resultSet = preparedStatement.executeQuery()) {
-	                if (!resultSet.next()) {
-	                    // Nếu không có kết quả, tài khoản hoặc mật khẩu không đúng
-	                    //Alert alert = new Alert(AlertType.ERROR, "Tài khoản hoặc mật khẩu không đúng!", ButtonType.OK);
-	                   // alert.setHeaderText(null);
-	                   // alert.showAndWait();
+	                if (!resultSet.next()) {	        
 	                	Platform.runLater(() -> lbLoginFail.setVisible(true)); // Hiển thị label lbLoginFail
 	                    return;
 	                }
@@ -72,31 +68,5 @@ public class LoginController {
 	        e.printStackTrace();
 	    }
 		
-	}
-	 
-
-//    @FXML
-//    private Button loginBTN;
-//
-//    @FXML
-//    private PasswordField passWord;
-//
-//    @FXML
-//    private TextField userName;
-//
-//    @FXML
-//    void login(ActionEvent event) throws IOException {
-//    	Stage stage = (Stage) loginBTN.getScene().getWindow();
-//        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/views/Home3.fxml"));
-//        Scene scene = new Scene(fxmlLoader.load());
-//        stage.setTitle("app");
-//        stage.setScene(scene);
-//    }
-
-	  
-
-	 
-	    
-	    
-
+	}	
 }

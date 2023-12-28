@@ -40,25 +40,31 @@ public class MainController implements Initializable{
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
+			//Tổng số nhân khẩu
 			List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
 			long soNhanKhau = listNhanKhau.stream().count();
 			lbSoNhanKhau.setText(Long.toString(soNhanKhau));
 			
+			//Tổng số nhân khẩu nam
 			List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
 			long soNhanKhauNam = listNhanKhauNam.stream().count();
 			lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
 			
+			//Tổng số hộ khẩu
 			List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
 			long soHoKhau = listHoKhau.stream().count();
 			lbSoHoKhau.setText(Long.toString(soHoKhau));
 			
+			//Tổng số khoản thu
 			List<KhoanThuModel> listKhoanThu = new KhoanThuService().getListKhoanThu();
 			long soKhoanThu = listKhoanThu.stream().count();
 			lbSoKhoanThu.setText(Long.toString(soKhoanThu));
 			
+			//Tổng số tiền đã đóng
 			double tongSoTienThu = new NopTienService().getTongNopTien();
 			lbSoTienThu.setText( Double.toString((Double)tongSoTienThu));
 			
+			//Số khoản phí đã đóng
 			List<NopTienModel> listNopTien = new NopTienService().getListNopTien();
 			long soNopTien = listNopTien.stream().count();
 			lbSoNopTien.setText(Long.toString(soNopTien));

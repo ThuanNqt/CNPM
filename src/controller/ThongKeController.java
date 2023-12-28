@@ -223,7 +223,7 @@ public class ThongKeController<ThongKeController> implements Initializable {
 	                 ((controller.ThongKe3Controller) thongKe3Controller).setkhoanThuModel(selectedKhoanThuModel);
 
 	                // Load ThongKe2 FXML
-	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke2.fxml"));
+	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke3.fxml"));
 	                loader.setController(thongKe3Controller);
 	                Parent root = loader.load();
 

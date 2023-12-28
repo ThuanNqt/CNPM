@@ -142,10 +142,10 @@ public class UpdateNhanKhau implements Initializable{
         }
 
         // Example validation for gioiTinh
-        if (tfGioiTinh.getText().length() >= 4 || tfGioiTinh.getText().length() <= 1) {
-            showAlert("Giới tính không hợp lệ!");
-            return false;
-        }
+//        if (tfGioiTinh.getText().length() >= 4 || tfGioiTinh.getText().length() <= 1) {
+//            showAlert("Giới tính không hợp lệ!");
+//            return false;
+//        }
         
         // Example validation for CCCD
         Pattern cccdPattern = Pattern.compile("\\d{1,20}");

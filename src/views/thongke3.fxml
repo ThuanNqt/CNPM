@@ -11,12 +11,12 @@
       <TableView fx:id="tvThongKe" layoutX="58.0" layoutY="106.0" prefHeight="467.0" prefWidth="828.0" AnchorPane.leftAnchor="58.0">
         <columns>
           <TableColumn fx:id="colMaHo" prefWidth="100.0" text="Mã hộ" />
-            <TableColumn fx:id="colTenChuHo" prefWidth="205.0" text="Tên chủ hộ" />
+            <TableColumn fx:id="colTenChuHo" prefWidth="200.0" text="Tên chủ hộ" />
             <TableColumn fx:id="colSoThanhVien" prefWidth="100.0" text="Số thành viên" />
             <TableColumn fx:id="colDiaChi" prefWidth="422.0" text="Địa chỉ" />
         </columns>
       </TableView>
-      <Label layoutX="58.0" layoutY="31.0" text="Các hộ gia đình chưa đóng phí">
+      <Label layoutX="58.0" layoutY="31.0" text="Các hộ gia đình đã đóng phí">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
