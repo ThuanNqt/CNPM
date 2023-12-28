@@ -1,4 +1,4 @@
-package controller;
+package controller.hokhau;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -28,11 +28,13 @@ public class ChiTietHoKhauController implements Initializable {
     private TableView<NhanKhauModel> tvThongKe;
 
     private ObservableList<NhanKhauModel> listValueTableView;
-
     private HoKhauModel selectedHoKhau;
+    private NhanKhauService nhanKhauService;
 
     // Default constructor
-    public ChiTietHoKhauController() {}
+    public ChiTietHoKhauController() {
+        nhanKhauService = new NhanKhauService();
+    }
 
     // Method to set the selected KhoanThuModel
     public void setHoKhauModel(HoKhauModel hoKhauModel) {
@@ -41,25 +43,27 @@ public class ChiTietHoKhauController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        initializeTableColumns();
+        loadNhanKhauData();
+    }
+
+    private void initializeTableColumns() {
+        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colTen.setCellValueFactory(new PropertyValueFactory<>("ten"));
+        colQuanHe.setCellValueFactory(new PropertyValueFactory<>("quanHeChuHo"));
+    }
+
+    private void loadNhanKhauData() {
         try {
             List<NhanKhauModel> nhankhauModel = getNhanKhauByHoKhau();
-
             listValueTableView = FXCollections.observableArrayList(nhankhauModel);
-            // Initialize the TableView columns with the corresponding fields of HoKhauModel
-            colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-            colTen.setCellValueFactory(new PropertyValueFactory<>("ten"));
-            colQuanHe.setCellValueFactory(new PropertyValueFactory<>("quanHeChuHo"));
-   
-
-            // Populate the TableView with the list of unpaid households
-            tvThongKe.getItems().addAll(listValueTableView);
+            tvThongKe.setItems(listValueTableView);
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     private List<NhanKhauModel> getNhanKhauByHoKhau() throws SQLException, ClassNotFoundException {
-        NhanKhauService nhanKhauService = new NhanKhauService();
         return nhanKhauService.getNhanKhauByHoKhau(selectedHoKhau);
     }
 }

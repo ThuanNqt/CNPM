@@ -1,4 +1,4 @@
-package controller;
+package controller.noptien;
 
 import java.io.IOException;
 import java.net.URL;

@@ -1,4 +1,4 @@
-package controller;
+package controller.hokhau;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,8 +12,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 import javafx.scene.control.Label;
-import controller.hokhau.UpdateHoKhau;
-import controller.khoanthu.UpdateKhoanThu;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +37,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
-import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
 import services.ChuHoService;
@@ -400,7 +397,7 @@ public class HoKhauController implements Initializable {
                 ctHoKhau.setHoKhauModel(selectedHoKhau);
 
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ChiTietHoKhau.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/hokhau/ChiTietHoKhau.fxml"));
                 loader.setController(ctHoKhau);
                 Parent root = loader.load();
                 Stage stage = new Stage();

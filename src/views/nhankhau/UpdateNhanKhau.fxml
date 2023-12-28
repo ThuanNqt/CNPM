@@ -212,12 +212,12 @@
                      <children>
                         <VBox prefHeight="62.0" prefWidth="226.0">
                            <children>
-                              <Label text="Số điện thoại">
+                              <Label text="Nơi cấp">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="226.0" />
+                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="226.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="30.0" />
@@ -225,12 +225,12 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="198.0">
                            <children>
-                              <Label text="Nơi cấp">
+                              <Label text="Số điện thoại">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets />

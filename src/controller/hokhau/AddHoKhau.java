@@ -1,7 +1,9 @@
 package controller.hokhau;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -14,22 +16,25 @@ import services.HoKhauService;
 import services.NhanKhauService;
 import services.QuanHeService;
 
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-public class AddHoKhau {
+public class AddHoKhau implements Initializable {
 
     @FXML private TextField tfMaHoKhau;
     @FXML private TextField tfDiaChi;
     @FXML private TextField tfMaChuHo;
     @FXML private TextField tfTenChuHo;
-    @FXML private TextField tfGioiTinhChuHo;
+    //@FXML private TextField tfGioiTinhChuHo;
     @FXML private DatePicker dpNgaySinh;
     @FXML private TextField tfCMND;
     @FXML private TextField tfSoDienThoai;
-
+    @FXML
+    private ComboBox<String> tfGioiTinhChuHo;
     @FXML
     public void addHoKhau(ActionEvent event) throws ClassNotFoundException, SQLException {
         if (validateInput()) {
@@ -37,7 +42,7 @@ public class AddHoKhau {
             String diaChi = tfDiaChi.getText();
             int maChuHo = Integer.parseInt(tfMaChuHo.getText());
             String tenChuHo = tfTenChuHo.getText();
-            String gioiTinhChuHo = tfGioiTinhChuHo.getText();
+            String gioiTinhChuHo = tfGioiTinhChuHo.getSelectionModel().getSelectedItem().trim();
             Date ngaySinhDate = java.sql.Date.valueOf(dpNgaySinh.getValue());
             String cccdChuHo = tfCMND.getText();
             String sdtChuHo = tfSoDienThoai.getText();
@@ -139,5 +144,10 @@ public class AddHoKhau {
     private void closeStage(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        tfGioiTinhChuHo.setItems(FXCollections.observableArrayList("Nam", "Nữ"));
     }
 }

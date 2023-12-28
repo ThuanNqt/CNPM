@@ -22,7 +22,7 @@ import javafx.stage.Stage;
 import models.KhoanThuModel;
 import services.KhoanThuService;
 
-public class AddKhoanThu implements Initializable {
+public class ThemKhoanThu implements Initializable {
 
     @FXML private TextField tfMaKhoanThu;
     @FXML private TextField tfTenKhoanThu;

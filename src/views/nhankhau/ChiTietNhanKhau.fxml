@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChiTietNhanKhauController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.nhankhau.ChiTietNhanKhauController">
    <children>
       <Label layoutX="265.0" layoutY="35.0" text="Thông tin chi tiết nhân khẩu">
          <font>
@@ -197,12 +197,12 @@
                      <children>
                         <VBox prefHeight="62.0" prefWidth="226.0">
                            <children>
-                              <Label text="Số điện thoại">
+                              <Label text="Nơi cấp">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="226.0" />
+                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="226.0" />
                            </children>
                            <HBox.margin>
                               <Insets right="30.0" />
@@ -210,12 +210,12 @@
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="62.0" prefWidth="198.0">
                            <children>
-                              <Label text="Nơi cấp">
+                              <Label text="Số điện thoại">
                                  <VBox.margin>
                                     <Insets bottom="5.0" />
                                  </VBox.margin>
                               </Label>
-                              <TextField fx:id="tfNoiCap" prefHeight="30.0" prefWidth="206.0" />
+                              <TextField fx:id="tfSoDienThoai" prefHeight="30.0" prefWidth="206.0" />
                            </children>
                            <HBox.margin>
                               <Insets />

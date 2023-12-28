@@ -1,14 +1,11 @@
-package controller;
+package controller.thongke;
 import javafx.scene.Scene;
-import controller.ThongKe3Controller;
 
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 
 
 import java.io.IOException;
-import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +14,6 @@ import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.TreeMap;
 
-import application.Main;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,10 +21,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
@@ -37,13 +31,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
-import models.HoKhauModel;
 import models.KhoanThuModel;
-import models.NhanKhauModel;
 import models.NopTienModel;
 import services.KhoanThuService;
 import services.NopTienService;
-import services.ThongKeService;
 
 public class ThongKeController<ThongKeController> implements Initializable {
 	@FXML
@@ -195,12 +186,12 @@ public class ThongKeController<ThongKeController> implements Initializable {
 	        if (selectedKhoanThuModel != null) {
 	            try {
 	                
-	                ThongKe2Controller thongKe2Controller = new ThongKe2Controller();
-	                thongKe2Controller.setKhoanThuModel(selectedKhoanThuModel);
+	                ThongKeChuaNopTien thongKeChuaNopTien = new ThongKeChuaNopTien();
+	                thongKeChuaNopTien.setKhoanThuModel(selectedKhoanThuModel);
 
 	                // Load ThongKe2 FXML
-	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke2.fxml"));
-	                loader.setController(thongKe2Controller);
+	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke/ThongKeNopTien.fxml"));
+	                loader.setController(thongKeChuaNopTien);
 	                Parent root = loader.load();
 
 	                // Show ThongKe2 stage
@@ -219,12 +210,12 @@ public class ThongKeController<ThongKeController> implements Initializable {
 	        if (selectedKhoanThuModel != null) {
 	            try {
 	                
-	            	ThongKe3Controller thongKe3Controller = new ThongKe3Controller();
-	                 ((controller.ThongKe3Controller) thongKe3Controller).setkhoanThuModel(selectedKhoanThuModel);
+	            	ThongKeDaNopTien thongKeDaNopTien = new ThongKeDaNopTien();
+	                 ((ThongKeDaNopTien) thongKeDaNopTien).setkhoanThuModel(selectedKhoanThuModel);
 
 	                // Load ThongKe2 FXML
-	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke2.fxml"));
-	                loader.setController(thongKe3Controller);
+	                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/thongke/ThongKeNopTien.fxml"));
+	                loader.setController(thongKeDaNopTien);
 	                Parent root = loader.load();
 
 	                // Show ThongKe2 stage

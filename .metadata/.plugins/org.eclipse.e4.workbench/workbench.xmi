@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<application:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/application/ui/advanced" xmlns:application="http://www.eclipse.org/ui/2010/UIModel/application" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/application/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/application/ui/menu" xmi:id="_Lha4MKFfEe6AooolN6xvlw" elementId="org.eclipse.e4.legacy.ide.application" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_Lha4MaFfEe6AooolN6xvlw" bindingContexts="_Lha4OqFfEe6AooolN6xvlw">
+<StartAPP:Application xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:advanced="http://www.eclipse.org/ui/2010/UIModel/StartAPP/ui/advanced" xmlns:StartAPP="http://www.eclipse.org/ui/2010/UIModel/StartAPP" xmlns:basic="http://www.eclipse.org/ui/2010/UIModel/StartAPP/ui/basic" xmlns:menu="http://www.eclipse.org/ui/2010/UIModel/StartAPP/ui/menu" xmi:id="_Lha4MKFfEe6AooolN6xvlw" elementId="org.eclipse.e4.legacy.ide.StartAPP" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_Lha4MaFfEe6AooolN6xvlw" bindingContexts="_Lha4OqFfEe6AooolN6xvlw">
   <persistedState key="memento" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?>&#xD;&#xA;&lt;workbench>&#xD;&#xA;&lt;mruList/>&#xD;&#xA;&lt;/workbench>"/>
   <tags>activeSchemeId:org.eclipse.ui.defaultAcceleratorConfiguration</tags>
   <children xsi:type="basic:TrimmedWindow" xmi:id="_Lha4MaFfEe6AooolN6xvlw" elementId="IDEWindow" contributorURI="platform:/plugin/org.eclipse.platform" selectedElement="_Lt0VcqFfEe6AooolN6xvlw" label="%trimmedwindow.label.eclipseSDK" x="228" y="228" width="1024" height="768">
@@ -1887,18 +1887,18 @@
     <tags>View</tags>
     <tags>categoryTag:Xtext</tags>
   </descriptors>
-  <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.application.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
-    <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+  <trimContributions xmi:id="_2r10UF9tEeO-yojH_y4TJA" elementId="org.eclipse.ui.ide.StartAPP.trimcontribution.QuickAccess" contributorURI="platform:/plugin/org.eclipse.ui.ide.StartAPP" toBeRendered="false" parentId="org.eclipse.ui.main.toolbar" positionInParent="last">
+    <children xsi:type="menu:ToolControl" xmi:id="_76uUAF9tEeO-yojH_y4TJA" elementId="Spacer Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.StartAPP" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
       <tags>glue</tags>
       <tags>move_after:PerspectiveSpacer</tags>
       <tags>SHOW_RESTORE_MENU</tags>
     </children>
-    <children xsi:type="menu:ToolControl" xmi:id="_8tJPcF9tEeO-yojH_y4TJA" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
+    <children xsi:type="menu:ToolControl" xmi:id="_8tJPcF9tEeO-yojH_y4TJA" elementId="SearchField" contributorURI="platform:/plugin/org.eclipse.ui.ide.StartAPP" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.quickaccess.SearchField">
       <tags>move_after:Spacer Glue</tags>
       <tags>HIDEABLE</tags>
       <tags>SHOW_RESTORE_MENU</tags>
     </children>
-    <children xsi:type="menu:ToolControl" xmi:id="_9LgmcF9tEeO-yojH_y4TJA" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
+    <children xsi:type="menu:ToolControl" xmi:id="_9LgmcF9tEeO-yojH_y4TJA" elementId="Search-PS Glue" contributorURI="platform:/plugin/org.eclipse.ui.ide.StartAPP" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.renderers.swt/org.eclipse.e4.ui.workbench.renderers.swt.LayoutModifierToolControl">
       <tags>glue</tags>
       <tags>move_after:SearchField</tags>
       <tags>SHOW_RESTORE_MENU</tags>
@@ -2374,7 +2374,7 @@
   <commands xmi:id="_Lh4LV6FfEe6AooolN6xvlw" elementId="org.eclipse.debug.ui.commands.StepOver" commandName="Step Over" description="Step over" category="_LhzSwKFfEe6AooolN6xvlw"/>
   <commands xmi:id="_Lh4LWKFfEe6AooolN6xvlw" elementId="org.eclipse.jpt.jpa.ui.addToPersistenceUnit" commandName="Add to Persistence Unit" category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_Lh4LWaFfEe6AooolN6xvlw" elementId="org.eclipse.compare.selectPreviousChange" commandName="Select Previous Change" description="Select Previous Change" category="_LhzS16FfEe6AooolN6xvlw"/>
-  <commands xmi:id="_Lh4LWqFfEe6AooolN6xvlw" elementId="org.eclipse.ui.file.exit" commandName="Exit" description="Exit the application" category="_LhzSu6FfEe6AooolN6xvlw">
+  <commands xmi:id="_Lh4LWqFfEe6AooolN6xvlw" elementId="org.eclipse.ui.file.exit" commandName="Exit" description="Exit the StartAPP" category="_LhzSu6FfEe6AooolN6xvlw">
     <parameters xmi:id="_Lh4LW6FfEe6AooolN6xvlw" elementId="mayPrompt" name="may prompt"/>
   </commands>
   <commands xmi:id="_Lh4LXKFfEe6AooolN6xvlw" elementId="org.eclipse.egit.ui.team.CompareWithHead" commandName="Compare with HEAD Revision" category="_LhzS36FfEe6AooolN6xvlw"/>
@@ -3103,7 +3103,7 @@
   <commands xmi:id="_LtBrQqFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.jdt.ui.JavaElementCreationActionSet/org.eclipse.jdt.ui.actions.OpenProjectWizard" commandName="Java Project..." description="New Java Project" category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_LtCSUKFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.jdt.ui.SearchActionSet/org.eclipse.jdt.ui.actions.OpenJavaSearchPage" commandName="Java..." category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_LtCSUaFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.jst.j2ee.J2eeMainActionSet/org.eclipse.jst.j2ee.internal.actions.NewJavaEEArtifact" commandName="Servlet" description="Create a new Java/Jakarta Servlet, optionally adding it to a project's deployment descriptor." category="_LhzSyaFfEe6AooolN6xvlw"/>
-  <commands xmi:id="_LtCSUqFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.jst.j2ee.J2eeMainActionSet/org.eclipse.jst.j2ee.internal.actions.NewJavaEEProject" commandName="Dynamic Web Project" description="Create a Dynamic Web project. A Dynamic Web project supports developing Java and Jakarta Servlets, and deploys to Java and Jakarta Servlet Containers and J2EE, Java EE, and Jakarta EE certified application servers." category="_LhzSyaFfEe6AooolN6xvlw"/>
+  <commands xmi:id="_LtCSUqFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.jst.j2ee.J2eeMainActionSet/org.eclipse.jst.j2ee.internal.actions.NewJavaEEProject" commandName="Dynamic Web Project" description="Create a Dynamic Web project. A Dynamic Web project supports developing Java and Jakarta Servlets, and deploys to Java and Jakarta Servlet Containers and J2EE, Java EE, and Jakarta EE certified StartAPP servers." category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_LtCSU6FfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.mylyn.java.actionSet.browsing/org.eclipse.mylyn.java.ui.actions.ApplyMylynToBrowsingPerspectiveAction" commandName="Focus Browsing Perspective" description="Focus Java Browsing Views on Active Task" category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_LtC5YKFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.mylyn.doc.actionSet/org.eclipse.mylyn.tasks.ui.bug.report" commandName="Report Bug or Enhancement..." description="Report Bug or Enhancement" category="_LhzSyaFfEe6AooolN6xvlw"/>
   <commands xmi:id="_LtC5YaFfEe6AooolN6xvlw" elementId="AUTOGEN:::org.eclipse.mylyn.tasks.ui.navigation.additions/org.eclipse.mylyn.tasks.ui.navigate.task.history" commandName="Activate Previous Task" description="Activate Previous Task" category="_LhzSyaFfEe6AooolN6xvlw"/>
@@ -3245,7 +3245,7 @@
   <addons xmi:id="_Lha4R6FfEe6AooolN6xvlw" elementId="org.eclipse.ui.workbench.addon.0" contributorURI="platform:/plugin/org.eclipse.platform" contributionURI="bundleclass://org.eclipse.e4.ui.workbench/org.eclipse.e4.ui.internal.workbench.addons.HandlerProcessingAddon"/>
   <addons xmi:id="_LhiM8KFfEe6AooolN6xvlw" elementId="SplitterAddon" contributionURI="bundleclass://org.eclipse.e4.ui.workbench.addons.swt/org.eclipse.e4.ui.workbench.addons.splitteraddon.SplitterAddon"/>
   <addons xmi:id="_IYS0IKimEeS11vbz3f9ezw" elementId="org.eclipse.ui.ide.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide" contributionURI="bundleclass://org.eclipse.ui.ide/org.eclipse.ui.internal.ide.addons.SaveAllDirtyPartsAddon"/>
-  <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.application.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.application" contributionURI="bundleclass://org.eclipse.ui.ide.application/org.eclipse.ui.internal.ide.application.addons.ModelCleanupAddon"/>
+  <addons xmi:id="_dz0JgGOlEeSMMaPQU2nlzw" elementId="org.eclipse.ui.ide.StartAPP.addon.0" contributorURI="platform:/plugin/org.eclipse.ui.ide.StartAPP" contributionURI="bundleclass://org.eclipse.ui.ide.StartAPP/org.eclipse.ui.internal.ide.StartAPP.addons.ModelCleanupAddon"/>
   <categories xmi:id="_LhzSsKFfEe6AooolN6xvlw" elementId="org.eclipse.ui.category.edit" name="Edit"/>
   <categories xmi:id="_LhzSsaFfEe6AooolN6xvlw" elementId="org.eclipse.mylyn.wikitext.ui.editor.category" name="WikiText Markup Editing Commands" description="commands for editing lightweight markup"/>
   <categories xmi:id="_LhzSsqFfEe6AooolN6xvlw" elementId="org.eclipse.buildship.ui.project" name="Buildship" description="Contains the Buildship specific commands"/>
@@ -3302,4 +3302,4 @@
   <categories xmi:id="_LhzS5aFfEe6AooolN6xvlw" elementId="org.eclipse.jdt.ui.category.source" name="Source" description="Java Source Actions"/>
   <categories xmi:id="_LhzS5qFfEe6AooolN6xvlw" elementId="org.eclipse.pde.runtime.spy.commands.category" name="Spy"/>
   <categories xmi:id="_LhzS56FfEe6AooolN6xvlw" elementId="org.eclipse.xtext.ui.category.refactoring" name="Refactoring" description="Refactoring Commands"/>
-</application:Application>
+</StartAPP:Application>
