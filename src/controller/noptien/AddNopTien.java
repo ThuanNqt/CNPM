@@ -16,9 +16,12 @@ import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.NopTienModel;
 import services.HoKhauService;
+import services.MysqlConnection;
 import services.NopTienService;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
@@ -89,7 +92,7 @@ public class AddNopTien {
             showAlert(AlertType.WARNING, "Khoản nộp không hợp lệ!");
         } else {
             if (isAlreadyPaid()) {
-                showAlert(AlertType.WARNING, "Hộ đã đóng khoản phí này!");
+                showAlert(AlertType.WARNING, "Một người nào đó trong hộ đã đóng khoản phí này!");
             } else {
                 double soTienNop = Double.parseDouble(tfSoTien.getText());
                 Date currentDate = new Date();
@@ -106,7 +109,7 @@ public class AddNopTien {
         for (NopTienModel nopTienModel : listNopTien) {
             HoKhauModel hoKhauNopTien = new HoKhauService().getHoKhaubyIdNhanKhau(nopTienModel.getIdNopTien());
             if (hoKhau.getMaHo() == hoKhauNopTien.getMaHo() && nopTienModel.getMaKhoanThu() == khoanThuModel.getMaKhoanThu()) {
-                return true;
+            	return true;
             }
         }
         return false;

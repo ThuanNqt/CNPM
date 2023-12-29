@@ -16,7 +16,7 @@ public class NopTienService {
     public boolean add(NopTienModel nopTienModel) throws ClassNotFoundException, SQLException {
         try (Connection connection = MysqlConnection.getMysqlConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO nop_tien(IDNopTien, MaKhoanThu,SoTien, NgayThu) VALUES (?, ?, ?, NOW())",
+                     "INSERT INTO nop_tien(IDNopTien, MaKhoanThu, SoTien, NgayThu) VALUES (?, ?, ?, NOW())",
                      Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setInt(1, nopTienModel.getIdNopTien());
@@ -31,10 +31,10 @@ public class NopTienService {
 
     // Delete a money collection transaction
     public boolean delete(int idNopTien, int maKhoanThu) throws ClassNotFoundException, SQLException {
-        String sql = "DELETE FROM nop_tien WHERE IDNopTien = ? AND MaKhoanThu = ?";
+        //String sql = "DELETE FROM nop_tien WHERE IDNopTien = ? AND MaKhoanThu = ?";
+    	String sql = "DELETE FROM nop_tien WHERE IDNopTien = ? AND MaKhoanThu = ?";
         try (Connection connection = MysqlConnection.getMysqlConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-
             preparedStatement.setInt(1, idNopTien);
             preparedStatement.setInt(2, maKhoanThu);
             preparedStatement.executeUpdate();
@@ -48,7 +48,7 @@ public class NopTienService {
         List<NopTienModel> list = new ArrayList<>();
 
         try (Connection connection = MysqlConnection.getMysqlConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien WHERE Deleted = false");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
              ResultSet rs = preparedStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -68,7 +68,7 @@ public class NopTienService {
         List<NopTienModel> list = new ArrayList<>();
         double tongSoTien = 0;
         try (Connection connection = MysqlConnection.getMysqlConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien WHERE Deleted = false");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
              ResultSet rs = preparedStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -80,6 +80,7 @@ public class NopTienService {
                 list.add(nopTienModel);
                 
                 tongSoTien += nopTienModel.getSoTien();
+                
             }
         } // Auto-closes connection, preparedStatement, and resultSet
 

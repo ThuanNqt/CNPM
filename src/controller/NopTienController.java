@@ -101,36 +101,36 @@ public class NopTienController implements Initializable {
 		
 		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("ngayThu"));
 		
-//		colAction.setCellFactory(param -> new TableCell<NopTienModel, Void>() {
-////	       
-//			    private final HBox container = new HBox();
-//			    private final Button deleteButton = new Button("Xóa");
-//
-//			    {
-//			        deleteButton.setOnAction(event -> {
-//			            try {
-//			            	delNopTien();
-//			            } catch (ClassNotFoundException | SQLException e) {
-//			                e.printStackTrace();
-//			            }
-//			        });
-//
-//			      
-//			        container.setAlignment(Pos.CENTER);
-//			        container.getChildren().addAll(deleteButton);
-//			    }
-//
-//			    @Override
-//			    protected void updateItem(Void item, boolean empty) {
-//			        super.updateItem(item, empty);
-//
-//			        if (empty) {
-//			            setGraphic(null);
-//			        } else {
-//			            setGraphic(container);
-//			        }
-//			    }
-//			});
+		colAction.setCellFactory(param -> new TableCell<NopTienModel, Void>() {
+//	       
+			    private final HBox container = new HBox();
+			    private final Button deleteButton = new Button("Xóa");
+
+			    {
+			        deleteButton.setOnAction(event -> {
+			            try {
+			            	delNopTien();
+			            } catch (ClassNotFoundException | SQLException e) {
+			                e.printStackTrace();
+			            }
+			        });
+
+			      
+			        container.setAlignment(Pos.CENTER);
+			        container.getChildren().addAll(deleteButton);
+			    }
+
+			    @Override
+			    protected void updateItem(Void item, boolean empty) {
+			        super.updateItem(item, empty);
+
+			        if (empty) {
+			            setGraphic(null);
+			        } else {
+			            setGraphic(container);
+			        }
+			    }
+			});
 		
 		tvNopTien.setItems(listValueTableView);
 

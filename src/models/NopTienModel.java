@@ -45,5 +45,4 @@ public class NopTienModel {
 	public void setSoTien(double soTien) {
 		this.soTien = soTien;
 	}
-
 }
