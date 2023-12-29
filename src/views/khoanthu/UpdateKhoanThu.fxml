@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,25 +11,29 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.UpdateKhoanThu">
    <children>
-      <Label layoutX="79.0" layoutY="14.0" text="Thông tin khoản thu" AnchorPane.topAnchor="14.0">
+      <Label layoutX="79.0" layoutY="6.0" text="Thông tin khoản thu" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <TextField fx:id="tfMaKhoanThu" editable="false" layoutX="50.0" layoutY="137.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="110.0" />
-      <TextField fx:id="tfTenKhoanThu" layoutX="50.0" layoutY="199.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
-      <TextField fx:id="tfSoTien" layoutX="50.0" layoutY="319.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="320.0" />
-      <Button layoutX="100.0" layoutY="462.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật khoản thu" AnchorPane.bottomAnchor="106.0">
+      <TextField fx:id="tfMaKhoanThu" editable="false" layoutX="51.0" layoutY="76.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="76.0" />
+      <TextField fx:id="tfTenKhoanThu" layoutX="51.0" layoutY="146.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="146.0" />
+      <TextField fx:id="tfSoTien" layoutX="50.0" layoutY="285.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="285.0" />
+      <Button layoutX="101.0" layoutY="547.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật khoản thu" AnchorPane.bottomAnchor="21.799999999999955">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Label layoutX="50.0" layoutY="93.0" text="Mã khoản thu" />
-      <Label layoutX="50.0" layoutY="163.0" text="Tên khoản thu" />
-      <Label layoutX="50.0" layoutY="232.0" text="Loại khoản thu" />
-      <Label layoutX="50.0" layoutY="300.0" text="Số tiền" />
-      <Label layoutX="46.0" layoutY="372.0" prefHeight="17.0" prefWidth="87.0" text="Hình thức thu" />
-      <ComboBox fx:id="tfLoaiKhoanThu" layoutX="52.0" layoutY="257.0" prefHeight="30.0" prefWidth="300.0" />
-      <ComboBox fx:id="tfHinhThucThu" layoutX="50.0" layoutY="390.0" prefHeight="30.0" prefWidth="300.0" />
+      <Label layoutX="51.0" layoutY="59.0" text="Mã khoản thu" />
+      <Label layoutX="51.0" layoutY="129.0" text="Tên khoản thu" />
+      <Label layoutX="51.0" layoutY="198.0" text="Loại khoản thu" />
+      <Label layoutX="51.0" layoutY="266.0" text="Số tiền" />
+      <Label layoutX="47.0" layoutY="338.0" prefHeight="17.0" prefWidth="87.0" text="Hình thức thu" />
+      <ComboBox fx:id="tfLoaiKhoanThu" layoutX="51.0" layoutY="216.0" prefHeight="30.0" prefWidth="300.0" />
+      <ComboBox fx:id="tfHinhThucThu" layoutX="50.0" layoutY="356.0" prefHeight="30.0" prefWidth="300.0" />
+      <DatePicker fx:id="dpNgayBatDauThu" layoutX="51.0" layoutY="427.0" prefHeight="30.0" prefWidth="300.0" />
+      <DatePicker fx:id="dpNgayKetThucThu" layoutX="50.0" layoutY="494.0" prefHeight="30.0" prefWidth="300.0" />
+      <Label layoutX="50.0" layoutY="410.0" text="Ngày bắt đầu thu" />
+      <Label layoutX="50.0" layoutY="476.0" text="Ngày kết thúc thu" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

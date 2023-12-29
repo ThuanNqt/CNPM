@@ -33,7 +33,7 @@
             <TableColumn fx:id="colTen" prefWidth="190.0" text="Họ và tên" />
             <TableColumn fx:id="colGioiTinh" prefWidth="75.0" text="Giới tính" />
             <TableColumn fx:id="colTuoi" prefWidth="74.0" text="Tuổi" />
-            <TableColumn fx:id="colCMND" prefWidth="142.0" text="CCCD" />
+            <TableColumn fx:id="colCCCD" prefWidth="142.0" text="CCCD" />
             <TableColumn fx:id="colSDT" prefWidth="126.0" text="SĐT" />
             <TableColumn fx:id="colMaHo" prefWidth="95.0" text="Mã hộ" />
          </columns>

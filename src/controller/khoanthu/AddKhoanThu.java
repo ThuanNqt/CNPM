@@ -2,6 +2,7 @@ package controller.khoanthu;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -15,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -29,6 +31,8 @@ public class AddKhoanThu implements Initializable {
     @FXML private ComboBox<String> cbLoaiKhoanThu;
     @FXML private TextField tfSoTien;
     @FXML private ComboBox<String> cbHinhThucThu;
+    @FXML private DatePicker dpNgayBatDauThu;
+    @FXML private DatePicker dpNgayKetThucThu;
 
     private final KhoanThuService khoanThuService = new KhoanThuService();
 
@@ -54,6 +58,19 @@ public class AddKhoanThu implements Initializable {
             closeWindow(event);
         }
     }
+    
+    private boolean isValidDateRange() {
+        Date ngayBatDau = java.sql.Date.valueOf(dpNgayBatDauThu.getValue());
+        Date ngayKetThuc = java.sql.Date.valueOf(dpNgayKetThucThu.getValue());
+
+        if (ngayBatDau != null && ngayKetThuc != null && ngayBatDau.after(ngayKetThuc)) {
+            showAlert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.");
+            return false;
+        }
+
+        return true;
+    }
+
 
     private boolean isValidInput() throws ClassNotFoundException, SQLException {
         return validateField("Mã khoản thu", tfMaKhoanThu, this::validateMaKhoanThu)
@@ -67,7 +84,8 @@ public class AddKhoanThu implements Initializable {
 					return false;
 				})
                 && validateField("Tên khoản thu", tfTenKhoanThu, this::validateTenKhoanThu)
-                && validateField("Số tiền", tfSoTien, this::validateSoTien);
+                && validateField("Số tiền", tfSoTien, this::validateSoTien)
+                && isValidDateRange();
     }
 
     private boolean validateField(String fieldName, TextField textField, Validator validator) {
@@ -115,7 +133,11 @@ public class AddKhoanThu implements Initializable {
         double soTien = Double.parseDouble(tfSoTien.getText());
         int loaiKhoanThuValue = loaiKhoanThu.equals("Bắt buộc đóng") ? 1 : 0;
 
-        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThuValue, hinhThucThu));
+        Date ngayBatDauThu = java.sql.Date.valueOf(dpNgayBatDauThu.getValue());
+        
+        Date ngayKetThucThu = java.sql.Date.valueOf(dpNgayKetThucThu.getValue());
+        
+        khoanThuService.add(new KhoanThuModel(maKhoanThu, tenKhoanThu, soTien, loaiKhoanThuValue, hinhThucThu, ngayBatDauThu, ngayKetThucThu));
     }
 
     private void showAlert(String message) {

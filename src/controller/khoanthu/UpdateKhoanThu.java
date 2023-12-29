@@ -1,11 +1,14 @@
 package controller.khoanthu;
 
 import java.net.URL;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 import javafx.scene.control.ComboBox;
-
+import javafx.scene.control.DatePicker;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,6 +36,10 @@ public class UpdateKhoanThu implements Initializable{
     //private TextField tfLoaiKhoanThu;
     @FXML
     private TextField tfSoTien;
+    
+    @FXML private DatePicker dpNgayBatDauThu;
+    
+    @FXML private DatePicker dpNgayKetThucThu;
  
     //private TextField tfHinhThucThu;
 
@@ -53,6 +60,17 @@ public class UpdateKhoanThu implements Initializable{
         //tfHinhThucThu.setText(khoanThuModel.getHinhThucThu());
         tfHinhThucThu.setValue(khoanThuModel.getHinhThucThu());
         tfHinhThucThu.setEditable(false);
+        
+        java.util.Date ngayBatDauThuUtilDate = new java.util.Date(khoanThuModel.getNgayBatDauThu().getTime());
+        // Convert java.util.Date to LocalDate
+        LocalDate localDateNgayThu = ngayBatDauThuUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dpNgayBatDauThu.setValue(localDateNgayThu);
+        
+        
+        java.util.Date ngayKetThucThuThuUtilDate = new java.util.Date(khoanThuModel.getNgayKetThucThu().getTime());
+        // Convert java.util.Date to LocalDate
+        LocalDate localDateNgayKetThucThu = ngayKetThucThuThuUtilDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        dpNgayKetThucThu.setValue(localDateNgayKetThucThu);
     }
 
     public void updateKhoanThu(ActionEvent event) {
@@ -60,12 +78,10 @@ public class UpdateKhoanThu implements Initializable{
             if (isValidInput()) {
                 extractAndUpdateData();
                 closeWindow(event);
-            } else {
-                showAlert("Không thể thực hiện");
-            }
+            } 
         } catch (Exception e) {
             e.printStackTrace(); // Handle or log the exception as needed
-            showAlert("Đã xảy ra lỗi khi cập nhật khoản thu.");
+            //showAlert("Đã xảy ra lỗi khi cập nhật khoản thu.");
         }
     }
 
@@ -76,33 +92,44 @@ public class UpdateKhoanThu implements Initializable{
         int loaiKhoanThuInt = a.equals("Bắt buộc đóng") ? 1 : 0;
         double soTienDouble = Double.parseDouble(tfSoTien.getText());
         String hinhThucThuString = tfHinhThucThu.getSelectionModel().getSelectedItem().trim();
+        Date ngayBatDauThuDate = java.sql.Date.valueOf(dpNgayBatDauThu.getValue());
+        Date ngayKetThucThuDate = java.sql.Date.valueOf(dpNgayKetThucThu.getValue());
 
-        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt, hinhThucThuString);
+        new KhoanThuService().update(maKhoanThuInt, tenKhoanThuString, soTienDouble, loaiKhoanThuInt, hinhThucThuString, ngayBatDauThuDate, ngayKetThucThuDate);
     }
 
     private boolean isValidInput() {
-        if (isInvalidName() || isInvalidAmount()) {
-            return false;
-        }
-        return true;
+        return isInvalidAmount() && isInvalidName() && isValidDateRange();
     }
 
     private boolean isInvalidName() {
-        if (tfTenKhoanThu.getText().length() < 1 || tfTenKhoanThu.getText().length() > 50) {
+        if (tfTenKhoanThu.getText().length() < 1 || tfTenKhoanThu.getText().length() > 150) {
             showAlert("Hãy nhập vào tên khoản thu hợp lệ!");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
     private boolean isInvalidAmount() {
         Pattern amountPattern = Pattern.compile("\\d{1,11}");
         if (!amountPattern.matcher(tfSoTien.getText()).matches()) {
             showAlert("Hãy nhập vào số tiền hợp lệ!");
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
+    
+    private boolean isValidDateRange() {
+        Date ngayBatDau = java.sql.Date.valueOf(dpNgayBatDauThu.getValue());
+        Date ngayKetThuc = java.sql.Date.valueOf(dpNgayKetThucThu.getValue());
+
+        if (ngayBatDau != null && ngayKetThuc != null && ngayBatDau.after(ngayKetThuc)) {
+            showAlert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.");
+            return false;
+        }
+        return true;
+    }
+
 
     private void showAlert(String message) {
         Alert alert = new Alert(AlertType.WARNING, message, ButtonType.OK);

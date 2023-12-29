@@ -56,7 +56,7 @@ public class NhanKhauService {
                 }
             }
 
-            query = "SELECT * FROM chu_ho WHERE chu_ho.IDChuHo=?";
+        	query = "SELECT * FROM chu_ho WHERE chu_ho.IDChuHo=?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
                 preparedStatement.setInt(1, ID);
                 try (ResultSet rs = preparedStatement.executeQuery()) {

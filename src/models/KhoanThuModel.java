@@ -1,11 +1,15 @@
 package models;
 
+import java.util.Date;
+
 public class KhoanThuModel {
 	private int maKhoanThu;
 	private String tenKhoanThu;
 	private double soTien;
 	private int loaiKhoanThu;// tự nguyện là 1 bắt buộc là 0
 	private String hinhThucThu;
+	private Date ngayBatDauThu;
+	private Date ngayKetThucThu;
 	
 	public KhoanThuModel() {}
 	
@@ -15,12 +19,14 @@ public class KhoanThuModel {
 		this.loaiKhoanThu = loaiKhoanThu;
 	}
 	
-	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu,String hinhThucThu ) {
+	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu,String hinhThucThu, Date ngayBatDauThu, Date ngayKetThucThu ) {
 		this.maKhoanThu = maKhoanThu;
 		this.tenKhoanThu=tenKhoanThu;
 		this.soTien = soTien;
 		this.loaiKhoanThu = loaiKhoanThu;
 		this.hinhThucThu = hinhThucThu;
+		this.ngayBatDauThu = ngayBatDauThu;
+		this.ngayKetThucThu = ngayKetThucThu;
 	}
 	public KhoanThuModel(int maKhoanThu ,String tenKhoanThu, double soTien, int loaiKhoanThu ) {
 		this.maKhoanThu = maKhoanThu;
@@ -67,4 +73,22 @@ public class KhoanThuModel {
 	public void setHinhThucThu(String hinhThucThu) {
 		this.hinhThucThu = hinhThucThu;
 	}
+
+	public Date getNgayBatDauThu() {
+		return ngayBatDauThu;
+	}
+
+	public void setNgayBatDauThu(Date ngayBatDauThu) {
+		this.ngayBatDauThu = ngayBatDauThu;
+	}
+
+	public Date getNgayKetThucThu() {
+		return ngayKetThucThu;
+	}
+
+	public void setNgayKetThucThu(Date ngayKetThucThu) {
+		this.ngayKetThucThu = ngayKetThucThu;
+	}
+	
+	
 }

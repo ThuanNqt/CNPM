@@ -14,7 +14,12 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+delete from nop_tien;
+delete from khoan_thu;
+delete from quan_he;
+delete from chu_ho;
+delete from ho_khau;
+delete from nhan_khau;
 --
 -- Các lệnh DROP TABLE IF EXISTS cho bảng `nop_tien`
 --
@@ -66,7 +71,6 @@ DROP TABLE IF EXISTS `users`;
 
 --
 -- Cấu trúc bảng cho bảng `nhan_khau`
---
 
 CREATE TABLE `nhan_khau` (
   `ID` int(11) NOT NULL,
@@ -141,7 +145,9 @@ CREATE TABLE `khoan_thu` (
   `TenKhoanThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
   `SoTien` double NOT NULL,
   `LoaiKhoanThu` int(11) NOT NULL,
-  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL
+  `HinhThucThu` varchar(100) COLLATE utf8mb4_vietnamese_ci NOT NULL,
+  `NgayBatDauThu` date NOT NULL,
+  `NgayKetThucThu` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 -- --------------------------------------------------------
@@ -154,7 +160,8 @@ CREATE TABLE `nop_tien` (
   `IDNopTien` int(11) NOT NULL,
   `MaKhoanThu` int(11) NOT NULL,
   `SoTien` double NOT NULL,
-  `NgayThu` date DEFAULT NULL
+  `NgayThu` date DEFAULT NULL,
+  `Deleted` boolean default false
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 
@@ -168,7 +175,7 @@ CREATE TABLE `nop_tien` (
 -- Chỉ mục cho bảng `nhan_khau`
 --
 ALTER TABLE `nhan_khau`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`,`CCCD`);
 
 --
 -- Chỉ mục cho bảng `ho_khau`
@@ -210,10 +217,6 @@ ALTER TABLE `nop_tien`
   ADD KEY `nop_tien_2` (`MaKhoanThu`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
---
-
---
 -- AUTO_INCREMENT cho bảng `nhan_khau`
 --
 ALTER TABLE `nhan_khau`
@@ -242,10 +245,6 @@ ALTER TABLE `users`
 --
 ALTER TABLE `khoan_thu`
   MODIFY `MaKhoanThu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Các ràng buộc cho các bảng đã đổ
---
 
 --
 -- Các ràng buộc cho bảng `quan_he`
@@ -285,22 +284,22 @@ COMMIT;
 INSERT INTO nhan_khau (ID, CCCD, Ten, GioiTinh, NgaySinh, SDT, BietDanh, DanToc, NoiThuongTru, NgheNghiep, NoiLamViec, NguyenQuan, NoiCapCCCD)
 VALUES
   (1, '123456789', 'Nguyen Van A', 'Nam', '1990-05-15', '0987654321', 'A', 'Kinh', '12 Nguyen Hue, TP HCM', 'Nhan vien kinh doanh', 'ABC Company', 'Ha Noi', 'Public Security Department'),
-  (2, '987654321', 'Tran Thi B', 'Nu', '1995-08-22', '0123456789', 'B', 'Kinh', '45 Le Loi, Da Nang', 'Giao vien', 'XYZ School', 'Da Nang', 'Public Security Department'),
+  (2, '987654321', 'Tran Thi B', 'Nữ', '1995-08-22', '0123456789', 'B', 'Kinh', '45 Le Loi, Da Nang', 'Giao vien', 'XYZ School', 'Da Nang', 'Public Security Department'),
   (3, '111223344', 'Le Van C', 'Nam', '1988-11-03', '0765432109', 'C', 'Kinh', '30 Ba Trieu, Hue', 'Bac si', 'DEF Hospital', 'Hue', 'Public Security Department'),
-  (4, '444444444', 'Phan Thi D', 'Nu', '1993-04-05', '0999888777', 'D', 'Kinh', '18 Tran Hung Dao, Quang Ninh', 'Ky su', 'JKL Engineering', 'Quang Ninh', 'Public Security Department'),
+  (4, '444444444', 'Phan Thi D', 'Nữ', '1993-04-05', '0999888777', 'D', 'Kinh', '18 Tran Hung Dao, Quang Ninh', 'Ky su', 'JKL Engineering', 'Quang Ninh', 'Public Security Department'),
   (5, '555555555', 'Ho Van E', 'Nam', '1992-07-18', '0321654987', 'E', 'Kinh', '99 Truong Chinh, Hai Phong', 'Nha van', 'GHI Publishing', 'Hai Phong', 'Public Security Department'),
-  (6, '666666666', 'Do Thi F', 'Nu', '1997-01-30', '0777888999', 'F', 'Kinh', '25 Nguyen Dinh Chieu, Can Tho', 'Nong dan', 'MNO Farm', 'Can Tho', 'Public Security Department'),
-  (7, '777777777', 'Vu Van G', 'Nam', '1985-09-12', '0888777666', 'G', 'Kinh', '72 Le Lai, Vinh', 'Chuyen vien IT', 'PQR Solutions', 'Vinh', 'Public Security Department'),
-  (8, '888888888', 'Trinh Thi H', 'Nu', '1998-03-25', '0666999888', 'H', 'Kinh', '6 Hoang Dieu, Nha Trang', 'Nhan vien marketing', 'STU Marketing', 'Nha Trang', 'Public Security Department'),
+  (6, '666666666', 'Do Thi F', 'Nữ', '1997-01-30', '0777888999', 'F', 'Kinh', '25 Nguyen Dinh Chieu, Can Tho', 'Nong dan', 'MNO Farm', 'Can Tho', 'Public Security Department'),
+  (7, '777777777', 'Vu Van G', 'Nữ', '1985-09-12', '0888777666', 'G', 'Kinh', '72 Le Lai, Vinh', 'Chuyen vien IT', 'PQR Solutions', 'Vinh', 'Public Security Department'),
+  (8, '888888888', 'Trinh Thi H', 'Nữ', '1998-03-25', '0666999888', 'H', 'Kinh', '6 Hoang Dieu, Nha Trang', 'Nhan vien marketing', 'STU Marketing', 'Nha Trang', 'Public Security Department'),
   (9, '999999999', 'Nguyen Van I', 'Nam', '1987-06-08', '0555666777', 'I', 'Kinh', '8 Tran Phu, Hue', 'Bac si', 'VXY Hospital', 'Hue', 'Public Security Department'),
-  (10, '101010101', 'Le Thi K', 'Nu', '1994-12-20', '0444333222', 'K', 'Kinh', '15 Le Thanh Tong, Da Nang', 'Giao vien', 'WYZ School', 'Da Nang', 'Public Security Department');
+  (10, '101010101', 'Le Thi K', 'Nữ', '1994-12-20', '0444333222', 'K', 'Kinh', '15 Le Thanh Tong, Da Nang', 'Giao vien', 'WYZ School', 'Da Nang', 'Public Security Department');
 
 
 
 
   
   
-  INSERT INTO `ho_khau` (`MaHo`, `SoThanhVien`, `DiaChi`)
+INSERT INTO `ho_khau` (`MaHo`, `SoThanhVien`, `DiaChi`)
 VALUES
   (1, 4, 'Ngõ 123, Đường Lạc Long Quân, Quận Hồng Bàng, Hải Phòng'),
   (2, 3, 'Số 10, Đường Lê Lợi, Phường Đông Cương, Thành phố Thanh Hóa, Tỉnh Thanh Hóa'),
@@ -335,19 +334,20 @@ VALUES
   
   
   
-  INSERT INTO `khoan_thu` (`MaKhoanThu`, `TenKhoanThu`, `SoTien`, `LoaiKhoanThu`,`HinhThucThu`) VALUES
-(1, 'Phí sinh hoạt năm 2023', 66000, 1, 'Theo đầu người'),
-(2, 'Phí sinh hoạt năm 2024', 66000, 1, 'Theo đầu người'),
-(3, 'Ủng hộ quỹ vì người nghèo', 10000, 0, 'Theo hộ'),
-(4, 'Cứu trợ đồng bào bị ảnh hưởng bởi thiên tai, bão lụt', 10000, 0,'Theo hộ'),
-(5, 'Ủng hộ nạn nhân chất độc da cam', 10000, 0,'Theo hộ'),
-(6, 'Ủng hộ ngày Tết thiếu nhi', 10000, 0,'Theo hộ'),
-(7, 'Ủng hộ ngày thương binh liệt sỹ 27/7', 10000, 0,'Theo hộ'),
-(8, 'Ủng hộ phong trào Tết nhân ái', 10000, 0,'Theo hộ'),
-(9, 'Ủng hộ quỹ Vì biển, đảo Việt Nam', 10000, 0,'Theo hộ'),
-(10, 'Ủng hộ quỹ Trái tim cho em', 10000, 0,'Theo hộ'),
-(11, 'Ủng hộ quỹ khuyến học', 10000, 0,'Theo hộ'),
-(12, 'Ủng hộ quỹ vaccine', 10000, 0,'Theo hộ');
+INSERT INTO `khoan_thu` (`MaKhoanThu`, `TenKhoanThu`, `SoTien`, `LoaiKhoanThu`,`HinhThucThu`, `NgayBatDauThu`,`NgayKetThucThu`) VALUES
+(1, 'Phí sinh hoạt năm 2023', 66000, 1, 'Theo đầu người','2023-01-16','2024-01-16'),
+(2, 'Phí sinh hoạt năm 2024', 66000, 1, 'Theo đầu người','2023-01-16','2024-01-16'),
+(3, 'Ủng hộ quỹ vì người nghèo', 10000, 0, 'Theo hộ','2023-01-16','2024-01-16'),
+(4, 'Cứu trợ đồng bào bị ảnh hưởng bởi thiên tai, bão lụt', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(5, 'Ủng hộ nạn nhân chất độc da cam', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(6, 'Ủng hộ ngày Tết thiếu nhi', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(7, 'Ủng hộ ngày thương binh liệt sỹ 27/7', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(8, 'Ủng hộ phong trào Tết nhân ái', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(9, 'Ủng hộ quỹ Vì biển, đảo Việt Nam', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(10, 'Ủng hộ quỹ Trái tim cho em', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(11, 'Ủng hộ quỹ khuyến học', 10000, 0,'Theo hộ','2023-01-16','2024-01-16'),
+(12, 'Ủng hộ quỹ vaccine', 10000, 0,'Theo hộ','2023-01-16','2024-01-16');
+
 
 INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`,`SoTien`, `NgayThu`) VALUES
 (1, 1,66000, '2023-01-16'),
@@ -362,6 +362,7 @@ INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`,`SoTien`, `NgayThu`) VALUES
 (7, 1, 66000,'2023-07-01'),
 (8, 1,66000, '2023-03-11'),
 (10, 1,66000, '2023-01-16');
+
 
 
 select * from chu_ho;

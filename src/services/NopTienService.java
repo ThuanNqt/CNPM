@@ -16,7 +16,7 @@ public class NopTienService {
     public boolean add(NopTienModel nopTienModel) throws ClassNotFoundException, SQLException {
         try (Connection connection = MysqlConnection.getMysqlConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(
-                     "INSERT INTO nop_tien(IDNopTien, MaKhoanThu,SoTien, NgayThu) VALUES (?, ?,?, NOW())",
+                     "INSERT INTO nop_tien(IDNopTien, MaKhoanThu,SoTien, NgayThu) VALUES (?, ?, ?, NOW())",
                      Statement.RETURN_GENERATED_KEYS)) {
 
             preparedStatement.setInt(1, nopTienModel.getIdNopTien());
@@ -48,7 +48,7 @@ public class NopTienService {
         List<NopTienModel> list = new ArrayList<>();
 
         try (Connection connection = MysqlConnection.getMysqlConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien WHERE Deleted = false");
              ResultSet rs = preparedStatement.executeQuery()) {
 
             while (rs.next()) {
@@ -68,7 +68,7 @@ public class NopTienService {
         List<NopTienModel> list = new ArrayList<>();
         double tongSoTien = 0;
         try (Connection connection = MysqlConnection.getMysqlConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien");
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM nop_tien WHERE Deleted = false");
              ResultSet rs = preparedStatement.executeQuery()) {
 
             while (rs.next()) {

@@ -38,9 +38,11 @@ public class ChooseNguoiNop implements Initializable {
 	@FXML
 	private TableColumn<NhanKhauModel, String> colTen;
 	@FXML
+	private TableColumn<NhanKhauModel, String> colGioiTinh;
+	@FXML
 	private TableColumn<NhanKhauModel, String> colTuoi;
 	@FXML
-	private TableColumn<NhanKhauModel, String> colCMND;
+	private TableColumn<NhanKhauModel, String> colCCCD;
 	@FXML
 	private TableColumn<NhanKhauModel, String> colSDT;
 	@FXML
@@ -79,8 +81,9 @@ public class ChooseNguoiNop implements Initializable {
 		// thiet lap cac cot cho tableviews
 		colMaNhanKhau.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("id"));
 		colTen.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("ten"));
+		colGioiTinh.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("gioiTinh"));
 		colTuoi.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("tuoi"));
-		colCMND.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cmnd"));
+		colCCCD.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("cccd"));
 		colSDT.setCellValueFactory(new PropertyValueFactory<NhanKhauModel, String>("sdt"));
 		try {
 			colMaHo.setCellValueFactory((CellDataFeatures<NhanKhauModel, String> p) -> new ReadOnlyStringWrapper(

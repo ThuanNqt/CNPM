@@ -1,7 +1,10 @@
 package controller.noptien;
 
+import java.util.Date;
 import java.net.URL;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -52,17 +55,45 @@ public class ChooseKhoanNop implements Initializable {
  }
 
  public void showKhoanThu() {
-     try {
-         listKhoanThu = new KhoanThuService().getListKhoanThu();
-         listValueTableView = FXCollections.observableArrayList(listKhoanThu);
+ //    try {
+//         listKhoanThu = new KhoanThuService().getListKhoanThu();
+//         listValueTableView = FXCollections.observableArrayList(listKhoanThu);
+//
+//         configureTableColumns();
+//         configureComboBox();
+//
+//         tvKhoanPhi.setItems(listValueTableView);
+//     } catch (ClassNotFoundException | SQLException e) {
+//         e.printStackTrace(); // Handle or log the exception appropriately
+//     }
+    	 
+    	 try {
+             listKhoanThu = new KhoanThuService().getListKhoanThu();
 
-         configureTableColumns();
-         configureComboBox();
+             // Lọc ra những khoản thu có ngayKetThucThu nhỏ hơn hoặc bằng ngày hiện tại
+             listKhoanThu = listKhoanThu.stream()
+                     .filter(model -> {
+                         Date ngayKetThucThu = model.getNgayKetThucThu();
+                         if (ngayKetThucThu == null) {
+                             // Nếu ngayKetThucThu là null, không lọc nó ra
+                             return false;
+                         }
+                         
+                         Date currentDate = new Date();
+                         return ngayKetThucThu.after(currentDate);
+                     })
+                     .collect(Collectors.toList());
 
-         tvKhoanPhi.setItems(listValueTableView);
-     } catch (ClassNotFoundException | SQLException e) {
-         e.printStackTrace(); // Handle or log the exception appropriately
-     }
+             listValueTableView = FXCollections.observableArrayList(listKhoanThu);
+
+             configureTableColumns();
+             configureComboBox();
+
+             tvKhoanPhi.setItems(listValueTableView);
+         } catch (ClassNotFoundException | SQLException e) {
+             e.printStackTrace(); // Handle or log the exception appropriately
+         }
+     
  }
 
  private void configureTableColumns() {
@@ -76,7 +107,7 @@ public class ChooseKhoanNop implements Initializable {
  }
 
  private String getLoaiKhoanThuString(int loaiKhoanThu) {
-     Map<Integer, String> mapLoaiKhoanThu = Map.of(1, "Bắt buộc", 0, "Tự nguyện");
+     Map<Integer, String> mapLoaiKhoanThu = Map.of(1, "Bắt buộc đóng", 0, "Ủng hộ");
      return mapLoaiKhoanThu.get(loaiKhoanThu);
  }
 

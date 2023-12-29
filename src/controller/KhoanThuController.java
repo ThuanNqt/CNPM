@@ -56,6 +56,10 @@ public class KhoanThuController implements Initializable {
 	@FXML
 	private TableColumn<KhoanThuModel, String> colHinhThucThu;
 	@FXML
+	private TableColumn<KhoanThuModel, String> colNgayBatDauThu;
+	@FXML
+	private TableColumn<KhoanThuModel, String> colNgayKetThucThu;
+	@FXML
 	private TableColumn<KhoanThuModel, Void> colAction;
 	@FXML
 	private TextField tfSearch;
@@ -124,6 +128,10 @@ public class KhoanThuController implements Initializable {
 		}
 		
 		colHinhThucThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("hinhThucThu"));
+		
+		colNgayBatDauThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayBatDauThu"));
+		
+		colNgayKetThucThu.setCellValueFactory(new PropertyValueFactory<KhoanThuModel, String>("ngayKetThucThu"));
 		
 		tvKhoanPhi.setItems(listValueTableView);
 
