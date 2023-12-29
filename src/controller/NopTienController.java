@@ -2,6 +2,9 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,6 +44,7 @@ import models.NhanKhauModel;
 import models.NopTienModel;
 import services.ChuHoService;
 import services.KhoanThuService;
+import services.MysqlConnection;
 import services.NhanKhauService;
 import services.NopTienService;
 
@@ -57,18 +61,50 @@ public class NopTienController implements Initializable {
 	private TableColumn<NopTienModel, String> tbcNgayThu;
 	@FXML
 	private TableColumn<NopTienModel, Void> colAction;
-	@FXML
-	private ComboBox<String> cbChooseSearch;
-	@FXML
-	private TextField tfSearch;
 
+	
+	@FXML
+    private Button deleteNopTienButton;
+
+	
 	ObservableList<NopTienModel> listValueTableView;
 	private List<NopTienModel> listNopTien;
+	private List<NopTienModel> listDeleteNopTien;
 	private List<NhanKhauModel> listNhanKhau;
 	private List<KhoanThuModel> listKhoanThu;
 	Map<Integer, String> mapIdToTen;
 	Map<Integer, String> mapIdToTenKhoanThu;
+	
+//	@FXML
+//    private void handleDeleteNopTienButtonAction(ActionEvent event) {
+//        try {
+//            showNopTienDaXoa();
+//        } catch (ClassNotFoundException | SQLException e) {
+//            e.printStackTrace(); // Xử lý ngoại lệ theo ý bạn
+//        }
+//    }
 
+	@FXML
+	private void handleDeleteNopTienButtonAction(ActionEvent event) throws IOException {
+	  try {
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DeleteNopTien.fxml"));
+	    Parent root = loader.load();
+	    DeleteNopTienController deleteNopTienController = loader.getController();  // Lấy controller
+
+	    // Gọi phương thức showNopTienDaXoa trên controller đã khởi tạo
+	    deleteNopTienController.showNopTienDaXoa();
+
+	    Stage stage = new Stage();
+	    stage.setScene(new Scene(root));
+	    stage.setTitle("Delete Nop Tien");
+	    stage.show();
+	  } catch (ClassNotFoundException | SQLException e) {
+	    e.printStackTrace(); // Xử lý ngoại lệ theo ý bạn
+	  }
+	}
+
+
+	
 	public void showNopTien() throws ClassNotFoundException, SQLException {
 		listNopTien = new NopTienService().getListNopTien();
 		listKhoanThu = new KhoanThuService().getListKhoanThu();
@@ -133,86 +169,8 @@ public class NopTienController implements Initializable {
 			});
 		
 		tvNopTien.setItems(listValueTableView);
-
-		// thiet lap gia tri cho combobox
-		ObservableList<String> listComboBox = FXCollections.observableArrayList("Tên người nộp", "Tên khoản thu");
-		cbChooseSearch.setValue("Tìm kiếm theo");
-		cbChooseSearch.setItems(listComboBox);
 	}
 
-	public void searchNopTien() {
-		ObservableList<NopTienModel> listValueTableView_tmp = null;
-		String keySearch = tfSearch.getText();
-
-		// lay lua chon tim kiem cua khach hang
-		SingleSelectionModel<String> typeSearch = cbChooseSearch.getSelectionModel();
-		String typeSearchString = typeSearch.getSelectedItem();
-
-		// tim kiem thong tin theo lua chon da lay ra
-		switch (typeSearchString) {
-		case "Tên người nộp": {
-			// neu khong nhap gi -> thong bao loi
-			if (keySearch.length() == 0) {
-				tvNopTien.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên người nộp!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				break;
-			}
-
-			int index = 0;
-			List<NopTienModel> listNopTienModelsSearch = new ArrayList<>();
-			for (NopTienModel nopTienModel : listNopTien) {
-				if (mapIdToTen.get(nopTienModel.getIdNopTien()).contains(keySearch)) {
-					listNopTienModelsSearch.add(nopTienModel);
-					index++;
-				}
-			}
-			listValueTableView_tmp = FXCollections.observableArrayList(listNopTienModelsSearch);
-			tvNopTien.setItems(listValueTableView_tmp);
-
-			// neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
-			// tim thay
-			if (index == 0) {
-				tvNopTien.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-			}
-			break;
-		}
-		default: { // truong hop con lai : tim theo ten khoan thu
-			// neu khong nhap gi -> thong bao loi
-			if (keySearch.length() == 0) {
-				tvNopTien.setItems(listValueTableView);
-				Alert alert = new Alert(AlertType.WARNING, "Hãy nhập vào tên khoản thu!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-				break;
-			}
-
-			int index = 0;
-			List<NopTienModel> listNopTienModelsSearch = new ArrayList<>();
-			for (NopTienModel nopTienModel : listNopTien) {
-				if (mapIdToTenKhoanThu.get(nopTienModel.getIdNopTien()).contains(keySearch)) {
-					listNopTienModelsSearch.add(nopTienModel);
-					index++;
-				}
-			}
-			listValueTableView_tmp = FXCollections.observableArrayList(listNopTienModelsSearch);
-			tvNopTien.setItems(listValueTableView_tmp);
-
-			// neu khong tim thay thong tin can tim kiem -> thong bao toi nguoi dung khong
-			// tim thay
-			if (index == 0) {
-				tvNopTien.setItems(listValueTableView); // hien thi toan bo thong tin
-				Alert alert = new Alert(AlertType.INFORMATION, "Không tìm thấy!", ButtonType.OK);
-				alert.setHeaderText(null);
-				alert.showAndWait();
-			}
-		}
-		}
-	}
 
 	public void addNopTien(ActionEvent event) throws IOException, ClassNotFoundException, SQLException {
 		Parent home = FXMLLoader.load(getClass().getResource("/views/noptien/AddNopTien.fxml"));
@@ -233,7 +191,7 @@ public class NopTienController implements Initializable {
 			alert.showAndWait();
 		}
 		
-		Alert alert = new Alert(AlertType.WARNING, "Bạn chắc chắn muốn xóa khoản này?", ButtonType.YES,
+		Alert alert = new Alert(AlertType.WARNING, "Bạn chắc chắn muốn xóa khoản nộp này?", ButtonType.YES,
 				ButtonType.NO);
 		alert.setHeaderText(null);
 		Optional<ButtonType> result = alert.showAndWait();
@@ -241,12 +199,77 @@ public class NopTienController implements Initializable {
 		if (result.get() == ButtonType.NO) {
 			return;
 		} else {
+			String sql = "INSERT INTO delete_nop_tien(IDNopTien, MaKhoanThu, SoTien, NgayThu) VALUES (?, ? , ?, ?)";
+	        try (Connection connection = MysqlConnection.getMysqlConnection();
+	             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+	            preparedStatement.setInt(1, nopTienModel.getIdNopTien());
+	            preparedStatement.setInt(2, nopTienModel.getMaKhoanThu());
+	            preparedStatement.setDouble(3, nopTienModel.getSoTien());
+	            preparedStatement.setDate(4, (Date) nopTienModel.getNgayThu());
+	            preparedStatement.executeUpdate();
+	        }
 			new NopTienService().delete(nopTienModel.getIdNopTien(), nopTienModel.getMaKhoanThu());
 		}
 		
 		showNopTien();
 	}
 
+	
+	
+//	public void showNopTienDaXoa() throws ClassNotFoundException, SQLException {
+//		listDeleteNopTien = new NopTienService().getListDeleteNopTien();
+//		listKhoanThu = new KhoanThuService().getListKhoanThu();
+//		listNhanKhau = new NhanKhauService().getListNhanKhau();
+//		listValueTableView = FXCollections.observableArrayList(listDeleteNopTien);
+//
+//		mapIdToTen = new HashMap<>();
+//		listNhanKhau.forEach(nhankhau -> {
+//			mapIdToTen.put(nhankhau.getId(), nhankhau.getTen());
+//		});
+//		mapIdToTenKhoanThu = new HashMap<>();
+//		listKhoanThu.forEach(khoanthu -> {
+//			mapIdToTenKhoanThu.put(khoanthu.getMaKhoanThu(), khoanthu.getTenKhoanThu());
+//		});
+//
+//		try {
+//			tbcTenNguoi.setCellValueFactory((CellDataFeatures<NopTienModel, String> p) -> new ReadOnlyStringWrapper(
+//					mapIdToTen.get(p.getValue().getIdNopTien())));
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		try {
+//			tbcTenKhoanThu.setCellValueFactory((CellDataFeatures<NopTienModel, String> p) -> new ReadOnlyStringWrapper(
+//					mapIdToTenKhoanThu.get(p.getValue().getMaKhoanThu())));
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
+//		tbcSoTien.setCellValueFactory(new PropertyValueFactory<>("soTien"));
+//		
+//		tbcNgayThu.setCellValueFactory(new PropertyValueFactory<>("ngayThu"));
+//		
+//		
+//		tvNopTien.setItems(listValueTableView);
+//		
+//		 try {
+//		        // Tạo FXMLLoader
+//		        FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DeleteNopTien.fxml"));
+//
+//		        // Load file FXML để tạo Parent
+//		        Parent root = loader.load();
+//
+//		        // Hiển thị Stage mới
+//		        Stage stage = new Stage();
+//		        stage.setScene(new Scene(root));
+//		        stage.setTitle("Delete Nop Tien");
+//		        stage.show();
+//		        
+//		    } catch (IOException e) {
+//		        e.printStackTrace(); // Xử lý ngoại lệ theo ý bạn
+//		    }
+//	}
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

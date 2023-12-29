@@ -8,6 +8,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.HoKhauModel;
+import models.KhoanThuModel;
 import models.NopTienModel;
 
 public class NopTienService {
@@ -86,4 +88,25 @@ public class NopTienService {
 
         return tongSoTien;
     }
+    
+    public List<NopTienModel> getListDeleteNopTien() throws ClassNotFoundException, SQLException {
+        List<NopTienModel> list = new ArrayList<>();
+
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM delete_nop_tien");
+             ResultSet rs = preparedStatement.executeQuery()) {
+
+            while (rs.next()) {
+                NopTienModel nopTienModel = new NopTienModel();
+                nopTienModel.setIdNopTien(rs.getInt("IDNopTien"));
+                nopTienModel.setMaKhoanThu(rs.getInt("MaKhoanThu"));
+                nopTienModel.setSoTien(rs.getDouble("SoTien"));
+                nopTienModel.setNgayThu(rs.getDate("NgayThu"));
+                list.add(nopTienModel);
+            }
+        } // Auto-closes connection, preparedStatement, and resultSet
+
+        return list;
+    }
+    
 }

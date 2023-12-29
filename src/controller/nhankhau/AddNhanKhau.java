@@ -4,6 +4,7 @@ import java.net.URL;
 
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
@@ -19,8 +20,10 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import models.HoKhauModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
+import services.HoKhauService;
 import services.NhanKhauService;
 import services.QuanHeService;
 
@@ -62,63 +65,137 @@ public class AddNhanKhau implements Initializable{
 
     public void addNhanKhau(ActionEvent event) {
         try {
-            validateInput();
-            performDatabaseOperations();
-            closeStage(event);
+            if(validateInput()) {
+            	performDatabaseOperations();            	
+            	closeStage(event);
+            }
         } catch (Exception e) {
             showAlert("Error", "Không thể thực hiện", AlertType.ERROR);
             e.printStackTrace(); // Handle or log the exception appropriately
         }
     }
 
-    private void validateInput() throws Exception {
-        Pattern pattern;
+//    private void validateInput() throws Exception {
+//        Pattern pattern;
+//
+//        // Validate ID
+//        pattern = Pattern.compile("\\d{1,11}");
+//        if (!pattern.matcher(tfId.getText()).matches()) {
+//            throw new Exception("Invalid ID. Please enter a valid ID (up to 11 digits).");
+//        }
+//
+//        // Validate Name
+//        if (tfTen.getText().length() >= 100 || tfTen.getText().length() <= 1) {
+//            throw new Exception("Invalid name. Please enter a name with 1 to 50 characters.");
+//        }
+//
+//     // Validate GioiTinh
+//        /*if (tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() >= 4 || tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() <= 1) {
+//            throw new Exception("Invalid gender. Please enter a name with 1 to 4 characters.");
+//        }*/
+//     // Validate GioiTinh
+//       
+//        
+//
+//        
+//        // Validate CCCD
+//        pattern = Pattern.compile("\\d{1,20}");
+//        if (!pattern.matcher(tfCccd.getText()).matches()) {
+//            throw new Exception("Invalid CCCD. Please enter a valid CCCD (up to 20 digits).");
+//        }
+//
+//        // Validate SDT
+//        pattern = Pattern.compile("\\d{1,15}");
+//        if (!pattern.matcher(tfSdt.getText()).matches()) {
+//            throw new Exception("Invalid phone number. Please enter a valid phone number (up to 15 digits).");
+//        }
+//
+//        // Validate MaHoKhau
+//        pattern = Pattern.compile("\\d{1,11}");
+//        if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
+//            throw new Exception("Invalid MaHoKhau. Please enter a valid MaHoKhau (up to 11 digits).");
+//        }
+//
+//        // Validate QuanHe
+//        if (tfQuanHe.getText().length() >= 30 || tfQuanHe.getText().length() <= 1) {
+//            throw new Exception("Invalid relationship. Please enter a valid relationship with 1 to 30 characters.");
+//        }
+//    }
+    
+    private boolean validateInput() throws ClassNotFoundException, SQLException {
+        return validateID() && validateName() && validateCCCD() && validateMaHo() ;
+    }
 
-        // Validate ID
-        pattern = Pattern.compile("\\d{1,11}");
+    //validate ID
+    private boolean validateID() throws ClassNotFoundException, SQLException {
+        Pattern pattern = Pattern.compile("\\d{1,11}");
         if (!pattern.matcher(tfId.getText()).matches()) {
-            throw new Exception("Invalid ID. Please enter a valid ID (up to 11 digits).");
+            showAlert("Hãy nhập vào ID hợp lệ!");
+            return false;
         }
 
-        // Validate Name
-        if (tfTen.getText().length() >= 50 || tfTen.getText().length() <= 1) {
-            throw new Exception("Invalid name. Please enter a name with 1 to 50 characters.");
+        List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
+        for (NhanKhauModel nhanKhau : listNhanKhauModels) {
+            if (nhanKhau.getId() == Integer.parseInt(tfId.getText())) {
+                showAlert("ID nhân khẩu bị trùng!");
+                return false;
+            }
         }
-
-     // Validate GioiTinh
-        /*if (tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() >= 4 || tfGioiTinh.getSelectionModel().getSelectedItem().trim().length() <= 1) {
-            throw new Exception("Invalid gender. Please enter a name with 1 to 4 characters.");
-        }*/
-     // Validate GioiTinh
-       
-        
-
-        
-        // Validate CCCD
-        pattern = Pattern.compile("\\d{1,20}");
-        if (!pattern.matcher(tfCccd.getText()).matches()) {
-            throw new Exception("Invalid CCCD. Please enter a valid CCCD (up to 20 digits).");
-        }
-
-        // Validate SDT
-        pattern = Pattern.compile("\\d{1,15}");
-        if (!pattern.matcher(tfSdt.getText()).matches()) {
-            throw new Exception("Invalid phone number. Please enter a valid phone number (up to 15 digits).");
-        }
-
-        // Validate MaHoKhau
-        pattern = Pattern.compile("\\d{1,11}");
-        if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
-            throw new Exception("Invalid MaHoKhau. Please enter a valid MaHoKhau (up to 11 digits).");
-        }
-
-        // Validate QuanHe
-        if (tfQuanHe.getText().length() >= 30 || tfQuanHe.getText().length() <= 1) {
-            throw new Exception("Invalid relationship. Please enter a valid relationship with 1 to 30 characters.");
-        }
+        return true;
     }
     
+    //validate CCCD
+    private boolean validateCCCD() throws ClassNotFoundException, SQLException {
+        Pattern pattern = Pattern.compile("\\d{1,11}");
+        if (!pattern.matcher(tfCccd.getText()).matches()) {
+            showAlert("Hãy nhập vào CCCD hợp lệ!");
+            return false;
+        }
+
+        List<NhanKhauModel> listNhanKhauModels = new NhanKhauService().getListNhanKhau();
+        for (NhanKhauModel nhanKhau : listNhanKhauModels) {
+            if (nhanKhau.getCccd().equals(tfCccd.getText())) {
+                showAlert("CCCD bị trùng!");
+                return false;
+            }
+        }
+        return true;
+    }
     
+    //validate Mahokhau
+    private boolean validateMaHo() throws ClassNotFoundException, SQLException {
+        Pattern pattern = Pattern.compile("\\d{1,11}");
+        if (!pattern.matcher(tfMaHoKhau.getText()).matches()) {
+            showAlert("Hãy nhập vào mã hộ khẩu hợp lệ!");
+            return false;
+        }
+        
+        boolean check = false;
+        
+        List<HoKhauModel> listHoKhauModels = new HoKhauService().getListHoKhau();
+        for (HoKhauModel hokhau : listHoKhauModels) {
+            if (hokhau.getMaHo() == Integer.parseInt(tfMaHoKhau.getText())) {
+                check = true;
+            }
+        }
+        if(!check) {
+        	showAlert("Mã hộ khẩu không tồn tại!");
+        	return false;
+        }
+        return true;
+    }
+
+    //validate Name
+    private boolean validateName() {
+        if (tfTen.getText().length() >= 50 || tfTen.getText().length() <= 1) {
+            showAlert("Hãy nhập vào tên hợp lệ!");
+            return false;
+        }
+        return true;
+    }
+
+    
+
 
     private void performDatabaseOperations() throws ClassNotFoundException, SQLException {
         int idInt = Integer.parseInt(tfId.getText());
@@ -152,6 +229,12 @@ public class AddNhanKhau implements Initializable{
         stage.close();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, message, ButtonType.OK);
+        alert.setHeaderText(null);
+        alert.showAndWait();
+    }
+    
     private void showAlert(String title, String content, AlertType alertType) {
         Alert alert = new Alert(alertType, content, ButtonType.OK);
         alert.setTitle(title);

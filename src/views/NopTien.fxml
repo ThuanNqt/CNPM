@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -10,18 +9,9 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NopTienController">
    <children>
-      <Button layoutX="771.0" layoutY="38.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Đóng phí" textFill="#236de4" AnchorPane.rightAnchor="98.60000000000002" AnchorPane.topAnchor="38.0">
+      <Button fx:id="deleteNopTienButton" layoutX="807.0" layoutY="38.0" mnemonicParsing="false" onAction="#handleDeleteNopTienButtonAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Lịch sử xóa" textFill="#236de4" AnchorPane.rightAnchor="62.60000000000002" AnchorPane.topAnchor="38.0">
          <font>
             <Font name="System Bold" size="17.0" />
-         </font></Button>
-      <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" onAction="#delNopTien" prefHeight="30.0" prefWidth="1.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" textFill="#0077ff" AnchorPane.leftAnchor="490.0" AnchorPane.topAnchor="14.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font></Button>
-      <ComboBox fx:id="cbChooseSearch" layoutX="339.0" layoutY="54.0" prefHeight="30.0" prefWidth="180.0" promptText="Chọn" styleClass="choose" stylesheets="@../source/khoanthu.css" AnchorPane.leftAnchor="350.0" AnchorPane.rightAnchor="150.0" AnchorPane.topAnchor="453.0" />
-      <Button layoutX="514.0" layoutY="54.0" mnemonicParsing="false" onAction="#searchNopTien" prefHeight="30.0" prefWidth="125.0" styleClass="btnSearch" stylesheets="@../source/khoanthu.css" text="Tìm kiếm" textFill="WHITE" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="453.0">
-         <font>
-            <Font name="System Bold" size="12.0" />
          </font></Button>
       <TableView fx:id="tvNopTien" layoutX="57.0" layoutY="107.2" prefHeight="579.0" prefWidth="950.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="57.0" AnchorPane.rightAnchor="13.0" AnchorPane.topAnchor="107.0">
         <columns>
@@ -37,5 +27,10 @@
             <Font name="Arial Bold" size="27.0" />
          </font>
       </Label>
+      <Button layoutX="616.0" layoutY="38.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Đóng phí" textFill="#236de4">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

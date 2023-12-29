@@ -160,11 +160,16 @@ CREATE TABLE `nop_tien` (
   `IDNopTien` int(11) NOT NULL,
   `MaKhoanThu` int(11) NOT NULL,
   `SoTien` double NOT NULL,
-  `NgayThu` date DEFAULT NULL,
-  `Deleted` boolean default false
+  `NgayThu` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 
+CREATE TABLE `delete_nop_tien`(
+  `IDNopTien` int(11) NOT NULL,
+  `MaKhoanThu` int(11) NOT NULL,
+  `SoTien` double NOT NULL,
+  `NgayThu` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 -- --------------------------------------------------------
 
 --
@@ -363,17 +368,17 @@ INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`,`SoTien`, `NgayThu`) VALUES
 (8, 1,66000, '2023-03-11'),
 (10, 1,66000, '2023-01-16');
 
+-- UPDATE nop_tien SET Deleted = true WHERE IDNopTien=0;
 
+-- select * from chu_ho;
+-- select * from ho_khau;
+-- select * from khoan_thu;
+-- select * from nhan_khau where GioiTinh = 'Nữ';
+-- select * from nop_tien;
+-- select * from quan_he;
+-- select * from users;
 
-select * from chu_ho;
-select * from ho_khau;
-select * from khoan_thu;
-select * from nhan_khau where GioiTinh = 'Nữ';
-select * from nop_tien;
-select * from quan_he;
-select * from users;
-
-select sum(SoTien) from khoan_thu;
+-- select sum(SoTien) from khoan_thu;
 
 
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteNopTienController">
+   <children>
+      <TableView fx:id="tvDeleteNopTien" layoutX="15.0" layoutY="101.0" prefHeight="450.0" prefWidth="770.0" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="48.60000000000002" AnchorPane.topAnchor="100.0">
+        <columns>
+          <TableColumn fx:id="tbcTenNguoiDaNop" prefWidth="200.0" text="Tên người nộp" />
+          <TableColumn fx:id="tbcTenKhoanThuDaNop" prefWidth="300.0" text="Tên khoản thu" />
+            <TableColumn fx:id="tbcSoTienDaNop" prefWidth="130.0" text="Số tiền" />
+          <TableColumn fx:id="tbcNgayThuTien" prefWidth="135.0" text="Ngày đóng" />
+        </columns>
+      </TableView>
+      <Label layoutX="248.0" layoutY="14.0" text="Lịch sử đóng phí bị xóa" textFill="#0b0b0b" AnchorPane.leftAnchor="248.0">
+         <font>
+            <Font name="Arial Bold" size="27.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
