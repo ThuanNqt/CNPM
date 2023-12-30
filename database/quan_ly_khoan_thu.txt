@@ -164,13 +164,7 @@ CREATE TABLE `nop_tien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
 
-CREATE TABLE `delete_nop_tien`(
-  `IDNopTien` int(11) NOT NULL,
-  `MaKhoanThu` int(11) NOT NULL,
-  `SoTien` double NOT NULL,
-  `NgayThu` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
--- --------------------------------------------------------
+
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -383,7 +377,17 @@ INSERT INTO `nop_tien` (`IDNopTien`, `MaKhoanThu`,`SoTien`, `NgayThu`) VALUES
 
 
 
+CREATE TABLE `delete_nop_tien`(
+  `IDNopTien` int(11) NOT NULL,
+  `MaKhoanThu` int(11) NOT NULL,
+  `SoTien` double NOT NULL,
+  `NgayThu` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_vietnamese_ci;
 
+ALTER TABLE `delete_nop_tien`
+  ADD CONSTRAINT `delete_nop_tien1` FOREIGN KEY (`IDNopTien`) REFERENCES `nhan_khau` (`ID`),
+  ADD CONSTRAINT `delete_nop_tien2` FOREIGN KEY (`MaKhoanThu`) REFERENCES `khoan_thu` (`MaKhoanThu`);
+-- --------------------------------------------------------
 
 
 insert into users values
