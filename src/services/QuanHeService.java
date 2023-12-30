@@ -59,4 +59,25 @@ public class QuanHeService {
             updateStatement.executeUpdate();
         }
     }
+    public boolean deleteRelationship(int maHo, int idThanhVien) throws ClassNotFoundException, SQLException {
+        // Retrieve the QuanHeModel based on the maHo and idThanhVien, if needed
+
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement deleteStatement = connection.prepareStatement(
+                     "DELETE FROM quan_he WHERE MaHo = ? AND IDThanhVien = ?")) {
+
+            deleteStatement.setInt(1, maHo);
+            deleteStatement.setInt(2, idThanhVien);
+            int rowsAffected = deleteStatement.executeUpdate();
+
+            // Check if any rows were affected (i.e., if the delete operation was successful)
+            if (rowsAffected > 0) {
+                updateSoThanhVien(maHo, -1); // Update SoThanhVien in ho_khau table
+                return true; // Deletion successful
+            }
+        }
+
+        return false; // Deletion failed or no matching record found
+    }
+
 }

@@ -112,6 +112,8 @@ public class HoKhauController implements Initializable {
 			    //private final Button deleteButton = new Button("Xóa");
 			    private final Button showChiTietButton = new Button("Chi tiết");
 			    private final Button editButton = new Button("Sửa thông tin");
+				private final Button tachHoButton = new Button("Tách hộ");
+				private final Button chuyenThanhVienButton = new Button("Chuyển thành viên");
 
 			    {
 			       
@@ -126,8 +128,22 @@ public class HoKhauController implements Initializable {
 			        showChiTietButton.setOnAction(event -> {
 			            showChiTiet();
 			        });
+					tachHoButton.setOnAction(event -> {
+						try {
+							tachHo();
+						} catch (SQLException e) {
+							throw new RuntimeException(e);
+						} catch (ClassNotFoundException e) {
+							throw new RuntimeException(e);
+						}
+					});
+					chuyenThanhVienButton.setOnAction(event -> {
+						//chuyenThanhVien();
+					});
+
+
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(showChiTietButton,editButton);
+			        container.getChildren().addAll(showChiTietButton,editButton,tachHoButton,chuyenThanhVienButton);
 			    }
 
 			    @Override
@@ -408,7 +424,29 @@ public class HoKhauController implements Initializable {
             }
         }
     }
+	private void tachHo() throws SQLException, ClassNotFoundException {
 
+		HoKhauModel selectedHoKhau = tvHoKhau.getSelectionModel().getSelectedItem();
+
+		if (selectedHoKhau != null) {
+			try {
+
+				TachHoController tachHoController = new TachHoController();
+				tachHoController.setHoKhauModel(selectedHoKhau);
+
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/hokhau/TachHoKhau.fxml"));
+				loader.setController(tachHoController);
+				Parent root = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		showHoKhau();
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {
