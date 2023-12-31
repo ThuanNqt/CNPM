@@ -62,10 +62,17 @@ public class ThemKhoanThu implements Initializable {
     private boolean isValidDateRange() {
         Date ngayBatDau = java.sql.Date.valueOf(dpNgayBatDauThu.getValue());
         Date ngayKetThuc = java.sql.Date.valueOf(dpNgayKetThucThu.getValue());
-
-        if (ngayBatDau != null && ngayKetThuc != null && ngayBatDau.after(ngayKetThuc)) {
-            showAlert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.");
-            return false;
+        Date ngayHienTai = new Date();
+        
+        if (ngayBatDau != null && ngayKetThuc != null) {
+        	if(ngayBatDau.after(ngayKetThuc)) {
+        		showAlert("Ngày bắt đầu phải nhỏ hơn hoặc bằng ngày kết thúc.");
+        		return false;        		
+        	}
+        	if(ngayKetThuc.before(ngayHienTai)) {
+        		 showAlert("Ngày kết thúc phải sau ngày hiện tại.");
+        		 return false;
+        	}
         }
 
         return true;

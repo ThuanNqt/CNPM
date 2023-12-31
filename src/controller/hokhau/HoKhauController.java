@@ -453,7 +453,24 @@ public class HoKhauController implements Initializable {
 				e.printStackTrace();
 			}
 		}
+		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+		long soNhanKhau = listNhanKhau.stream().count();
+		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+		
+		List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+		long soNhanKhauNam = listNhanKhauNam.stream().count();
+		lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+		
+		List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+		long soNhanKhauNu = listNhanKhauNu.stream().count();
+		lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+		
+		List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+		long soHoKhau = listHoKhau.stream().count();
+		lbSoHoKhau.setText(Long.toString(soHoKhau));
+		
 		showHoKhau();
+		
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
