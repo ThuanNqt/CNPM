@@ -117,6 +117,7 @@ public class HoKhauController implements Initializable {
 			    private final Button showChiTietButton = new Button("Chi tiết");
 			    private final Button editButton = new Button("Sửa");
 				private final Button tachHoButton = new Button("Tách hộ");
+				private final Button chuyenThanhVienButton = new Button("Chuyển thành viên");
 
 			    {		
 			    	deleteButton.setOnAction(event -> {
@@ -137,8 +138,17 @@ public class HoKhauController implements Initializable {
 			            showChiTiet();
 			        });
 					tachHoButton.setOnAction(event -> {
+					try {
+						tachHo();
+					} catch (SQLException e) {
+						throw new RuntimeException(e);
+					} catch (ClassNotFoundException e) {
+						throw new RuntimeException(e);
+					}
+					});
+					chuyenThanhVienButton.setOnAction(event -> {
 						try {
-							tachHo();
+							chuyenThanhVien();
 						} catch (SQLException e) {
 							throw new RuntimeException(e);
 						} catch (ClassNotFoundException e) {
@@ -147,7 +157,7 @@ public class HoKhauController implements Initializable {
 					});
 
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(showChiTietButton, tachHoButton, editButton, deleteButton);
+			        container.getChildren().addAll(showChiTietButton, tachHoButton, editButton, deleteButton,chuyenThanhVienButton);
 			    }
 
 			    @Override
@@ -472,6 +482,48 @@ public class HoKhauController implements Initializable {
 		showHoKhau();
 		
 	}
+	private void chuyenThanhVien() throws SQLException, ClassNotFoundException {
+
+		HoKhauModel selectedHoKhau = tvHoKhau.getSelectionModel().getSelectedItem();
+
+		if (selectedHoKhau != null) {
+			try {
+
+				ChuyenThanhVienController chuyenThanhVienController = new ChuyenThanhVienController();
+				chuyenThanhVienController.setSelectedHoKhau(selectedHoKhau);
+
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/hokhau/ChuyenThanhVien.fxml"));
+				loader.setController(chuyenThanhVienController);
+				Parent root = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		List<NhanKhauModel> listNhanKhau = new NhanKhauService().getListNhanKhau();
+		long soNhanKhau = listNhanKhau.stream().count();
+		lbSoNhanKhau.setText(Long.toString(soNhanKhau));
+
+		List<NhanKhauModel> listNhanKhauNam = new NhanKhauService().getListNhanKhauNam();
+		long soNhanKhauNam = listNhanKhauNam.stream().count();
+		lbSoNhanKhauNam.setText(Long.toString(soNhanKhauNam));
+
+		List<NhanKhauModel> listNhanKhauNu = new NhanKhauService().getListNhanKhauNu();
+		long soNhanKhauNu = listNhanKhauNu.stream().count();
+		lbSoNhanKhauNu.setText(Long.toString(soNhanKhauNu));
+
+		List<HoKhauModel> listHoKhau = new HoKhauService().getListHoKhau();
+		long soHoKhau = listHoKhau.stream().count();
+		lbSoHoKhau.setText(Long.toString(soHoKhau));
+
+		showHoKhau();
+
+	}
+
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {

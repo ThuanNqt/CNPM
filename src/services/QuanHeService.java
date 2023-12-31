@@ -79,5 +79,27 @@ public class QuanHeService {
 
         return false; // Deletion failed or no matching record found
     }
+    public boolean changeRelationship(int currentMaHo, int newMaHo, int idThanhVien, String newQuanHe) throws ClassNotFoundException, SQLException {
+        try (Connection connection = MysqlConnection.getMysqlConnection();
+             PreparedStatement updateStatement = connection.prepareStatement(
+                     "UPDATE quan_he SET MaHo = ?, QuanHe = ? WHERE MaHo = ? AND IDThanhVien = ?")) {
+
+            updateStatement.setInt(1, newMaHo);
+            updateStatement.setString(2, newQuanHe);
+            updateStatement.setInt(3, currentMaHo);
+            updateStatement.setInt(4, idThanhVien);
+            int rowsAffected = updateStatement.executeUpdate();
+
+            // Kiểm tra xem có dòng nào bị ảnh hưởng không (có được cập nhật không)
+            if (rowsAffected > 0) {
+                // Cập nhật số thành viên cho currentMaHo và newMaHo
+                updateSoThanhVien(currentMaHo, -1);
+                updateSoThanhVien(newMaHo, 1);
+                return true; // Cập nhật quan hệ thành công
+            }
+        }
+        return false; // Nếu không thể cập nhật quan hệ
+    }
+
 
 }
