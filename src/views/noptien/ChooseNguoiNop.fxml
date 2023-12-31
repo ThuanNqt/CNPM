@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.noptien.ChooseNguoiNop">
    <children>
-      <Label layoutX="274.0" layoutY="8.0" text="Chọn người đóng phí" AnchorPane.topAnchor="8.0">
+      <Label layoutX="274.0" text="Chọn người đóng phí" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
@@ -25,9 +25,9 @@
             <Font name="System Bold" size="15.0" />
          </font>
          <graphic>
-            <FontAwesomeIcon fill="#00c9ff" glyphName="SEARCH" size="2em" />
+            <FontAwesomeIcon fill="#00c9ff" glyphName="SEARCH" size="1.8em" />
          </graphic></Button>
-      <TableView fx:id="tvNhanKhau" layoutX="12.0" layoutY="122.4" prefHeight="387.0" prefWidth="782.0" stylesheets="@../../source/nhankhau.css" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="122.0">
+      <TableView fx:id="tvNhanKhau" layoutX="12.0" layoutY="128.0" prefHeight="381.0" prefWidth="782.0" stylesheets="@../../source/nhankhau.css" AnchorPane.bottomAnchor="91.0" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="128.0">
          <columns>
             <TableColumn fx:id="colMaNhanKhau" text="ID" />
             <TableColumn fx:id="colTen" prefWidth="190.0" text="Họ và tên" />

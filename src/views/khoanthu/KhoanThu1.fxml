@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.KhoanThuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1020.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.KhoanThuController">
    <children>
-      <Button layoutX="704.0" layoutY="96.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="38.0" prefWidth="206.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" text="Thêm khoản thu" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="704.0" AnchorPane.topAnchor="96.0">
+      <Button layoutX="704.0" layoutY="96.0" mnemonicParsing="false" onAction="#addKhoanThu" prefHeight="38.0" prefWidth="206.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../../source/hokhau.css" text="Thêm khoản thu" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="704.0" AnchorPane.topAnchor="96.0">
          <font>
             <Font name="System Bold" size="17.0" />
          </font></Button>
-      <Button layoutX="366.0" layoutY="13.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../source/hokhau.css" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="366.0" AnchorPane.topAnchor="13.0">
+      <Button layoutX="366.0" layoutY="13.0" mnemonicParsing="false" onAction="#updateKhoanThu" prefHeight="30.0" prefWidth="50.0" style="-fx-background-color: transparent;" styleClass="btnSearch" stylesheets="@../../source/hokhau.css" textFill="DEEPSKYBLUE" AnchorPane.leftAnchor="366.0" AnchorPane.topAnchor="13.0">
          <font>
             <Font name="System Bold" size="12.0" />
          </font></Button>
@@ -30,11 +30,11 @@
          <graphic>
             <ImageView fitHeight="34.0" fitWidth="34.0">
                <image>
-                  <Image url="@../Image/211817_search_strong_icon.png" />
+                  <Image url="@../../Image/211817_search_strong_icon.png" />
                </image>
             </ImageView>
          </graphic></Button>
-      <TableView fx:id="tvKhoanPhi" layoutX="22.0" layoutY="167.2" prefHeight="520.0" prefWidth="950.0" style="-fx-background-color: #C0C0C0;" styleClass="tabview" stylesheets="@../source/khoanthu.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="167.0">
+      <TableView fx:id="tvKhoanPhi" layoutX="22.0" layoutY="167.2" prefHeight="520.0" prefWidth="950.0" style="-fx-background-color: #C0C0C0;" styleClass="tabview" stylesheets="@../../source/khoanthu.css" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="54.0" AnchorPane.rightAnchor="16.0" AnchorPane.topAnchor="167.0">
         <columns>
           <TableColumn fx:id="colMaKhoanPhi" prefWidth="100.0" text="Mã khoản thu" />
           <TableColumn fx:id="colTenKhoanThu" prefWidth="200.0" text="Tên khoản thu" />

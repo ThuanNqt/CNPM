@@ -95,8 +95,13 @@ public class AddNopTien {
                 showAlert(AlertType.WARNING, "Một người nào đó trong hộ đã đóng khoản phí này!");
             } else {
                 double soTienNop = Double.parseDouble(tfSoTien.getText());
-                Date currentDate = new Date();
-                new NopTienService().add(new NopTienModel(nhanKhauModel.getId(), khoanThuModel.getMaKhoanThu(), soTienNop, currentDate));
+                if(soTienNop <= 0) {
+                    showAlert(AlertType.WARNING,"Vui lòng nhập số tiền hợp lệ");
+                }else{
+                    Date currentDate = new Date();
+                    new NopTienService().add(new NopTienModel(nhanKhauModel.getId(), khoanThuModel.getMaKhoanThu(), soTienNop, currentDate));
+                }
+
             }
         }
         closeStage(event);

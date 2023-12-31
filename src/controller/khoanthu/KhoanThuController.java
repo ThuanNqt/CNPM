@@ -1,10 +1,9 @@
-package controller;
+package controller.khoanthu;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -12,8 +11,6 @@ import java.util.ResourceBundle;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 
-import controller.khoanthu.UpdateKhoanThu;
-import controller.nhankhau.UpdateNhanKhau;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -38,9 +35,7 @@ import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.KhoanThuModel;
-import models.NhanKhauModel;
 import services.KhoanThuService;
-import services.NhanKhauService;
 
 public class KhoanThuController implements Initializable {
 	@FXML

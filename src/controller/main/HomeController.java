@@ -1,4 +1,4 @@
-package controller;
+package controller.main;
 
 import java.io.IOException;
 
@@ -14,7 +14,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -28,32 +27,32 @@ public class HomeController implements Initializable {
 	private BorderPane borderPane;
 	
 	public void setNhanKhau(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/NhanKhau.fxml"));
+		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/nhankhau/NhanKhau.fxml"));
 		Pane nhankhauPane = (Pane) loader.load();
 		borderPane.setCenter(nhankhauPane);
 	}
 
 	public void setHoKhau(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/HoKhau.fxml"));
+		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/hokhau/HoKhau.fxml"));
 		Pane hokhauPane = (Pane) loader.load();
 		borderPane.setCenter(hokhauPane);
 
 	}
 
 	public void setKhoanPhi(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/KhoanThu.fxml"));
+		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/khoanthu/KhoanThu.fxml"));
 		Pane khoanphiPane = (Pane) loader.load();
 		borderPane.setCenter(khoanphiPane);
 	}
 	
 	public void setDongPhi(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/NopTien.fxml"));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/noptien/NopTien.fxml"));
 		Pane dongphiPane = (Pane) loader.load();
 		borderPane.setCenter(dongphiPane);
 	}
 	
 	public void setThongKe(ActionEvent event) throws IOException {
-		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/ThongKe.fxml"));
+		FXMLLoader loader = new FXMLLoader(LoginController.class.getResource("/views/thongke/ThongKe.fxml"));
 		Pane thongkePane = (Pane) loader.load();
 		borderPane.setCenter(thongkePane);
 

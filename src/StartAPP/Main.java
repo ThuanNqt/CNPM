@@ -1,4 +1,5 @@
-package application;
+
+package StartAPP;	
 import java.io.IOException;
 
 import javafx.application.Application;

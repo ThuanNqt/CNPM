@@ -16,7 +16,7 @@
             <TableColumn fx:id="colDiaChi" prefWidth="422.0" text="Địa chỉ" />
         </columns>
       </TableView>
-      <Label layoutX="58.0" layoutY="31.0" text="Các hộ gia đình đã đóng phí">
+      <Label layoutX="58.0" layoutY="31.0" text="Danh sách các hộ chưa nộp tiền">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>

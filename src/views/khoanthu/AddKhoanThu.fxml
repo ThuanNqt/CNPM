@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.AddKhoanThu">
+<AnchorPane prefHeight="600.0" prefWidth="400.0" stylesheets="@../../source/nhankhau.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.khoanthu.ThemKhoanThu">
    <children>
       <Label layoutX="79.0" text="Thông tin khoản thu" AnchorPane.topAnchor="0.0">
          <font>

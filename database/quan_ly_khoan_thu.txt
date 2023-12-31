@@ -13,18 +13,12 @@ SET time_zone = "+00:00";
 -- Cơ sở dữ liệu: `quan_ly_khoan_thu`
 --
 
--- --------------------------------------------------------
-delete from nop_tien;
-delete from khoan_thu;
-delete from quan_he;
-delete from chu_ho;
-delete from ho_khau;
-delete from nhan_khau;
+-- --------------------------------------------------------;
 --
 -- Các lệnh DROP TABLE IF EXISTS cho bảng `nop_tien`
 --
 DROP TABLE IF EXISTS `nop_tien`;
-
+DROP TABLE IF EXISTS `delete_nop_tien`;
 -- --------------------------------------------------------
 
 --

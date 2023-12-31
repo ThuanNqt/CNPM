@@ -30,7 +30,7 @@
             <FontAwesomeIcon fill="#968787" glyphName="PLUS" size="1.5EM" text="" />
          </graphic></Button>
       <TextField fx:id="tfTenNguoiNop" editable="false" layoutX="33.0" layoutY="173.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="180.0" />
-      <Button layoutX="100.0" layoutY="313.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Đóng phí" AnchorPane.bottomAnchor="55.80000000000001">
+      <Button layoutX="100.0" layoutY="322.0" mnemonicParsing="false" onAction="#addNopTien" prefHeight="30.0" prefWidth="200.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Đóng phí" AnchorPane.bottomAnchor="46.80000000000001">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

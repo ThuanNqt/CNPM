@@ -1,4 +1,4 @@
-package controller;
+package controller.thongke;
 
 import java.net.URL;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import models.HoKhauModel;
 import models.KhoanThuModel;
 import services.ThongKeService;
 
-public class ThongKe3Controller implements Initializable {
+public class ThongKeDaNopTien implements Initializable {
 
     @FXML
     private TableColumn<HoKhauModel, Integer> colMaHo;
@@ -34,7 +34,7 @@ public class ThongKe3Controller implements Initializable {
     private KhoanThuModel selectedKhoanThu;
 
     // Default constructor
-    public ThongKe3Controller() {}
+    public ThongKeDaNopTien() {}
 
     // Method to set the selected KhoanThuModel
     public void setkhoanThuModel(KhoanThuModel khoanThuModel) {

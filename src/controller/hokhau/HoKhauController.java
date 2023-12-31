@@ -1,4 +1,4 @@
-package controller;
+package controller.hokhau;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,8 +12,6 @@ import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
 import javafx.scene.control.Label;
-import controller.hokhau.UpdateHoKhau;
-import controller.khoanthu.UpdateKhoanThu;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -39,7 +37,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import models.ChuHoModel;
 import models.HoKhauModel;
-import models.KhoanThuModel;
 import models.NhanKhauModel;
 import models.QuanHeModel;
 import services.ChuHoService;
@@ -105,18 +102,30 @@ public class HoKhauController implements Initializable {
 		// Thiet lap Table views
 		colMaHoKhau.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("maHo"));
 		
+		try {
 		colMaChuHo.setCellValueFactory((CellDataFeatures<HoKhauModel, String> p) -> new ReadOnlyStringWrapper(
 				mapIdToTen.get(mapMahoToId.get(p.getValue().getMaHo())).toString()));
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		colSoThanhVien.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("soThanhvien"));
 		colDiaChi.setCellValueFactory(new PropertyValueFactory<HoKhauModel, String>("diaChi"));
 		
 		colAction.setCellFactory(param -> new TableCell<HoKhauModel, Void>() {
 			    private final HBox container = new HBox(8);
-			    //private final Button deleteButton = new Button("Xóa");
+			    private final Button deleteButton = new Button("Xóa");
 			    private final Button showChiTietButton = new Button("Chi tiết");
-			    private final Button editButton = new Button("Sửa thông tin");
+			    private final Button editButton = new Button("Sửa");
+				private final Button tachHoButton = new Button("Tách hộ");
 
 			    {		
+			    	deleteButton.setOnAction(event -> {
+			            try {
+			            	delHoKhau();
+			            } catch (ClassNotFoundException | SQLException e) {
+			                e.printStackTrace();
+			            }
+			        });
 			        editButton.setOnAction(event -> {
 			            try {
 			                updateHoKhau();
@@ -127,8 +136,18 @@ public class HoKhauController implements Initializable {
 			        showChiTietButton.setOnAction(event -> {
 			            showChiTiet();
 			        });
+					tachHoButton.setOnAction(event -> {
+						try {
+							tachHo();
+						} catch (SQLException e) {
+							throw new RuntimeException(e);
+						} catch (ClassNotFoundException e) {
+							throw new RuntimeException(e);
+						}
+					});
+
 			        container.setAlignment(Pos.CENTER);
-			        container.getChildren().addAll(showChiTietButton,editButton);
+			        container.getChildren().addAll(showChiTietButton, tachHoButton, editButton, deleteButton);
 			    }
 
 			    @Override
@@ -201,9 +220,13 @@ public class HoKhauController implements Initializable {
 				/// tao map anh xa gia tri Id sang maHo
 				Map<Integer, Integer> mapIdToMaho = new HashMap<>();
 				List<QuanHeModel> listQuanHe = new QuanHeService().getListQuanHe();
-				listQuanHe.forEach(quanhe -> {
-					mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
-				});
+				try {
+					listQuanHe.forEach(quanhe -> {
+						mapIdToMaho.put(quanhe.getIdThanhVien(), quanhe.getMaHo());
+					});
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 
 				// xoa toan bo nhan khau trong ho khau
 				int idHoKhauDel = hoKhauModel.getMaHo(); // lay ra ma ho de so sanh
@@ -398,7 +421,7 @@ public class HoKhauController implements Initializable {
                 ctHoKhau.setHoKhauModel(selectedHoKhau);
 
                 
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/ChiTietHoKhau.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/hokhau/ChiTietHoKhau.fxml"));
                 loader.setController(ctHoKhau);
                 Parent root = loader.load();
                 Stage stage = new Stage();
@@ -409,7 +432,29 @@ public class HoKhauController implements Initializable {
             }
         }
     }
+	private void tachHo() throws SQLException, ClassNotFoundException {
 
+		HoKhauModel selectedHoKhau = tvHoKhau.getSelectionModel().getSelectedItem();
+
+		if (selectedHoKhau != null) {
+			try {
+
+				TachHoController tachHoController = new TachHoController();
+				tachHoController.setHoKhauModel(selectedHoKhau);
+
+
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/hokhau/TachHoKhau.fxml"));
+				loader.setController(tachHoController);
+				Parent root = loader.load();
+				Stage stage = new Stage();
+				stage.setScene(new Scene(root));
+				stage.show();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		showHoKhau();
+	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		try {

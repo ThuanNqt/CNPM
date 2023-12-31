@@ -1,4 +1,4 @@
-package controller;
+package controller.noptien;
 
 import java.io.IOException;
 import java.net.URL;
@@ -87,7 +87,7 @@ public class NopTienController implements Initializable {
 	@FXML
 	private void handleDeleteNopTienButtonAction(ActionEvent event) throws IOException {
 	  try {
-	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/DeleteNopTien.fxml"));
+	    FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/noptien/DeleteNopTien.fxml"));
 	    Parent root = loader.load();
 	    DeleteNopTienController deleteNopTienController = loader.getController();  // Lấy controller
 

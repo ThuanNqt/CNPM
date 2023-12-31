@@ -14,20 +14,20 @@
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <Button layoutX="80.0" layoutY="426.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật thông tin hộ khẩu" AnchorPane.bottomAnchor="142.8">
+      <Button layoutX="80.0" layoutY="459.0" mnemonicParsing="false" onAction="#updateHoKhau" prefHeight="30.0" prefWidth="240.0" style="-fx-background-color: transperent;" styleClass="btnSearch" stylesheets="@../../source/nhankhau.css" text="Cập nhật thông tin hộ khẩu" AnchorPane.bottomAnchor="109.80000000000001">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
       <TextField fx:id="tfMaHo" editable="false" layoutX="50.0" layoutY="107.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="100.0" />
-      <TextField fx:id="tfTenChuHo" editable="false" layoutX="50.0" layoutY="162.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="160.0" />
-      <TextField fx:id="tfSoThanhVien" editable="false" layoutX="50.0" layoutY="208.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="220.0" />
-      <TextField fx:id="tfDiaChi" layoutX="50.0" layoutY="258.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="280.0" />
-      <TextField fx:id="tfSDT" editable="false" layoutX="50.0" layoutY="308.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="340.0" />
+      <TextField fx:id="tfTenChuHo" editable="false" layoutX="50.0" layoutY="162.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="170.0" />
+      <TextField fx:id="tfSoThanhVien" editable="false" layoutX="50.0" layoutY="279.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="240.0" />
+      <TextField fx:id="tfDiaChi" layoutX="50.0" layoutY="339.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="310.0" />
+      <TextField fx:id="tfSDT" editable="false" layoutX="50.0" layoutY="399.0" prefHeight="30.0" prefWidth="300.0" styleClass="txtThongTin" stylesheets="@../../source/nhankhau.css" AnchorPane.topAnchor="380.0" />
       <Label layoutX="50.0" layoutY="83.0" text="Mã hộ khẩu" />
-      <Label layoutX="50.0" layoutY="143.0" text="Tên chủ hộ" />
-      <Label layoutX="50.0" layoutY="203.0" text="Số lượng thành viên" />
-      <Label layoutX="50.0" layoutY="263.0" text="Địa chỉ" />
-      <Label layoutX="50.0" layoutY="323.0" text="Số điện thoại" />
+      <Label layoutX="50.0" layoutY="152.0" text="Tên chủ hộ" />
+      <Label layoutX="50.0" layoutY="222.0" text="Số lượng thành viên" />
+      <Label layoutX="50.0" layoutY="291.0" text="Địa chỉ" />
+      <Label layoutX="51.0" layoutY="362.0" text="Số điện thoại" />
    </children>
    <styleClass>
       <String fx:value="shadow" />

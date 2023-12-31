@@ -1,4 +1,4 @@
-package controller;
+package controller.nhankhau;
 
 import javafx.event.ActionEvent;
 import java.io.IOException;
@@ -12,7 +12,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
 
-import controller.nhankhau.UpdateNhanKhau;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -427,7 +426,7 @@ public class NhanKhauController implements Initializable {
 		NhanKhauModel selectNhanKhau = tvNhanKhau.getSelectionModel().getSelectedItem();
 		
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/views/ChiTietNhanKhau.fxml"));
+		loader.setLocation(getClass().getResource("/views/nhankhau/ChiTietNhanKhau.fxml"));
 		Parent home = loader.load(); 
         Stage stage = new Stage();
         stage.setTitle("Thông tin chi tiết nhân khẩu");
